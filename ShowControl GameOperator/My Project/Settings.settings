@@ -1,0 +1,75 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="username" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ContestantNameSurname" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Biography" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="questionFlashTempl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam/currentWorking/QuestionFireDEp3v1-clock</Value>
+    </Setting>
+    <Setting Name="casparHostName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.100.2</Value>
+    </Setting>
+    <Setting Name="casparPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5250</Value>
+    </Setting>
+    <Setting Name="contestantHomeTown" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//</Value>
+    </Setting>
+    <Setting Name="contestantGuest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//</Value>
+    </Setting>
+    <Setting Name="audienceVotesServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="mySqlUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="mySqlPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">P@ssw0rd</Value>
+    </Setting>
+    <Setting Name="audienceVotesDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam</Value>
+    </Setting>
+    <Setting Name="audienceVotesTable" Type="System.String" Scope="User">
+      <Value Profile="(Default)">audiencevotes</Value>
+    </Setting>
+    <Setting Name="moneyTreeFlashTempl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam/currentWorking/MoneyTreeUIp1</Value>
+    </Setting>
+    <Setting Name="rightOrderFlashTempl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam/currentWorking/FFFRightOrderUIp1v1</Value>
+    </Setting>
+    <Setting Name="whoIsCorrectFlashTempl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam/currentWorking/FFFWhoIsRightUIp1v1LowPerformance</Value>
+    </Setting>
+    <Setting Name="QuizOperatorIPAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="DebugMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="fastestNameClokStrapFlashTempl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wwtbam/currentWorking/FFFNameStrapFastestUIp1</Value>
+    </Setting>
+    <Setting Name="FFFClockDecimalPlaces" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="StateServerIPAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="IsInteractiveScreenOn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
