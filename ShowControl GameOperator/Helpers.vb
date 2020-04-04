@@ -66,4 +66,12 @@
         Return System.Convert.ToBase64String(plainTextBytes)
     End Function
 
+    Public Shared Function RemoveLetters(s As String) As Integer
+        Dim rxNonDigits As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[^\d]+")
+
+        If String.IsNullOrEmpty(s) Then Return s
+        Dim cleaned As String = rxNonDigits.Replace(s, "")
+        Return Integer.Parse(cleaned)
+    End Function
+
 End Class

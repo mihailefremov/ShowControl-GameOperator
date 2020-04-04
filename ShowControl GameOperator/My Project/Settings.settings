@@ -15,7 +15,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="questionFlashTempl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wwtbam/currentWorking/QuestionFireDEp3v1-clock</Value>
+      <Value Profile="(Default)">wwtbam/currentWorking/QuestionFireUKp1v1-clock</Value>
     </Setting>
     <Setting Name="casparHostName" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.100.2</Value>
@@ -48,7 +48,7 @@
       <Value Profile="(Default)">wwtbam/currentWorking/MoneyTreeUIp1</Value>
     </Setting>
     <Setting Name="rightOrderFlashTempl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wwtbam/currentWorking/FFFRightOrderUIp1v1</Value>
+      <Value Profile="(Default)">wwtbam/currentWorking/FFFRightOrderUIp2</Value>
     </Setting>
     <Setting Name="whoIsCorrectFlashTempl" Type="System.String" Scope="User">
       <Value Profile="(Default)">wwtbam/currentWorking/FFFWhoIsRightUIp1v1LowPerformance</Value>
@@ -60,7 +60,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="fastestNameClokStrapFlashTempl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wwtbam/currentWorking/FFFNameStrapFastestUIp1</Value>
+      <Value Profile="(Default)">wwtbam/currentWorking/FFFNameStrapFastestUIp1v2</Value>
     </Setting>
     <Setting Name="FFFClockDecimalPlaces" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>

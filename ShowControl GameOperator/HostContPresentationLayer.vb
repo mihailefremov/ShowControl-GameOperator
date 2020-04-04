@@ -61,6 +61,15 @@ Public Class HostContPresentationLayer
         End Select
     End Sub
 
+    Public Shared Sub ConfigurationMoneyTreeSet()
+        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/configuration-data/PostMoneyTreeConfigurationData.php?Q1={Quiz_Operator.QSum1_TextBox.Text}&Q2={Quiz_Operator.QSum2_TextBox.Text}&Q3={Quiz_Operator.QSum3_TextBox.Text}&Q4={Quiz_Operator.QSum4_TextBox.Text}&Q5={Quiz_Operator.QSum5_TextBox.Text}&Q6={Quiz_Operator.QSum6_TextBox.Text}&Q7={Quiz_Operator.QSum7_TextBox.Text}&Q8={Quiz_Operator.QSum8_TextBox.Text}&Q9={Quiz_Operator.QSum9_TextBox.Text}&Q10={Quiz_Operator.QSum10_TextBox.Text}&Q11={Quiz_Operator.QSum11_TextBox.Text}&Q12={Quiz_Operator.QSum12_TextBox.Text}&Q13={Quiz_Operator.QSum13_TextBox.Text}&Q14={Quiz_Operator.QSum14_TextBox.Text}&Q15={Quiz_Operator.QSum15_TextBox.Text}")
+    End Sub
+
+    Public Shared Sub ConfigurationLifelines(LF1 As String, LF2 As String, LF3 As String, LF4 As String, LF5 As String)
+        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/configuration-data/PostLifelineConfigurationData.php?Lifeline1={LF1}&Lifeline2={LF2}&Lifeline3={LF3}&Lifeline4={LF4}&Lifeline5={LF5}")
+    End Sub
+
+
     Public Shared Sub OneTimeMessageSet(Optional OneTimeMessage As String = "")
 
         If OneTimeMessage.Trim = String.Empty Then Return

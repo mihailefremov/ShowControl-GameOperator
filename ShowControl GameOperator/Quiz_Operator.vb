@@ -34,7 +34,6 @@ Public Class Quiz_Operator
         End Get
     End Property
 
-
     Dim lifeline1Active1 As Short = 1
     Public Property Lifeline1Active As Short
         Get
@@ -266,16 +265,95 @@ Public Class Quiz_Operator
         End Set
     End Property
 
+    Public FiftyFiftyPosition As Short = 0
+    Public PhoneAFriendPosition As Short = 0
+    Public AskTheAudiencePosition As Short = 0
+    Public SwitchTheQuestionPosition As Short = 0
+    Public DoubleDipPosition As Short = 0
+    Public AskTheHostPosition As Short = 0
+    Public AskTheExpertPosition As Short = 0
+
+    Dim Lifelines_ As String
+    Public Property Lifelines As String
+        Get
+            Return Lifelines_
+        End Get
+        Set(value As String)
+            Lifelines_ = value.ToUpper
+            Try
+                Dim Lifelines() As String = Lifelines_.Split(";")
+                FiftyFiftyPosition = Array.IndexOf(Lifelines, "5050") + 1
+                PhoneAFriendPosition = Array.IndexOf(Lifelines, "PAF") + 1
+                AskTheAudiencePosition = Array.IndexOf(Lifelines, "ATA") + 1
+                SwitchTheQuestionPosition = Array.IndexOf(Lifelines, "STQ") + 1
+                DoubleDipPosition = Array.IndexOf(Lifelines, "DDIP") + 1
+                AskTheHostPosition = Array.IndexOf(Lifelines, "ATH") + 1
+                AskTheExpertPosition = Array.IndexOf(Lifelines, "ATE") + 1
+            Catch ex As Exception
+            End Try
+        End Set
+    End Property
 #End Region
+
+    Private Sub LoadConfiguration()
+
+        Try
+            Dim ConfigurationPath As String = GameConfiguration.Default.DefaultGameConfigurationPath
+            Dim BasicConfigurationText As String = System.IO.File.ReadAllText(String.Format("{0}\{1}", ConfigurationPath, "BasicGameConfiguration.xml"))
+
+            Dim BasicConfigurationReader As System.IO.TextReader = New System.IO.StringReader(BasicConfigurationText)
+
+            Dim serializer As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(Xml2CSharp.BASICGAMECONFIGURATIONS))
+            Dim WwtbamConfiguraiton As Xml2CSharp.BASICGAMECONFIGURATIONS
+
+            WwtbamConfiguraiton = serializer.Deserialize(BasicConfigurationReader)
+
+            QSum1_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q1.PREVIEWVALUE
+            QSum2_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q2.PREVIEWVALUE
+            QSum3_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q3.PREVIEWVALUE
+            QSum4_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q4.PREVIEWVALUE
+            QSum5_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q5.PREVIEWVALUE
+
+            QSum6_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q6.PREVIEWVALUE
+            QSum7_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q7.PREVIEWVALUE
+            QSum8_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q8.PREVIEWVALUE
+            QSum9_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q9.PREVIEWVALUE
+            QSum10_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q10.PREVIEWVALUE
+
+            QSum11_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q11.PREVIEWVALUE
+            QSum12_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q12.PREVIEWVALUE
+            QSum13_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q13.PREVIEWVALUE
+            QSum14_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q14.PREVIEWVALUE
+            QSum15_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q15.PREVIEWVALUE
+
+            HostContPresentationLayer.ConfigurationMoneyTreeSet()
+
+            If WwtbamConfiguraiton.LIFELINES.DEFAULTLIFELINECOUNT.Equals(3) Then
+                ThreeLifelinesStatus_Label_Click(threeLifelinesStatus_Label, Nothing)
+            ElseIf WwtbamConfiguraiton.LIFELINES.DEFAULTLIFELINECOUNT.Equals(4) Then
+                FourLifelinesStatus_Label_Click(fourLifelinesStatus_Label, Nothing)
+            End If
+
+            Lifelines = $"{WwtbamConfiguraiton.LIFELINES.LIFELINE1};{WwtbamConfiguraiton.LIFELINES.LIFELINE2};{WwtbamConfiguraiton.LIFELINES.LIFELINE3};{WwtbamConfiguraiton.LIFELINES.LIFELINE4};{WwtbamConfiguraiton.LIFELINES.LIFELINE5}"
+            HostContPresentationLayer.ConfigurationLifelines($"{WwtbamConfiguraiton.LIFELINES.LIFELINE1}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE2}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE3}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE4}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE5}")
+
+            GuiContext.ResetAll()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
 
     Private Sub Quiz_Operator_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        'TimerLoadQuestionFromDB.Interval = 250
+        LoadConfiguration()
+
         TimerPAFsecondDrop.Interval = 1000
         TimerEndPAF.Interval = 30000
-
         Timer_PLAY.Interval = 300
-
         If (Not Debugger.IsAttached) Or (Not Debugger.IsAttached And My.Settings.DebugMode = True) Then
             Timer_STOP.Start()
         End If
@@ -1135,10 +1213,18 @@ Public Class Quiz_Operator
         CremoveFF_Label.BackColor = Color.Yellow
         DremoveFF_Label.BackColor = Color.Yellow
 
-        Me.Lifeline1_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\5050_X.png")
-        Me.Lifeline1_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 0)
 
-        Lifeline1Active = 0
+        Select Case FiftyFiftyPosition
+            Case 1
+                Lifeline1Active = 0
+            Case 2
+                Lifeline2Active = 0
+            Case 3
+                Lifeline3Active = 0
+            Case 4
+                Lifeline4Active = 0
+        End Select
 
     End Sub
 
@@ -1182,30 +1268,51 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub PAF_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_X_Label.Click
+        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 0)
 
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\PAF_X.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-
-        Lifeline2Active = 0
+        Select Case PhoneAFriendPosition
+            Case 1
+                Lifeline1Active = 0
+            Case 2
+                Lifeline2Active = 0
+            Case 3
+                Lifeline3Active = 0
+            Case 4
+                Lifeline4Active = 0
+        End Select
 
     End Sub
 
     Private Sub ATA_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_X_Label.Click
-        Me.Lifeline3_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\ATA_X.png")
-        Me.Lifeline3_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 0)
 
-        Lifeline3Active = 0
+        Select Case AskTheAudiencePosition
+            Case 1
+                Lifeline1Active = 0
+            Case 2
+                Lifeline2Active = 0
+            Case 3
+                Lifeline3Active = 0
+            Case 4
+                Lifeline4Active = 0
+        End Select
 
     End Sub
 
     Private Sub STQ_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_X_Label.Click
-        Me.Lifeline4_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\SwitchQ_X.png")
-        Me.Lifeline4_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 0)
 
-        Lifeline4_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\SwitchQ_X.png")
-        Lifeline4_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Select Case SwitchTheQuestionPosition
+            Case 1
+                Lifeline1Active = 0
+            Case 2
+                Lifeline2Active = 0
+            Case 3
+                Lifeline3Active = 0
+            Case 4
+                Lifeline4Active = 0
+        End Select
 
-        Lifeline4Active = 0
 
     End Sub
 
@@ -1272,70 +1379,137 @@ Public Class Quiz_Operator
 
     Private Sub FiftyFifty_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FiftyFifty_0_Label.Click
 
-        Me.Lifeline1_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\5050_0.png")
-        Me.Lifeline1_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 1)
 
-        Lifeline1Active = 1
+        Select Case FiftyFiftyPosition
+            Case 1
+                Lifeline1Active = 1
+            Case 2
+                Lifeline2Active = 1
+            Case 3
+                Lifeline3Active = 1
+            Case 4
+                Lifeline4Active = 1
+        End Select
 
     End Sub
 
     Private Sub PAF_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_0_Label.Click
+        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 1)
 
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\PAF_0.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-
-        Lifeline2Active = 1
+        Select Case PhoneAFriendPosition
+            Case 1
+                Lifeline1Active = 1
+            Case 2
+                Lifeline2Active = 1
+            Case 3
+                Lifeline3Active = 1
+            Case 4
+                Lifeline4Active = 1
+        End Select
 
     End Sub
 
     Private Sub ATA_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_0_Label.Click
 
-        Me.Lifeline3_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\ATA_0.png")
-        Me.Lifeline3_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 1)
 
-        Lifeline3Active = 1
+        Select Case AskTheAudiencePosition
+            Case 1
+                Lifeline1Active = 1
+            Case 2
+                Lifeline2Active = 1
+            Case 3
+                Lifeline3Active = 1
+            Case 4
+                Lifeline4Active = 1
+        End Select
 
     End Sub
 
     Private Sub STQ_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_0_Label.Click
 
-        Me.Lifeline4_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\SwitchQ_0.png")
-        Me.Lifeline4_PictureBox.BackgroundImageLayout = ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 1)
 
-        Lifeline4Active = 1
+        Select Case SwitchTheQuestionPosition
+            Case 1
+                Lifeline1Active = 1
+            Case 2
+                Lifeline2Active = 1
+            Case 3
+                Lifeline3Active = 1
+            Case 4
+                Lifeline4Active = 1
+        End Select
 
     End Sub
 
     Private Sub FiftyFifty_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FiftyFifty_1_Label.Click
 
-        Me.Lifeline1_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\5050_1.png")
-        Me.Lifeline1_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 2)
 
-        Lifeline1Active = 2
+        Select Case FiftyFiftyPosition
+            Case 1
+                Lifeline1Active = 2
+            Case 2
+                Lifeline2Active = 2
+            Case 3
+                Lifeline3Active = 2
+            Case 4
+                Lifeline4Active = 2
+        End Select
+
     End Sub
 
     Private Sub PAF_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_1_Label.Click
 
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\PAF_1.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 2)
 
-        Lifeline2Active = 2
+        Select Case PhoneAFriendPosition
+            Case 1
+                Lifeline1Active = 2
+            Case 2
+                Lifeline2Active = 2
+            Case 3
+                Lifeline3Active = 2
+            Case 4
+                Lifeline4Active = 2
+        End Select
+
     End Sub
 
     Private Sub ATA_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_1_Label.Click
 
-        Me.Lifeline3_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\ATA_1.png")
-        Me.Lifeline3_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 2)
 
-        Lifeline3Active = 2
+        Select Case AskTheAudiencePosition
+            Case 1
+                Lifeline1Active = 2
+            Case 2
+                Lifeline2Active = 2
+            Case 3
+                Lifeline3Active = 2
+            Case 4
+                Lifeline4Active = 2
+        End Select
+
     End Sub
 
     Private Sub STQ_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_1_Label.Click
 
-        Me.Lifeline4_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\SwitchQ_1.png")
-        Me.Lifeline4_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 2)
 
-        Lifeline4Active = 4
+        Select Case SwitchTheQuestionPosition
+            Case 1
+                Lifeline1Active = 2
+            Case 2
+                Lifeline2Active = 2
+            Case 3
+                Lifeline3Active = 2
+            Case 4
+                Lifeline4Active = 2
+        End Select
+
     End Sub
     Private Sub CorrectAnswerReveal_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CorrectAnswerReveal_Button.Click
 
@@ -1422,7 +1596,7 @@ Public Class Quiz_Operator
             incorrectSume = CalculateIncorrectAnswer(LevelQ)
             incorrectSume = IIf(incorrectSume = 0, 0, incorrectSume)
 
-            CurentGameStatusData = $"{momentSume};{(incorrectSume - momentSume) * (-1)};{qForSume};{incorrectSume}"
+            CurentGameStatusData = $"{momentSume};{(Helpers.RemoveLetters(incorrectSume) - Helpers.RemoveLetters(momentSume)) * (-1)};{qForSume};{incorrectSume}"
 
         Else
             CurentGameStatusData = "0;0;0;0"
@@ -1654,7 +1828,8 @@ Public Class Quiz_Operator
 
     Private Sub CGConnection_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CGConnection_Button.Click
         GraphicsProcessingUnit.ConnectCG(CasparServerIP_TextBox.Text, CASPARCGLog_TextBox)
-
+        System.Threading.Thread.Sleep(1000)
+        MoneyTreeSet_Label_Click(MoneyTreeSet_Label, Nothing)
     End Sub
 
     Private Sub ATAendVote_Label_Click(sender As Object, e As EventArgs) Handles ATAendVote_Label.Click
@@ -2090,20 +2265,17 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub DDIP_0_Label_Click(sender As Object, e As EventArgs) Handles DDIP_0_Label.Click
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\DDIP_0.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 1)
         Lifeline2Active = 1
     End Sub
 
     Private Sub DDIP_1_Label_Click(sender As Object, e As EventArgs) Handles DDIP_1_Label.Click
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\DDIP_1.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 2)
         Lifeline2Active = 2
     End Sub
 
     Private Sub DDIP_X_Label_Click(sender As Object, e As EventArgs) Handles DDIP_X_Label.Click
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\DDIP_X.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 0)
         Lifeline2Active = 0
     End Sub
 
@@ -2325,7 +2497,5 @@ Public Class Quiz_Operator
             Return ""
         End Get
     End Property
-
-
 
 End Class

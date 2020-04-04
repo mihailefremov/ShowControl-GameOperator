@@ -523,6 +523,10 @@ Public Class FFFOperator
                 IndexPositionOfFastestContestantByTime = Array.IndexOf(ElapsedTimes, ElapsedTimes.Min)
                 TheFastestContestantIndex_TextBox.Text = IndexPositionOfFastestContestantByTime + 1
                 TheFastestContestantName_TextBox.Text = ListOfAllContestants(IndexPositionOfFastestContestantByTime)
+
+                Quiz_Operator.ContestantName_Textbox.Text = TheFastestContestantName_TextBox.Text
+                Quiz_Operator.ContestantLastName_Textbox.Text = ""
+
             Next
         End If
     End Function

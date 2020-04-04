@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/QuestionFireDEp3v1-clock")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/QuestionFireUKp1v1-clock")>  _
         Public Property questionFlashTempl() As String
             Get
                 Return CType(Me("questionFlashTempl"),String)
@@ -236,7 +236,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/FFFRightOrderUIp1v1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/FFFRightOrderUIp2")>  _
         Public Property rightOrderFlashTempl() As String
             Get
                 Return CType(Me("rightOrderFlashTempl"),String)
@@ -284,7 +284,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/FFFNameStrapFastestUIp1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("wwtbam/currentWorking/FFFNameStrapFastestUIp1v2")>  _
         Public Property fastestNameClokStrapFlashTempl() As String
             Get
                 Return CType(Me("fastestNameClokStrapFlashTempl"),String)

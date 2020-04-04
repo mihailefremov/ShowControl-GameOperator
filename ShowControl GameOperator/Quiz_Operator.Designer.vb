@@ -98,6 +98,7 @@ Partial Class Quiz_Operator
         Me.AnswerCappear_Label = New System.Windows.Forms.Label()
         Me.AnswerDappear_Label = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.MoneyTreeSet_Label = New System.Windows.Forms.Label()
         Me.TenthQMilestoneSet_Button = New System.Windows.Forms.Button()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.Label51 = New System.Windows.Forms.Label()
@@ -113,7 +114,6 @@ Partial Class Quiz_Operator
         Me.CASPARCGLog_TextBox = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AutoWhiteGleen_CheckBox = New System.Windows.Forms.CheckBox()
-        Me.MoneyTreeSet_Label = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.ContestantPartner_Textbox = New System.Windows.Forms.TextBox()
         Me.ContestantCity_Textbox = New System.Windows.Forms.TextBox()
@@ -1020,6 +1020,7 @@ Partial Class Quiz_Operator
         '
         'TabPage4
         '
+        Me.TabPage4.Controls.Add(Me.MoneyTreeSet_Label)
         Me.TabPage4.Controls.Add(Me.TenthQMilestoneSet_Button)
         Me.TabPage4.Controls.Add(Me.Label52)
         Me.TabPage4.Controls.Add(Me.Label51)
@@ -1042,6 +1043,18 @@ Partial Class Quiz_Operator
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "     MoneyPlayOut      "
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'MoneyTreeSet_Label
+        '
+        Me.MoneyTreeSet_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.MoneyTreeSet_Label.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.MoneyTreeSet_Label.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MoneyTreeSet_Label.Location = New System.Drawing.Point(329, 140)
+        Me.MoneyTreeSet_Label.Name = "MoneyTreeSet_Label"
+        Me.MoneyTreeSet_Label.Size = New System.Drawing.Size(98, 32)
+        Me.MoneyTreeSet_Label.TabIndex = 1259
+        Me.MoneyTreeSet_Label.Text = "MONEY TREE" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SET"
+        Me.MoneyTreeSet_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TenthQMilestoneSet_Button
         '
@@ -1187,7 +1200,6 @@ Partial Class Quiz_Operator
         Me.TabPage5.Controls.Add(Me.AutoWhiteGleen_CheckBox)
         Me.TabPage5.Controls.Add(Me.CasparServerIP_TextBox)
         Me.TabPage5.Controls.Add(Me.CGConnection_Button)
-        Me.TabPage5.Controls.Add(Me.MoneyTreeSet_Label)
         Me.TabPage5.Location = New System.Drawing.Point(4, 24)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Size = New System.Drawing.Size(919, 247)
@@ -1228,18 +1240,6 @@ Partial Class Quiz_Operator
         Me.AutoWhiteGleen_CheckBox.TabIndex = 1239
         Me.AutoWhiteGleen_CheckBox.Text = "Auto QuestionAnswer" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Gleen"
         Me.AutoWhiteGleen_CheckBox.UseVisualStyleBackColor = True
-        '
-        'MoneyTreeSet_Label
-        '
-        Me.MoneyTreeSet_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.MoneyTreeSet_Label.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.MoneyTreeSet_Label.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MoneyTreeSet_Label.Location = New System.Drawing.Point(695, 17)
-        Me.MoneyTreeSet_Label.Name = "MoneyTreeSet_Label"
-        Me.MoneyTreeSet_Label.Size = New System.Drawing.Size(98, 32)
-        Me.MoneyTreeSet_Label.TabIndex = 1240
-        Me.MoneyTreeSet_Label.Text = "MONEY TREE" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SET"
-        Me.MoneyTreeSet_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TabPage2
         '
@@ -2746,7 +2746,6 @@ Partial Class Quiz_Operator
     Friend WithEvents MoreQuestionInfoForHost_TextBox As TextBox
     Friend WithEvents ClearExplanation_Label As Label
     Friend WithEvents SendExplanation_Label As Label
-    Friend WithEvents MoneyTreeSet_Label As Label
     Friend WithEvents MoneyTreeMoment_Textbox As TextBox
     Friend WithEvents AnswerAappear_Label As Label
     Friend WithEvents AnswerBappear_Label As Label
@@ -2865,4 +2864,5 @@ Partial Class Quiz_Operator
     Friend WithEvents QFor_Button As Button
     Friend WithEvents LifelineRemind_Button As Button
     Friend WithEvents WalkAwayStart_Button As Button
+    Friend WithEvents MoneyTreeSet_Label As Label
 End Class
