@@ -65,7 +65,7 @@ Public Class FFFOperator
         End If
         FastestFingerManaging.QuestionLoad(QuestionFFF_TextBox.Text, AnswerAFFF_TextBox.Text, AnswerBFFF_TextBox.Text, AnswerCFFF_TextBox.Text, AnswerDFFF_TextBox.Text)
         FastestFingerManaging.QuestionFire()
-        DataLayer.MarkQuestionAnsweredDB(questionID)
+        DataLayer.MarkQuestionAnsweredDB(questionID, Quiz_Operator.IsGameGoingLive)
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\10.Standby for Q.wav", AudioPlayMode.BackgroundLoop)
         GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion("2001")
     End Sub
@@ -80,7 +80,7 @@ Public Class FFFOperator
         Dim tFFUnits As Task = Task.Run(Sub()
                                             FastestFingerManaging.FastestFingerFirstFire()
                                         End Sub)
-        DataLayer.MarkQuestionFiredDB(questionID)
+        DataLayer.MarkQuestionFiredDB(questionID, Quiz_Operator.IsGameGoingLive)
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\11.Three Beeps.wav", AudioPlayMode.Background)
         MusicFF.FFFastestFingerFirstAxWindowsMediaPlayer.Ctlcontrols.play()
 

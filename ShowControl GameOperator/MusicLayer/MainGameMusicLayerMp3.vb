@@ -141,22 +141,11 @@
         CorrectAnswerQ14MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $500,000 Win.mp3"))
         CorrectAnswerQ15MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Unused - Old $1,000,000 Win.mp3"))
 
-        CorrectAnswerQ1MediaPlayer.Stop()
-        CorrectAnswerQ5MediaPlayer.Stop()
-        CorrectAnswerQ6MediaPlayer.Stop()
-        CorrectAnswerQ7MediaPlayer.Stop()
-        CorrectAnswerQ8MediaPlayer.Stop()
-        CorrectAnswerQ9MediaPlayer.Stop()
-        CorrectAnswerQ10MediaPlayer.Stop()
-        CorrectAnswerQ11MediaPlayer.Stop()
-        CorrectAnswerQ12MediaPlayer.Stop()
-        CorrectAnswerQ13MediaPlayer.Stop()
-        CorrectAnswerQ14MediaPlayer.Stop()
-        CorrectAnswerQ15MediaPlayer.Stop()
+        StopCorrectAnswer()
 
     End Sub
 
-    Sub StopAll()
+    Sub StopHeartbeaLetsPlay()
         Me.Q1to5AxWindowsMediaPlayer1.Stop() 'Ctlcontrols.stop()
         Me.Q6AxWindowsMediaPlayer1.Stop() 'Ctlcontrols.stop()
         Me.Q7AxWindowsMediaPlayer1.Stop() 'Ctlcontrols.stop()
@@ -236,7 +225,7 @@
     End Sub
 
     Sub PlayDoubleDipBackground()
-        StopAll()
+        StopHeartbeaLetsPlay()
         DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.play()
     End Sub
 
@@ -346,6 +335,21 @@
             My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\101.R1 000 000 - Winner.wav", AudioPlayMode.Background)
 
         End If
+    End Sub
+
+    Sub StopCorrectAnswer()
+        CorrectAnswerQ1MediaPlayer.Stop()
+        CorrectAnswerQ5MediaPlayer.Stop()
+        CorrectAnswerQ6MediaPlayer.Stop()
+        CorrectAnswerQ7MediaPlayer.Stop()
+        CorrectAnswerQ8MediaPlayer.Stop()
+        CorrectAnswerQ9MediaPlayer.Stop()
+        CorrectAnswerQ10MediaPlayer.Stop()
+        CorrectAnswerQ11MediaPlayer.Stop()
+        CorrectAnswerQ12MediaPlayer.Stop()
+        CorrectAnswerQ13MediaPlayer.Stop()
+        CorrectAnswerQ14MediaPlayer.Stop()
+        CorrectAnswerQ15MediaPlayer.Stop()
     End Sub
 
     Sub PlayLXSound(LevelQ_TextBox As String, VariableMilestone_TextBox As String)

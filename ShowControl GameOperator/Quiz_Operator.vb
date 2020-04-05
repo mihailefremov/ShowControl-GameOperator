@@ -293,6 +293,9 @@ Public Class Quiz_Operator
             End Try
         End Set
     End Property
+
+    Dim MoneyTree As New List(Of Decimal)
+
 #End Region
 
     Private Sub LoadConfiguration()
@@ -308,6 +311,7 @@ Public Class Quiz_Operator
 
             WwtbamConfiguraiton = serializer.Deserialize(BasicConfigurationReader)
 
+#Region "MONEYTREE PREVIEW VALUE"
             QSum1_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q1.PREVIEWVALUE
             QSum2_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q2.PREVIEWVALUE
             QSum3_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q3.PREVIEWVALUE
@@ -325,6 +329,28 @@ Public Class Quiz_Operator
             QSum13_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q13.PREVIEWVALUE
             QSum14_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q14.PREVIEWVALUE
             QSum15_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q15.PREVIEWVALUE
+#End Region
+
+#Region "MONEYTREE REAL VALUE"
+
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q1.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q2.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q3.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q4.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q5.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q6.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q7.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q8.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q9.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q10.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q11.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q12.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q13.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q14.REALVALUE)
+            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q15.REALVALUE)
+            MoneyTree.Sort()
+
+#End Region
 
             HostContPresentationLayer.ConfigurationMoneyTreeSet()
 
@@ -380,24 +406,9 @@ Public Class Quiz_Operator
             End Using
         End If
 
-        AremoveFF_Label.Visible = True
-        BremoveFF_Label.Visible = True
-        CremoveFF_Label.Visible = True
-        DremoveFF_Label.Visible = True
-
-        Select Case Helpers.ConvertABCDTo1234(CorrectAnswer)
-            Case 1
-                AremoveFF_Label.Visible = False
-            Case 2
-                BremoveFF_Label.Visible = False
-            Case 3
-                CremoveFF_Label.Visible = False
-            Case 4
-                DremoveFF_Label.Visible = False
-        End Select
+        GuiContext.FiftyFiftyResetOptionOperator(CorrectAnswer)
 
         MomentStatus = "QuestionAnswers_Load"
-
         '' ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
             GraphicsProcessingUnit.CGQuestionSet(QuestionText, Answer1Text, Answer2Text, Answer3Text, Answer4Text, QuestionForSume)
@@ -490,8 +501,8 @@ Public Class Quiz_Operator
         StopLXsound()
 
         ''SQL
-        DataLayer.MarkQuestionFiredDB(questionID)
-        DataLayer.MarkQuestionAnsweredDB(questionID)
+        DataLayer.MarkQuestionFiredDB(questionID, Me.IsGameGoingLive)
+        DataLayer.MarkQuestionAnsweredDB(questionID, Me.IsGameGoingLive)
         ''SQL
 
     End Sub
@@ -692,22 +703,26 @@ Public Class Quiz_Operator
         Return Nothing
     End Function
 
-    Public Function CalculateIncorrectAnswer(levelq As String) As String
+    Public Function CalculateIncorrectAnswer(levelq As String, Optional realvalue As Boolean = False) As String
+
+        If Not IsNumeric(levelq) Then Return ""
 
         Dim reval As String = ""
-        If levelq = "1" Or levelq = "2" Or levelq = "3" Or levelq = "4" Or levelq = "5" Then
+        If Val(levelq) >= 1 And levelq <= 5 Then
             reval = "0"
         End If
 
         If Val(levelq) >= 6 And levelq <= 15 Then
             reval = SetSecondMilestonePrize("5")
+            If realvalue Then
+                reval = MoneyTree.ElementAt(5 - 1)
+            End If
             If (Val(levelq) > Val(VariableMilestone_TextBox.Text)) And Not String.IsNullOrEmpty(VariableMilestone_TextBox.Text.Trim) Then
                 reval = SetSecondMilestonePrize(VariableMilestone_TextBox.Text)
+                If realvalue Then
+                    reval = MoneyTree.ElementAt(VariableMilestone_TextBox.Text - 1)
+                End If
             End If
-            'Porano bese vaka bez variable milestone
-            'If LevelQ = "11" Or LevelQ = "12" Or LevelQ = "13" Or LevelQ = "14" Or LevelQ = "15" Then
-            '    Qfor_TextBox = QSum10_TextBox.Text
-            'End If
         End If
 
         Return reval
@@ -1004,7 +1019,7 @@ Public Class Quiz_Operator
 
     Private Sub FourLifelinesStatus_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles fourLifelinesStatus_Label.Click
         fourLifelinesStatus_Label.BackColor = Color.Orange
-        threeLifelinesStatus_Label.BackColor = Color.White
+        threeLifelinesStatus_Label.BackColor = Color.Silver
         ActiveLifelines = "4"
         GraphicsProcessingUnit.Activate4Lifelines()
 
@@ -1012,7 +1027,7 @@ Public Class Quiz_Operator
 
     Private Sub ThreeLifelinesStatus_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles threeLifelinesStatus_Label.Click
         threeLifelinesStatus_Label.BackColor = Color.Orange
-        fourLifelinesStatus_Label.BackColor = Color.White
+        fourLifelinesStatus_Label.BackColor = Color.Silver
         ActiveLifelines = "3"
         GraphicsProcessingUnit.Activate3Lifelines()
 
@@ -1593,10 +1608,14 @@ Public Class Quiz_Operator
                 End If
             Next
 
+            Dim momentSumeInt As Integer = Integer.Parse(MoneyTree.ElementAt(Math.Max((MoneyTreeLevel - 1), 0)))
+
             incorrectSume = CalculateIncorrectAnswer(LevelQ)
             incorrectSume = IIf(incorrectSume = 0, 0, incorrectSume)
 
-            CurentGameStatusData = $"{momentSume};{(Helpers.RemoveLetters(incorrectSume) - Helpers.RemoveLetters(momentSume)) * (-1)};{qForSume};{incorrectSume}"
+            Dim incorrectSumeInt As Integer = CalculateIncorrectAnswer(LevelQ, True) 'vo slucaj da ima bukvi brojki ili nesto vo stil '4 MILIONI' ja zema vistinskata vrednost-realvalue
+
+            CurentGameStatusData = $"{momentSume};{(incorrectSumeInt - momentSumeInt) * (-1)};{qForSume};{incorrectSume}"
 
         Else
             CurentGameStatusData = "0;0;0;0"
@@ -1615,7 +1634,7 @@ Public Class Quiz_Operator
     Private Sub Timer_STOP_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_STOP.Tick
         Timer_STOP.Interval = 300
 
-        MainGameMusicLayerObj.StopAll()
+        MainGameMusicLayerObj.StopHeartbeaLetsPlay()
 
         Timer_STOP.Stop()
         Timer_STOP.InitializeLifetimeService()
@@ -2136,23 +2155,19 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub Lifeline1_PictureBox_Click(sender As Object, e As EventArgs) Handles Lifeline1_PictureBox.Click
-        Me.TabControl2.SelectedTab = TabPage7
-        Me.TabControl1.SelectedTab = TabPage8
+        GuiContext.PositionLifelineTab(1)
     End Sub
 
     Private Sub Lifeline2_PictureBox_Click(sender As Object, e As EventArgs) Handles Lifeline2_PictureBox.Click
-        Me.TabControl2.SelectedTab = TabPage7
-        Me.TabControl1.SelectedTab = TabPage13 '9
+        GuiContext.PositionLifelineTab(2)
     End Sub
 
     Private Sub Lifeline3_PictureBox_Click(sender As Object, e As EventArgs) Handles Lifeline3_PictureBox.Click
-        Me.TabControl2.SelectedTab = TabPage7
-        Me.TabControl1.SelectedTab = TabPage10
+        GuiContext.PositionLifelineTab(3)
     End Sub
 
     Private Sub Lifeline4_PictureBox_Click(sender As Object, e As EventArgs) Handles Lifeline4_PictureBox.Click
-        Me.TabControl2.SelectedTab = TabPage7
-        Me.TabControl1.SelectedTab = TabPage11
+        GuiContext.PositionLifelineTab(4)
     End Sub
 
     Private Sub FiftyFifty_PictureBox_Click(sender As Object, e As EventArgs) Handles FiftyFifty_PictureBox.Click, PAF_PictureBox.Click, ATA_PictureBox.Click, SwitchQ_PictureBox.Click
@@ -2498,4 +2513,27 @@ Public Class Quiz_Operator
         End Get
     End Property
 
+    Private Sub SoundStop_Button_Click(sender As Object, e As EventArgs) Handles SoundStop_Button.Click
+        MainGameMusicLayerObj.StopHeartbeaLetsPlay()
+        MainGameMusicLayerObj.StopFinalAnswer()
+        MainGameMusicLayerObj.StopCorrectAnswer()
+        My.Computer.Audio.Stop()
+
+    End Sub
+
+    Public Property IsGameGoingLive As Boolean = False
+    Private Sub RehearselLiveLock_Button_Click(sender As Object, e As EventArgs) Handles RehearselLiveLock_Button.Click
+        If IsGameGoingLive Then
+            RehearselLiveLock_Button.BackColor = Color.Silver
+            RehearselLiveLock_Button.Text = "REHEARSEL TIME"
+
+            IsGameGoingLive = False
+        Else
+            RehearselLiveLock_Button.BackColor = Color.Red
+            RehearselLiveLock_Button.Text = "YOU ARE LIVE"
+
+            IsGameGoingLive = True
+        End If
+
+    End Sub
 End Class

@@ -99,7 +99,9 @@ Public Class DataLayer
     '    Return dbDataSet
     'End Function
 
-    Friend Shared Sub MarkQuestionAnsweredDB(questionID As String)
+    Friend Shared Sub MarkQuestionAnsweredDB(questionID As String, IsGameGoingLive As Boolean)
+        If Not IsGameGoingLive Then Return
+
         Dim MySqlConn As MySqlConnection
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = ConnectionStringQuestionDB
@@ -148,7 +150,9 @@ Public Class DataLayer
 
     'End Sub
 
-    Friend Shared Sub MarkQuestionFiredDB(questionID As String, Optional qtype As String = "1")
+    Friend Shared Sub MarkQuestionFiredDB(questionID As String, IsGameGoingLive As Boolean, Optional qtype As String = "1")
+        If Not IsGameGoingLive Then Return
+
         Dim MySqlConn As MySqlConnection
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = ConnectionStringQuestionDB
