@@ -41,6 +41,8 @@
     Public LetsPLAYQ10AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
     Public WalkAwayLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
 
+    Public AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+
     Sub New()
         Q1to5AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\26. $100-$1000 Questions.mp3"))
         Q1to5AxWindowsMediaPlayer1.Stop()

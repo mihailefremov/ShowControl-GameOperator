@@ -223,6 +223,7 @@ Partial Class Quiz_Operator
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SoundStop_Button = New System.Windows.Forms.Button()
         Me.RehearselLiveLock_Button = New System.Windows.Forms.Button()
+        Me.RandomizeAnswers_CheckBox = New System.Windows.Forms.CheckBox()
         Me.GameControl_TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -875,6 +876,7 @@ Partial Class Quiz_Operator
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TabPage1.Controls.Add(Me.RandomizeAnswers_CheckBox)
         Me.TabPage1.Controls.Add(Me.Pronunciation_TextBox)
         Me.TabPage1.Controls.Add(Me.ClearExplanation_Label)
         Me.TabPage1.Controls.Add(Me.SendExplanation_Label)
@@ -2606,6 +2608,16 @@ Partial Class Quiz_Operator
         Me.RehearselLiveLock_Button.Text = "REHEARSEL TIME"
         Me.RehearselLiveLock_Button.UseVisualStyleBackColor = False
         '
+        'RandomizeAnswers_CheckBox
+        '
+        Me.RandomizeAnswers_CheckBox.AutoSize = True
+        Me.RandomizeAnswers_CheckBox.Location = New System.Drawing.Point(764, 141)
+        Me.RandomizeAnswers_CheckBox.Name = "RandomizeAnswers_CheckBox"
+        Me.RandomizeAnswers_CheckBox.Size = New System.Drawing.Size(139, 19)
+        Me.RandomizeAnswers_CheckBox.TabIndex = 1255
+        Me.RandomizeAnswers_CheckBox.Text = "Randomize Answers"
+        Me.RandomizeAnswers_CheckBox.UseVisualStyleBackColor = True
+        '
         'Quiz_Operator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2882,4 +2894,5 @@ Partial Class Quiz_Operator
     Friend WithEvents MoneyTreeSet_Label As Label
     Friend WithEvents SoundStop_Button As Button
     Friend WithEvents RehearselLiveLock_Button As Button
+    Friend WithEvents RandomizeAnswers_CheckBox As CheckBox
 End Class

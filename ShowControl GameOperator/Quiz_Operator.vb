@@ -388,6 +388,8 @@ Public Class Quiz_Operator
 
     Private Sub QuestionLoad_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuestionLoad_Label.Click
 
+        Dim CorrectAnswerInt As Integer
+
         If LevelQ <> "111" Or LevelQ <> "666" Then
             Using selectedQuestionTable As DataTable = DataLayer.SelectSuitableQuestion(LevelQ)
                 With selectedQuestionTable
@@ -398,6 +400,7 @@ Public Class Quiz_Operator
                         Answer3Text = .Rows(0)("Answer3").ToString()
                         Answer4Text = .Rows(0)("Answer4").ToString()
                         CorrectAnswer = .Rows(0)("CorrectAnswer").ToString()
+                        CorrectAnswerInt = .Rows(0)("CorrectAnswer")
                         Explanation = .Rows(0)("MoreInformation").ToString()
                         Pronunciation = .Rows(0)("Pronunciation").ToString()
                         questionID = .Rows(0)("QuestionID").ToString()
@@ -405,6 +408,30 @@ Public Class Quiz_Operator
                 End With
             End Using
         End If
+
+        Try
+            If RandomizeAnswers_CheckBox.Checked = True Then
+
+                Dim QuestionAnswers As String() = {Answer1Text, Answer2Text, Answer3Text, Answer4Text}
+                Dim CorrectAnswerNormal As String = QuestionAnswers.ElementAt(CorrectAnswerInt - 1)
+
+                Dim r As Random = New Random()
+                Dim QuestionAnswersRandom As String() = {Answer1Text, Answer2Text, Answer3Text, Answer4Text}
+                QuestionAnswersRandom = QuestionAnswersRandom.OrderBy(Function(x) r.[Next]()).ToArray()
+
+                Dim CorrectAnswerAfterRandom As Integer = Array.IndexOf(QuestionAnswersRandom, CorrectAnswerNormal)
+
+                Answer1Text = QuestionAnswersRandom.ElementAt(0)
+                Answer2Text = QuestionAnswersRandom.ElementAt(1)
+                Answer3Text = QuestionAnswersRandom.ElementAt(2)
+                Answer4Text = QuestionAnswersRandom.ElementAt(3)
+                CorrectAnswer = Helpers.Convert1234ToABCD(CorrectAnswerAfterRandom + 1)
+
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
 
         GuiContext.FiftyFiftyResetOptionOperator(CorrectAnswer)
 
@@ -1219,6 +1246,8 @@ Public Class Quiz_Operator
         GraphicsProcessingUnit.CGMoneyTreeDataSet(QSum1_TextBox.Text, QSum2_TextBox.Text, QSum3_TextBox.Text, QSum4_TextBox.Text, QSum5_TextBox.Text, QSum6_TextBox.Text, QSum7_TextBox.Text, QSum8_TextBox.Text, QSum9_TextBox.Text, QSum10_TextBox.Text, QSum11_TextBox.Text, QSum12_TextBox.Text, QSum13_TextBox.Text, QSum14_TextBox.Text, QSum15_TextBox.Text)
         GraphicsProcessingUnit.removeSecondMilestone()
         GraphicsProcessingUnit.MoneyTreeFlyOut()
+
+        GraphicsProcessingUnit.InteractiveWallScreenObj.AnyBackgroundLoop("GoodbyeToContestant", False)
 
     End Sub
 

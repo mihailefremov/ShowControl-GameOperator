@@ -32,13 +32,13 @@ Public Class InteractiveWallScreen
             Dim versionNumber As Short
             If Level >= 6 And Level <= 10 Then
                 LevelX = "6to10"
-                versionNumber = randomGen.Next(1, 6)
+                versionNumber = randomGen.Next(1, 8)
             ElseIf Level <= 5 Then
                 LevelX = "1to5"
                 versionNumber = randomGen.Next(1, 4)
             ElseIf Level >= 10 Then
                 LevelX = "11to15"
-                versionNumber = randomGen.Next(1, 8)
+                versionNumber = randomGen.Next(1, 9)
             Else
                 Return
             End If
@@ -172,14 +172,14 @@ Public Class InteractiveWallScreen
 
     End Sub
 
-    Public Sub AnyBackgroundLoop(bed As String)
+    Public Sub AnyBackgroundLoop(bed As String, Optional isLoop As Boolean = True)
         If Not IsOnWallScreen Then
             Return
         End If
         Try
             If casparWallScreen.IsConnected Then
                 casparWallScreen.Channels(0).Clear(0)
-                casparWallScreen.Channels(0).LoadBG(20, $"{bed}", True)
+                casparWallScreen.Channels(0).LoadBG(20, $"{bed}", isLoop)
                 casparWallScreen.Channels(0).Play(20)
             End If
         Catch ex As Exception
