@@ -30,7 +30,6 @@
     Public CorrectAnswerQ14MediaPlayer As New System.Windows.Media.MediaPlayer
     Public CorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
 
-
     Public LimitedClock_WindowsMediaPlayer As New System.Windows.Media.MediaPlayer
     Public DoubleDipBackground_WindowsMediaPlayer As New AxWMPLib.AxWindowsMediaPlayer
     Public LetsPLAYQ1to5AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
@@ -43,105 +42,116 @@
 
     Public AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
 
+    Public WwtbamMusicPlaylistConfig As New Xml2CSharp.MUSICPLAYLISTCONFIGURATION
+
     Sub New()
-        Q1to5AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\26. $100-$1000 Questions.mp3"))
+        'Music configuration
+        Dim ConfigurationMusicPath As String = GameConfiguration.Default.DefaultGameConfigurationPath
+        Dim MusicConfigurationText As String = System.IO.File.ReadAllText(String.Format("{0}\{1}", ConfigurationMusicPath, "MusicPlaylistConfiguration.xml"))
+
+        Dim MusicConfigurationReader As System.IO.TextReader = New System.IO.StringReader(MusicConfigurationText)
+
+        Dim serializer As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(Xml2CSharp.MUSICPLAYLISTCONFIGURATION))
+        Me.WwtbamMusicPlaylistConfig = serializer.Deserialize(MusicConfigurationReader)
+
+        Q1to5AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND28.LOCATION, WwtbamMusicPlaylistConfig.SOUND28.TITLE)))
         Q1to5AxWindowsMediaPlayer1.Stop()
 
-        Q6AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\55. $2000 Question.mp3"))
+        Q6AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND58.LOCATION, WwtbamMusicPlaylistConfig.SOUND58.TITLE)))
         'Q6AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\120.Q6 - Heartbeat Loop.wav"))
         Q6AxWindowsMediaPlayer1.Stop()
 
-        Q7AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\60. $4000 Question.mp3"))
+        Q7AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND63.LOCATION, WwtbamMusicPlaylistConfig.SOUND63.TITLE)))
         'Q7AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\121.Q7 - Heartbeat Loop.wav"))
         Q7AxWindowsMediaPlayer1.Stop()
 
-        Q8AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\65. $8000 Question.mp3"))
+        Q8AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND68.LOCATION, WwtbamMusicPlaylistConfig.SOUND68.TITLE)))
         'Q8AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\122.Q8 - Heartbeat Loop.wav"))
         Q8AxWindowsMediaPlayer1.Stop()
 
-        Q9AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\70. $16000 Question.mp3"))
+        Q9AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND73.LOCATION, WwtbamMusicPlaylistConfig.SOUND73.TITLE)))
         'Q9AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\123.Q9 - Heartbeat Loop.wav"))
         Q9AxWindowsMediaPlayer1.Stop()
 
-        Q10AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\75. $32000 Question.mp3"))
+        Q10AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND78.LOCATION, WwtbamMusicPlaylistConfig.SOUND78.TITLE)))
         'Q10AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\124.Q10 - Heartbeat Loop.wav"))
         Q10AxWindowsMediaPlayer1.Stop()
 
-        Q11AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\80. $64000 Question.mp3"))
+        Q11AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND83.LOCATION, WwtbamMusicPlaylistConfig.SOUND83.TITLE)))
         'Q11AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\125.Q11 - Heartbeat Loop.wav"))
         Q11AxWindowsMediaPlayer1.Stop()
 
-        Q12AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\83. $125000 Question.mp3"))
+        Q12AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND87.LOCATION, WwtbamMusicPlaylistConfig.SOUND87.TITLE)))
         'Q12AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\126.Q12 - Heartbeat Loop.wav"))
         Q12AxWindowsMediaPlayer1.Stop()
 
-        Q13AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\86. $250000 Question.mp3"))
+        Q13AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND91.LOCATION, WwtbamMusicPlaylistConfig.SOUND91.TITLE)))
         'Q13AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\127.Q13 - Heartbeat Loop.wav"))
         Q13AxWindowsMediaPlayer1.Stop()
 
-        Q14AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\89. $500000 Question.mp3"))
+        Q14AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND95.LOCATION, WwtbamMusicPlaylistConfig.SOUND95.TITLE)))
         'Q14AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\128.Q14 - Heartbeat Loop.wav"))
         Q14AxWindowsMediaPlayer1.Stop()
 
-        Q15AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\92. $1 Million Question.mp3"))
+        Q15AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND99.LOCATION, WwtbamMusicPlaylistConfig.SOUND99.TITLE)))
         'Q15AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\129.Q15 - Heartbeat Loop.wav"))
         Q15AxWindowsMediaPlayer1.Stop()
 
         DoubleDipBackground_WindowsMediaPlayer.CreateControl()
-        DoubleDipBackground_WindowsMediaPlayer.URL = "C:\WWTBAM Removable Disc\UK 2007\107.Double Dip First Chance.wav"
+        DoubleDipBackground_WindowsMediaPlayer.URL = String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND107.LOCATION, WwtbamMusicPlaylistConfig.SOUND107.TITLE)
         DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.stop()
 
-        LetsPLAYQ1to5AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Let's Play $100 - Rough Start.mp3"))
+        LetsPLAYQ1to5AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND27.LOCATION, WwtbamMusicPlaylistConfig.SOUND27.TITLE)))
         LetsPLAYQ1to5AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Soft Let's Play 1.mp3"))
+        LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND32.LOCATION, WwtbamMusicPlaylistConfig.SOUND32.TITLE)))
         LetsPLAYQ6AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ7AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Let's Play $4,000 & $125,000.mp3"))
+        LetsPLAYQ7AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND62.LOCATION, WwtbamMusicPlaylistConfig.SOUND62.TITLE)))
         LetsPLAYQ7AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ8AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Let's Play $8,000 & $250,000.mp3"))
+        LetsPLAYQ8AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND67.LOCATION, WwtbamMusicPlaylistConfig.SOUND67.TITLE)))
         LetsPLAYQ8AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ9AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Let's Play $16,000 & $500,000.mp3"))
+        LetsPLAYQ9AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND72.LOCATION, WwtbamMusicPlaylistConfig.SOUND72.TITLE)))
         LetsPLAYQ9AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ10AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Let's Play $32,000 & $1,000,000.mp3"))
+        LetsPLAYQ10AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND77.LOCATION, WwtbamMusicPlaylistConfig.SOUND77.TITLE)))
         LetsPLAYQ10AxWindowsMediaPlayer.Stop()
 
-        LimitedClock_WindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\US 2008\Clock 100 Seconds.wav"))
-        LimitedClock_WindowsMediaPlayer.Stop()
+        'LimitedClock_WindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\US 2008\Clock 100 Seconds.wav"))
+        'LimitedClock_WindowsMediaPlayer.Stop()
 
-        WalkAwayLXAxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\34.Big Quitter.wav"))
+        WalkAwayLXAxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND34.LOCATION, WwtbamMusicPlaylistConfig.SOUND34.TITLE)))
         WalkAwayLXAxWindowsMediaPlayer.Stop()
 
-        FinalAnswer611MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $2,000 & $64,000 Final Answer.mp3"))
+        FinalAnswer611MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND59.LOCATION, WwtbamMusicPlaylistConfig.SOUND59.TITLE)))
         FinalAnswer611MediaPlayer.Stop()
 
-        FinalAnswer712MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $4,000 & $125,000 Final Answer.mp3"))
+        FinalAnswer712MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND64.LOCATION, WwtbamMusicPlaylistConfig.SOUND64.TITLE)))
         FinalAnswer712MediaPlayer.Stop()
 
-        FinalAnswer813MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $8,000 & $250,000 Final Answer.mp3"))
+        FinalAnswer813MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND69.LOCATION, WwtbamMusicPlaylistConfig.SOUND69.TITLE)))
         FinalAnswer813MediaPlayer.Stop()
 
-        FinalAnswer914MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $16,000 & $500,000 Final Answer.mp3"))
+        FinalAnswer914MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND74.LOCATION, WwtbamMusicPlaylistConfig.SOUND74.TITLE)))
         FinalAnswer914MediaPlayer.Stop()
 
-        FinalAnswer1015MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $32,000 & $1,000,000 Final Answer.mp3"))
+        FinalAnswer1015MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND79.LOCATION, WwtbamMusicPlaylistConfig.SOUND79.TITLE)))
         FinalAnswer1015MediaPlayer.Stop()
 
-        CorrectAnswerQ1MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $100-$500 Yes.mp3"))
-        CorrectAnswerQ5MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $1,000 Win.mp3"))
-        CorrectAnswerQ6MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $2,000 Win 2 Drum Hits.mp3"))
-        CorrectAnswerQ7MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $4,000 Win 2 Drum Hits.mp3"))
-        CorrectAnswerQ8MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $8,000 Win 2 Drum Hits.mp3"))
-        CorrectAnswerQ9MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $16,000 Win 2 Drum Hits.mp3"))
-        CorrectAnswerQ10MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $32,000 Win.mp3"))
-        CorrectAnswerQ11MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $64,000 Win.mp3"))
-        CorrectAnswerQ12MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $125,000 Win.mp3"))
-        CorrectAnswerQ13MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $250,000 Win.mp3"))
-        CorrectAnswerQ14MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - $500,000 Win.mp3"))
-        CorrectAnswerQ15MediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Unused - Old $1,000,000 Win.mp3"))
+        CorrectAnswerQ1MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND29.LOCATION, WwtbamMusicPlaylistConfig.SOUND29.TITLE)))
+        CorrectAnswerQ5MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND31.LOCATION, WwtbamMusicPlaylistConfig.SOUND31.TITLE)))
+        CorrectAnswerQ6MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND61.LOCATION, WwtbamMusicPlaylistConfig.SOUND61.TITLE)))
+        CorrectAnswerQ7MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND66.LOCATION, WwtbamMusicPlaylistConfig.SOUND66.TITLE)))
+        CorrectAnswerQ8MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND71.LOCATION, WwtbamMusicPlaylistConfig.SOUND71.TITLE)))
+        CorrectAnswerQ9MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND76.LOCATION, WwtbamMusicPlaylistConfig.SOUND76.TITLE)))
+        CorrectAnswerQ10MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND81.LOCATION, WwtbamMusicPlaylistConfig.SOUND81.TITLE)))
+        CorrectAnswerQ11MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND85.LOCATION, WwtbamMusicPlaylistConfig.SOUND85.TITLE)))
+        CorrectAnswerQ12MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND89.LOCATION, WwtbamMusicPlaylistConfig.SOUND89.TITLE)))
+        CorrectAnswerQ13MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND93.LOCATION, WwtbamMusicPlaylistConfig.SOUND93.TITLE)))
+        CorrectAnswerQ14MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND97.LOCATION, WwtbamMusicPlaylistConfig.SOUND97.TITLE)))
+        CorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND101.LOCATION, WwtbamMusicPlaylistConfig.SOUND101.TITLE)))
 
         StopCorrectAnswer()
 
@@ -235,7 +245,7 @@
         StopFinalAnswer()
 
         If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\105.Double Dip Final Answer 1.wav", AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND105.LOCATION, WwtbamMusicPlaylistConfig.SOUND105.TITLE), AudioPlayMode.Background)
 
         ElseIf LevelQ = "6" Or LevelQ = "11" Then
             FinalAnswer611MediaPlayer.Play()
@@ -253,7 +263,7 @@
             FinalAnswer1015MediaPlayer.Play()
 
         ElseIf LevelQ = "666" Or LevelQ = "888" Or LevelQ = "STQ1" Or LevelQ = "STQ2" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\24.50-50 Ping.wav", AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND24.LOCATION, WwtbamMusicPlaylistConfig.SOUND24.TITLE), AudioPlayMode.Background)
         End If
 
     End Sub
@@ -269,17 +279,14 @@
 
     Sub PlayCorrectAnswer(LevelQ As String, VariableMilestone As String)
         StopFinalAnswer()
-
+        StopCorrectAnswer()
 
         If LevelQ = "5" Then
-            'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\31.R1000 Winner.wav")
-            CorrectAnswerQ5MediaPlayer.Stop()
             CorrectAnswerQ5MediaPlayer.Play()
 
             ''VARIABLE MILESTONE
         ElseIf LevelQ = VariableMilestone Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\81.R32000 - Winner.wav")
-            CorrectAnswerQ10MediaPlayer.Stop()
             CorrectAnswerQ10MediaPlayer.Play()
             ''VARIABLE MILESTONE
         ElseIf VariableMilestone <> "10" And LevelQ = "10" Then
@@ -287,56 +294,84 @@
 
         ElseIf LevelQ = "6" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\61.Q6 - Yes.wav")
-            CorrectAnswerQ6MediaPlayer.Stop()
             CorrectAnswerQ6MediaPlayer.Play()
 
         ElseIf LevelQ = "7" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\66.Q7 - Yes.wav")
-            CorrectAnswerQ7MediaPlayer.Stop()
             CorrectAnswerQ7MediaPlayer.Play()
 
         ElseIf LevelQ = "8" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\71.Q8 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ8MediaPlayer.Stop()
             CorrectAnswerQ8MediaPlayer.Play()
 
         ElseIf LevelQ = "9" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\76.Q9 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ9MediaPlayer.Stop()
             CorrectAnswerQ9MediaPlayer.Play()
 
         ElseIf LevelQ = "11" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\85.Q11 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ11MediaPlayer.Stop()
             CorrectAnswerQ11MediaPlayer.Play()
 
         ElseIf LevelQ = "12" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\89.Q12 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ12MediaPlayer.Stop()
             CorrectAnswerQ12MediaPlayer.Play()
 
         ElseIf LevelQ = "13" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\93.Q13 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ13MediaPlayer.Stop()
             CorrectAnswerQ13MediaPlayer.Play()
 
         ElseIf LevelQ = "14" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\97.Q14 - Yes.wav", AudioPlayMode.Background)
-            CorrectAnswerQ14MediaPlayer.Stop()
             CorrectAnswerQ14MediaPlayer.Play()
 
         ElseIf LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "666" Or LevelQ = "888" Then
             'My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\29.Q1-5 - Yes.wav")
-            CorrectAnswerQ1MediaPlayer.Stop()
             CorrectAnswerQ1MediaPlayer.Play()
 
         End If
 
         If LevelQ = "15" Then
             CorrectAnswerQ15MediaPlayer.Stop()
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\101.R1 000 000 - Winner.wav", AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND101.LOCATION, WwtbamMusicPlaylistConfig.SOUND101.TITLE), AudioPlayMode.Background)
 
         End If
+    End Sub
+
+    Sub PlayIncorrectAnswer(LevelQ, DoubleDipState)
+
+        StopAll()
+
+        Dim IncorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
+        IncorrectAnswerQ15MediaPlayer.Stop()
+
+        If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND106.LOCATION, WwtbamMusicPlaylistConfig.SOUND106.TITLE)))
+
+        ElseIf LevelQ = "6" Or LevelQ = "11" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND60.LOCATION, WwtbamMusicPlaylistConfig.SOUND60.TITLE)))
+
+        ElseIf LevelQ = "7" Or LevelQ = "12" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND65.LOCATION, WwtbamMusicPlaylistConfig.SOUND65.TITLE)))
+
+        ElseIf LevelQ = "8" Or LevelQ = "13" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND70.LOCATION, WwtbamMusicPlaylistConfig.SOUND70.TITLE)))
+
+        ElseIf LevelQ = "9" Or LevelQ = "14" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND75.LOCATION, WwtbamMusicPlaylistConfig.SOUND75.TITLE)))
+
+        ElseIf LevelQ = "10" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND80.LOCATION, WwtbamMusicPlaylistConfig.SOUND80.TITLE)))
+
+        ElseIf LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5" Or LevelQ = "666" Or LevelQ = "888" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND30.LOCATION, WwtbamMusicPlaylistConfig.SOUND30.TITLE)))
+
+        ElseIf LevelQ = "15" Then
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND100.LOCATION, WwtbamMusicPlaylistConfig.SOUND100.TITLE)))
+
+        End If
+
+        IncorrectAnswerQ15MediaPlayer.Play()
+
     End Sub
 
     Sub StopCorrectAnswer()
@@ -358,10 +393,10 @@
         If Val(LevelQ_TextBox) >= 1 And Val(LevelQ_TextBox) <= 5 Then
             LetsPLAYQ1to5AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 11 And (Val(VariableMilestone_TextBox) <> 10) Then
-            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\82.Q10 NoMilestone - Lx.wav"))
+            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND119.LOCATION, WwtbamMusicPlaylistConfig.SOUND119.TITLE)))
             LetsPLAYQ6AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 6 Or (Val(LevelQ_TextBox) = 11 And Val(VariableMilestone_TextBox) = 10) Then
-            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\UK 1998\Millionaire Questions - Soft Let's Play 1.mp3"))
+            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND32.LOCATION, WwtbamMusicPlaylistConfig.SOUND32.TITLE)))
             LetsPLAYQ6AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 7 Or Val(LevelQ_TextBox) = 12 Then
             LetsPLAYQ7AxWindowsMediaPlayer.Play()
@@ -376,5 +411,31 @@
             WalkAwayLXAxWindowsMediaPlayer.Play()
         End If
     End Sub
+
+    Sub StopAll()
+        Me.StopHeartbeaLetsPlay()
+        Me.StopFinalAnswer()
+        Me.StopCorrectAnswer()
+        My.Computer.Audio.Stop()
+    End Sub
+
+    'Sub Iterate()
+
+    '    Dim Objekti As New List(Of String)
+    '    Try
+    '        For Each obj As Object In WwtbamMusicPlaylistConfig.GetType().GetProperties()
+    '            If obj.Name.ToString.StartsWith("SOUND") Then
+    '                Dim oh As System.Runtime.Remoting.ObjectHandle = Activator.CreateInstanceFrom(Reflection.Assembly.GetEntryAssembly().CodeBase, "ShowControl_GameOperator.Xml2CSharp." + obj.Name.ToString)
+    '                Dim object1 = oh.Unwrap()
+    '                object1 = obj
+    '                Objekti.Add(object1.Title)
+    '            End If
+    '        Next
+    '    Catch ex As Exception
+    '    End Try
+
+    '    Dim p = ""
+
+    'End Sub
 
 End Class

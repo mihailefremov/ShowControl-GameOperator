@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="Deserializers\BASICGAMECONFIGURATIONS.vb" />
     <Compile Include="ConfigurationContext.vb" />
+    <Compile Include="Deserializers\MUSICPLAYLISTCONFIGURATION.vb" />
     <Compile Include="GameConfiguration.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

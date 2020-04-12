@@ -66,7 +66,7 @@ Public Class FFFOperator
         FastestFingerManaging.QuestionLoad(QuestionFFF_TextBox.Text, AnswerAFFF_TextBox.Text, AnswerBFFF_TextBox.Text, AnswerCFFF_TextBox.Text, AnswerDFFF_TextBox.Text)
         FastestFingerManaging.QuestionFire()
         DataLayer.MarkQuestionAnsweredDB(questionID, Quiz_Operator.IsGameGoingLive)
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\10.Standby for Q.wav", AudioPlayMode.BackgroundLoop)
+        MusicFF.FFFQuestionAxWindowsMediaPlayer.Ctlcontrols.play()
         GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion("2001")
     End Sub
 

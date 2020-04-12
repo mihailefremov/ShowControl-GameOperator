@@ -696,7 +696,7 @@ Public Class Quiz_Operator
     End Sub
 
 #End Region
-    Private Sub CorrectAnswerPlay()
+    Private Sub CorrectAnswerProcedure()
 
         MainGameMusicLayerObj.PlayCorrectAnswer(LevelQ, VariableMilestone_TextBox.Text)
 
@@ -756,45 +756,17 @@ Public Class Quiz_Operator
 
     End Function
 
-    Private Sub IncorrectAnswerPlay()
-        MainGameMusicLayerObj.StopFinalAnswer()
+    Private Sub IncorrectAnswerProcedure()
 
         If (LevelQ <> "666") And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
             QuestionForSume = CalculateIncorrectAnswer(LevelQ)
         End If
 
-        If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\106.Double Dip Final Answer 2.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "6" Or LevelQ = "11" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\60.Q6 - No.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "7" Or LevelQ = "12" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\65.Q7 - No.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "8" Or LevelQ = "13" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\70.Q8 - No.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "9" Or LevelQ = "14" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\75.Q9 - No.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "10" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\80.R32000 - Loser.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5" Or LevelQ = "666" Or LevelQ = "888" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\30.Q1-5 - No.wav", AudioPlayMode.Background)
-
-
-        ElseIf LevelQ = "15" Then
-            My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\100.R1 000 000 - Loser.wav", AudioPlayMode.Background)
-
+        If (LevelQ <> "666") And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
+            QuestionForSume = CalculateIncorrectAnswer(LevelQ)
         End If
+
+        MainGameMusicLayerObj.PlayIncorrectAnswer(LevelQ, DoubleDipState)
 
         If LevelQ <> "888" And LevelQ <> "666" And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then
             LevelQ = "111"
@@ -1587,9 +1559,9 @@ Public Class Quiz_Operator
         DremoveFF_Label.BackColor = Color.Yellow
 
         If CorrectAnswer = FinalAnswer Then
-            CorrectAnswerPlay()
+            CorrectAnswerProcedure()
         ElseIf CorrectAnswer <> FinalAnswer Then
-            IncorrectAnswerPlay()
+            IncorrectAnswerProcedure()
         End If
 
         Select Case Helpers.ConvertABCDTo1234(CorrectAnswer)
@@ -2267,7 +2239,7 @@ Public Class Quiz_Operator
                     AnswerD_TextBox.BackColor = Color.Gray
             End Select
 
-            IncorrectAnswerPlay()
+            IncorrectAnswerProcedure()
             ''CASPARCG
             GraphicsProcessingUnit.DobleDip(FinalAnswer)
             ''
@@ -2543,11 +2515,7 @@ Public Class Quiz_Operator
     End Property
 
     Private Sub SoundStop_Button_Click(sender As Object, e As EventArgs) Handles SoundStop_Button.Click
-        MainGameMusicLayerObj.StopHeartbeaLetsPlay()
-        MainGameMusicLayerObj.StopFinalAnswer()
-        MainGameMusicLayerObj.StopCorrectAnswer()
-        My.Computer.Audio.Stop()
-
+        MainGameMusicLayerObj.StopAll()
     End Sub
 
     Public Property IsGameGoingLive As Boolean = False
