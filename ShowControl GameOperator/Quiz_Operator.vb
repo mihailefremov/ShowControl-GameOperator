@@ -365,6 +365,8 @@ Public Class Quiz_Operator
 
             GuiContext.ResetAll()
 
+            MusicList_ComboBox.DataSource = MainGameMusicLayerObj.WwtbamMusicPlaylistConfig.SOUND
+            MusicList_ComboBox.DisplayMember = "TITLE"
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 

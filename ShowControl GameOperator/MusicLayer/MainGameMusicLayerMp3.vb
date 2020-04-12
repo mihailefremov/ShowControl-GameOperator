@@ -54,104 +54,104 @@
         Dim serializer As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(Xml2CSharp.MUSICPLAYLISTCONFIGURATION))
         Me.WwtbamMusicPlaylistConfig = serializer.Deserialize(MusicConfigurationReader)
 
-        Q1to5AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND28.LOCATION, WwtbamMusicPlaylistConfig.SOUND28.TITLE)))
+        Q1to5AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(28).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(28).TITLE)))
         Q1to5AxWindowsMediaPlayer1.Stop()
 
-        Q6AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND58.LOCATION, WwtbamMusicPlaylistConfig.SOUND58.TITLE)))
+        Q6AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(58).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(58).TITLE)))
         'Q6AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\120.Q6 - Heartbeat Loop.wav"))
         Q6AxWindowsMediaPlayer1.Stop()
 
-        Q7AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND63.LOCATION, WwtbamMusicPlaylistConfig.SOUND63.TITLE)))
+        Q7AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(63).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(63).TITLE)))
         'Q7AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\121.Q7 - Heartbeat Loop.wav"))
         Q7AxWindowsMediaPlayer1.Stop()
 
-        Q8AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND68.LOCATION, WwtbamMusicPlaylistConfig.SOUND68.TITLE)))
+        Q8AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(68).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(68).TITLE)))
         'Q8AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\122.Q8 - Heartbeat Loop.wav"))
         Q8AxWindowsMediaPlayer1.Stop()
 
-        Q9AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND73.LOCATION, WwtbamMusicPlaylistConfig.SOUND73.TITLE)))
+        Q9AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(73).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(73).TITLE)))
         'Q9AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\123.Q9 - Heartbeat Loop.wav"))
         Q9AxWindowsMediaPlayer1.Stop()
 
-        Q10AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND78.LOCATION, WwtbamMusicPlaylistConfig.SOUND78.TITLE)))
+        Q10AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(78).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(78).TITLE)))
         'Q10AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\124.Q10 - Heartbeat Loop.wav"))
         Q10AxWindowsMediaPlayer1.Stop()
 
-        Q11AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND83.LOCATION, WwtbamMusicPlaylistConfig.SOUND83.TITLE)))
+        Q11AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(83).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(83).TITLE)))
         'Q11AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\125.Q11 - Heartbeat Loop.wav"))
         Q11AxWindowsMediaPlayer1.Stop()
 
-        Q12AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND87.LOCATION, WwtbamMusicPlaylistConfig.SOUND87.TITLE)))
+        Q12AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(87).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(87).TITLE)))
         'Q12AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\126.Q12 - Heartbeat Loop.wav"))
         Q12AxWindowsMediaPlayer1.Stop()
 
-        Q13AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND91.LOCATION, WwtbamMusicPlaylistConfig.SOUND91.TITLE)))
+        Q13AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(91).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(91).TITLE)))
         'Q13AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\127.Q13 - Heartbeat Loop.wav"))
         Q13AxWindowsMediaPlayer1.Stop()
 
-        Q14AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND95.LOCATION, WwtbamMusicPlaylistConfig.SOUND95.TITLE)))
+        Q14AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(95).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(95).TITLE)))
         'Q14AxWindowsMediaPlayer1.Open(New Uri("C:\WWTBAM Removable Disc\UK 2007\128.Q14 - Heartbeat Loop.wav"))
         Q14AxWindowsMediaPlayer1.Stop()
 
-        Q15AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND99.LOCATION, WwtbamMusicPlaylistConfig.SOUND99.TITLE)))
+        Q15AxWindowsMediaPlayer1.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(99).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(99).TITLE)))
         'Q15AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\129.Q15 - Heartbeat Loop.wav"))
         Q15AxWindowsMediaPlayer1.Stop()
 
         DoubleDipBackground_WindowsMediaPlayer.CreateControl()
-        DoubleDipBackground_WindowsMediaPlayer.URL = String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND107.LOCATION, WwtbamMusicPlaylistConfig.SOUND107.TITLE)
+        DoubleDipBackground_WindowsMediaPlayer.URL = String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(107).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(107).TITLE)
         DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.stop()
 
-        LetsPLAYQ1to5AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND27.LOCATION, WwtbamMusicPlaylistConfig.SOUND27.TITLE)))
+        LetsPLAYQ1to5AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(27).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(27).TITLE)))
         LetsPLAYQ1to5AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND32.LOCATION, WwtbamMusicPlaylistConfig.SOUND32.TITLE)))
+        LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(32).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(32).TITLE)))
         LetsPLAYQ6AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ7AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND62.LOCATION, WwtbamMusicPlaylistConfig.SOUND62.TITLE)))
+        LetsPLAYQ7AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(62).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(62).TITLE)))
         LetsPLAYQ7AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ8AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND67.LOCATION, WwtbamMusicPlaylistConfig.SOUND67.TITLE)))
+        LetsPLAYQ8AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(67).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(67).TITLE)))
         LetsPLAYQ8AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ9AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND72.LOCATION, WwtbamMusicPlaylistConfig.SOUND72.TITLE)))
+        LetsPLAYQ9AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(72).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(72).TITLE)))
         LetsPLAYQ9AxWindowsMediaPlayer.Stop()
 
-        LetsPLAYQ10AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND77.LOCATION, WwtbamMusicPlaylistConfig.SOUND77.TITLE)))
+        LetsPLAYQ10AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(77).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(77).TITLE)))
         LetsPLAYQ10AxWindowsMediaPlayer.Stop()
 
         'LimitedClock_WindowsMediaPlayer.Open(New Uri("C:\WWTBAM Removable Disc\US 2008\Clock 100 Seconds.wav"))
         'LimitedClock_WindowsMediaPlayer.Stop()
 
-        WalkAwayLXAxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND34.LOCATION, WwtbamMusicPlaylistConfig.SOUND34.TITLE)))
+        WalkAwayLXAxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(34).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(34).TITLE)))
         WalkAwayLXAxWindowsMediaPlayer.Stop()
 
-        FinalAnswer611MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND59.LOCATION, WwtbamMusicPlaylistConfig.SOUND59.TITLE)))
+        FinalAnswer611MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(59).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(59).TITLE)))
         FinalAnswer611MediaPlayer.Stop()
 
-        FinalAnswer712MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND64.LOCATION, WwtbamMusicPlaylistConfig.SOUND64.TITLE)))
+        FinalAnswer712MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(64).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(64).TITLE)))
         FinalAnswer712MediaPlayer.Stop()
 
-        FinalAnswer813MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND69.LOCATION, WwtbamMusicPlaylistConfig.SOUND69.TITLE)))
+        FinalAnswer813MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(69).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(69).TITLE)))
         FinalAnswer813MediaPlayer.Stop()
 
-        FinalAnswer914MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND74.LOCATION, WwtbamMusicPlaylistConfig.SOUND74.TITLE)))
+        FinalAnswer914MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(74).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(74).TITLE)))
         FinalAnswer914MediaPlayer.Stop()
 
-        FinalAnswer1015MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND79.LOCATION, WwtbamMusicPlaylistConfig.SOUND79.TITLE)))
+        FinalAnswer1015MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(79).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(79).TITLE)))
         FinalAnswer1015MediaPlayer.Stop()
 
-        CorrectAnswerQ1MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND29.LOCATION, WwtbamMusicPlaylistConfig.SOUND29.TITLE)))
-        CorrectAnswerQ5MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND31.LOCATION, WwtbamMusicPlaylistConfig.SOUND31.TITLE)))
-        CorrectAnswerQ6MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND61.LOCATION, WwtbamMusicPlaylistConfig.SOUND61.TITLE)))
-        CorrectAnswerQ7MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND66.LOCATION, WwtbamMusicPlaylistConfig.SOUND66.TITLE)))
-        CorrectAnswerQ8MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND71.LOCATION, WwtbamMusicPlaylistConfig.SOUND71.TITLE)))
-        CorrectAnswerQ9MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND76.LOCATION, WwtbamMusicPlaylistConfig.SOUND76.TITLE)))
-        CorrectAnswerQ10MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND81.LOCATION, WwtbamMusicPlaylistConfig.SOUND81.TITLE)))
-        CorrectAnswerQ11MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND85.LOCATION, WwtbamMusicPlaylistConfig.SOUND85.TITLE)))
-        CorrectAnswerQ12MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND89.LOCATION, WwtbamMusicPlaylistConfig.SOUND89.TITLE)))
-        CorrectAnswerQ13MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND93.LOCATION, WwtbamMusicPlaylistConfig.SOUND93.TITLE)))
-        CorrectAnswerQ14MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND97.LOCATION, WwtbamMusicPlaylistConfig.SOUND97.TITLE)))
-        CorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND101.LOCATION, WwtbamMusicPlaylistConfig.SOUND101.TITLE)))
+        CorrectAnswerQ1MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(29).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(29).TITLE)))
+        CorrectAnswerQ5MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(31).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(31).TITLE)))
+        CorrectAnswerQ6MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(61).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(61).TITLE)))
+        CorrectAnswerQ7MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(66).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(66).TITLE)))
+        CorrectAnswerQ8MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(71).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(71).TITLE)))
+        CorrectAnswerQ9MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(76).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(76).TITLE)))
+        CorrectAnswerQ10MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(81).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(81).TITLE)))
+        CorrectAnswerQ11MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(85).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(85).TITLE)))
+        CorrectAnswerQ12MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(89).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(89).TITLE)))
+        CorrectAnswerQ13MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(93).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(93).TITLE)))
+        CorrectAnswerQ14MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(97).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(97).TITLE)))
+        CorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(101).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(101).TITLE)))
 
         StopCorrectAnswer()
 
@@ -245,7 +245,7 @@
         StopFinalAnswer()
 
         If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND105.LOCATION, WwtbamMusicPlaylistConfig.SOUND105.TITLE), AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(105).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(105).TITLE), AudioPlayMode.Background)
 
         ElseIf LevelQ = "6" Or LevelQ = "11" Then
             FinalAnswer611MediaPlayer.Play()
@@ -263,7 +263,7 @@
             FinalAnswer1015MediaPlayer.Play()
 
         ElseIf LevelQ = "666" Or LevelQ = "888" Or LevelQ = "STQ1" Or LevelQ = "STQ2" Then
-            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND24.LOCATION, WwtbamMusicPlaylistConfig.SOUND24.TITLE), AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(24).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(24).TITLE), AudioPlayMode.Background)
         End If
 
     End Sub
@@ -332,7 +332,7 @@
 
         If LevelQ = "15" Then
             CorrectAnswerQ15MediaPlayer.Stop()
-            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND101.LOCATION, WwtbamMusicPlaylistConfig.SOUND101.TITLE), AudioPlayMode.Background)
+            My.Computer.Audio.Play(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(101).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(101).TITLE), AudioPlayMode.Background)
 
         End If
     End Sub
@@ -345,28 +345,28 @@
         IncorrectAnswerQ15MediaPlayer.Stop()
 
         If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND106.LOCATION, WwtbamMusicPlaylistConfig.SOUND106.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(106).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(106).TITLE)))
 
         ElseIf LevelQ = "6" Or LevelQ = "11" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND60.LOCATION, WwtbamMusicPlaylistConfig.SOUND60.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(60).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(60).TITLE)))
 
         ElseIf LevelQ = "7" Or LevelQ = "12" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND65.LOCATION, WwtbamMusicPlaylistConfig.SOUND65.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(65).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(65).TITLE)))
 
         ElseIf LevelQ = "8" Or LevelQ = "13" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND70.LOCATION, WwtbamMusicPlaylistConfig.SOUND70.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(70).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(70).TITLE)))
 
         ElseIf LevelQ = "9" Or LevelQ = "14" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND75.LOCATION, WwtbamMusicPlaylistConfig.SOUND75.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(75).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(75).TITLE)))
 
         ElseIf LevelQ = "10" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND80.LOCATION, WwtbamMusicPlaylistConfig.SOUND80.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(80).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(80).TITLE)))
 
         ElseIf LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5" Or LevelQ = "666" Or LevelQ = "888" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND30.LOCATION, WwtbamMusicPlaylistConfig.SOUND30.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(30).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(30).TITLE)))
 
         ElseIf LevelQ = "15" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND100.LOCATION, WwtbamMusicPlaylistConfig.SOUND100.TITLE)))
+            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(100).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(100).TITLE)))
 
         End If
 
@@ -393,10 +393,10 @@
         If Val(LevelQ_TextBox) >= 1 And Val(LevelQ_TextBox) <= 5 Then
             LetsPLAYQ1to5AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 11 And (Val(VariableMilestone_TextBox) <> 10) Then
-            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND119.LOCATION, WwtbamMusicPlaylistConfig.SOUND119.TITLE)))
+            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(119).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(119).TITLE)))
             LetsPLAYQ6AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 6 Or (Val(LevelQ_TextBox) = 11 And Val(VariableMilestone_TextBox) = 10) Then
-            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.SOUND32.LOCATION, WwtbamMusicPlaylistConfig.SOUND32.TITLE)))
+            LetsPLAYQ6AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(32).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(32).TITLE)))
             LetsPLAYQ6AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 7 Or Val(LevelQ_TextBox) = 12 Then
             LetsPLAYQ7AxWindowsMediaPlayer.Play()
@@ -419,23 +419,6 @@
         My.Computer.Audio.Stop()
     End Sub
 
-    'Sub Iterate()
 
-    '    Dim Objekti As New List(Of String)
-    '    Try
-    '        For Each obj As Object In WwtbamMusicPlaylistConfig.GetType().GetProperties()
-    '            If obj.Name.ToString.StartsWith("SOUND") Then
-    '                Dim oh As System.Runtime.Remoting.ObjectHandle = Activator.CreateInstanceFrom(Reflection.Assembly.GetEntryAssembly().CodeBase, "ShowControl_GameOperator.Xml2CSharp." + obj.Name.ToString)
-    '                Dim object1 = oh.Unwrap()
-    '                object1 = obj
-    '                Objekti.Add(object1.Title)
-    '            End If
-    '        Next
-    '    Catch ex As Exception
-    '    End Try
-
-    '    Dim p = ""
-
-    'End Sub
 
 End Class

@@ -87,6 +87,7 @@ Partial Class Quiz_Operator
         Me.CasparServerIP_TextBox = New System.Windows.Forms.TextBox()
         Me.GameControl_TabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.RandomizeAnswers_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Pronunciation_TextBox = New System.Windows.Forms.TextBox()
         Me.ClearExplanation_Label = New System.Windows.Forms.Label()
         Me.SendExplanation_Label = New System.Windows.Forms.Label()
@@ -223,7 +224,8 @@ Partial Class Quiz_Operator
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SoundStop_Button = New System.Windows.Forms.Button()
         Me.RehearselLiveLock_Button = New System.Windows.Forms.Button()
-        Me.RandomizeAnswers_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.MusicList_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.SoundPlay_Button = New System.Windows.Forms.Button()
         Me.GameControl_TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -300,10 +302,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum15_TextBox.BackColor = System.Drawing.Color.Bisque
         Me.QSum15_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum15_TextBox.Location = New System.Drawing.Point(1039, 115)
+        Me.QSum15_TextBox.Location = New System.Drawing.Point(969, 137)
         Me.QSum15_TextBox.Name = "QSum15_TextBox"
         Me.QSum15_TextBox.ReadOnly = True
-        Me.QSum15_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum15_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum15_TextBox.TabIndex = 142
         Me.QSum15_TextBox.Text = "4 МИЛИОНИ"
         '
@@ -311,10 +313,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum14_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum14_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum14_TextBox.Location = New System.Drawing.Point(1039, 147)
+        Me.QSum14_TextBox.Location = New System.Drawing.Point(969, 169)
         Me.QSum14_TextBox.Name = "QSum14_TextBox"
         Me.QSum14_TextBox.ReadOnly = True
-        Me.QSum14_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum14_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum14_TextBox.TabIndex = 141
         Me.QSum14_TextBox.Text = "2,000,000"
         '
@@ -322,10 +324,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum13_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum13_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum13_TextBox.Location = New System.Drawing.Point(1039, 180)
+        Me.QSum13_TextBox.Location = New System.Drawing.Point(969, 202)
         Me.QSum13_TextBox.Name = "QSum13_TextBox"
         Me.QSum13_TextBox.ReadOnly = True
-        Me.QSum13_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum13_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum13_TextBox.TabIndex = 140
         Me.QSum13_TextBox.Text = "1,000,000"
         '
@@ -333,10 +335,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum12_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum12_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum12_TextBox.Location = New System.Drawing.Point(1039, 212)
+        Me.QSum12_TextBox.Location = New System.Drawing.Point(969, 234)
         Me.QSum12_TextBox.Name = "QSum12_TextBox"
         Me.QSum12_TextBox.ReadOnly = True
-        Me.QSum12_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum12_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum12_TextBox.TabIndex = 139
         Me.QSum12_TextBox.Text = "500,000"
         '
@@ -344,10 +346,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum11_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum11_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum11_TextBox.Location = New System.Drawing.Point(1039, 244)
+        Me.QSum11_TextBox.Location = New System.Drawing.Point(969, 266)
         Me.QSum11_TextBox.Name = "QSum11_TextBox"
         Me.QSum11_TextBox.ReadOnly = True
-        Me.QSum11_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum11_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum11_TextBox.TabIndex = 138
         Me.QSum11_TextBox.Text = "250,000"
         '
@@ -355,10 +357,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum10_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum10_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum10_TextBox.Location = New System.Drawing.Point(1039, 276)
+        Me.QSum10_TextBox.Location = New System.Drawing.Point(969, 298)
         Me.QSum10_TextBox.Name = "QSum10_TextBox"
         Me.QSum10_TextBox.ReadOnly = True
-        Me.QSum10_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum10_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum10_TextBox.TabIndex = 137
         Me.QSum10_TextBox.Text = "125,000"
         '
@@ -366,10 +368,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum9_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum9_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum9_TextBox.Location = New System.Drawing.Point(1039, 308)
+        Me.QSum9_TextBox.Location = New System.Drawing.Point(969, 330)
         Me.QSum9_TextBox.Name = "QSum9_TextBox"
         Me.QSum9_TextBox.ReadOnly = True
-        Me.QSum9_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum9_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum9_TextBox.TabIndex = 136
         Me.QSum9_TextBox.Text = "64,000"
         '
@@ -377,10 +379,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum8_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum8_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum8_TextBox.Location = New System.Drawing.Point(1039, 340)
+        Me.QSum8_TextBox.Location = New System.Drawing.Point(969, 362)
         Me.QSum8_TextBox.Name = "QSum8_TextBox"
         Me.QSum8_TextBox.ReadOnly = True
-        Me.QSum8_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum8_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum8_TextBox.TabIndex = 135
         Me.QSum8_TextBox.Text = "32,000"
         '
@@ -388,10 +390,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum7_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum7_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum7_TextBox.Location = New System.Drawing.Point(1039, 373)
+        Me.QSum7_TextBox.Location = New System.Drawing.Point(969, 395)
         Me.QSum7_TextBox.Name = "QSum7_TextBox"
         Me.QSum7_TextBox.ReadOnly = True
-        Me.QSum7_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum7_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum7_TextBox.TabIndex = 134
         Me.QSum7_TextBox.Text = "16,000"
         '
@@ -399,10 +401,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum6_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum6_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum6_TextBox.Location = New System.Drawing.Point(1039, 407)
+        Me.QSum6_TextBox.Location = New System.Drawing.Point(969, 429)
         Me.QSum6_TextBox.Name = "QSum6_TextBox"
         Me.QSum6_TextBox.ReadOnly = True
-        Me.QSum6_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum6_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum6_TextBox.TabIndex = 133
         Me.QSum6_TextBox.Text = "8,000"
         '
@@ -410,10 +412,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum5_TextBox.BackColor = System.Drawing.Color.Bisque
         Me.QSum5_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum5_TextBox.Location = New System.Drawing.Point(1039, 439)
+        Me.QSum5_TextBox.Location = New System.Drawing.Point(969, 461)
         Me.QSum5_TextBox.Name = "QSum5_TextBox"
         Me.QSum5_TextBox.ReadOnly = True
-        Me.QSum5_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum5_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum5_TextBox.TabIndex = 132
         Me.QSum5_TextBox.Text = "5,000"
         '
@@ -421,10 +423,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum4_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum4_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum4_TextBox.Location = New System.Drawing.Point(1039, 471)
+        Me.QSum4_TextBox.Location = New System.Drawing.Point(969, 493)
         Me.QSum4_TextBox.Name = "QSum4_TextBox"
         Me.QSum4_TextBox.ReadOnly = True
-        Me.QSum4_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum4_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum4_TextBox.TabIndex = 131
         Me.QSum4_TextBox.Text = "3,000"
         '
@@ -432,10 +434,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum3_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum3_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum3_TextBox.Location = New System.Drawing.Point(1039, 503)
+        Me.QSum3_TextBox.Location = New System.Drawing.Point(969, 525)
         Me.QSum3_TextBox.Name = "QSum3_TextBox"
         Me.QSum3_TextBox.ReadOnly = True
-        Me.QSum3_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum3_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum3_TextBox.TabIndex = 130
         Me.QSum3_TextBox.Text = "2,000"
         '
@@ -443,10 +445,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum2_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum2_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum2_TextBox.Location = New System.Drawing.Point(1039, 535)
+        Me.QSum2_TextBox.Location = New System.Drawing.Point(969, 557)
         Me.QSum2_TextBox.Name = "QSum2_TextBox"
         Me.QSum2_TextBox.ReadOnly = True
-        Me.QSum2_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum2_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum2_TextBox.TabIndex = 129
         Me.QSum2_TextBox.Text = "1,000"
         '
@@ -454,10 +456,10 @@ Partial Class Quiz_Operator
         '
         Me.QSum1_TextBox.BackColor = System.Drawing.Color.White
         Me.QSum1_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QSum1_TextBox.Location = New System.Drawing.Point(1039, 567)
+        Me.QSum1_TextBox.Location = New System.Drawing.Point(969, 589)
         Me.QSum1_TextBox.Name = "QSum1_TextBox"
         Me.QSum1_TextBox.ReadOnly = True
-        Me.QSum1_TextBox.Size = New System.Drawing.Size(123, 26)
+        Me.QSum1_TextBox.Size = New System.Drawing.Size(177, 26)
         Me.QSum1_TextBox.TabIndex = 127
         Me.QSum1_TextBox.Text = "500"
         '
@@ -654,7 +656,7 @@ Partial Class Quiz_Operator
         Me.threeLifelinesStatus_Label.BackColor = System.Drawing.Color.Silver
         Me.threeLifelinesStatus_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.threeLifelinesStatus_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.threeLifelinesStatus_Label.Location = New System.Drawing.Point(1039, 9)
+        Me.threeLifelinesStatus_Label.Location = New System.Drawing.Point(978, 9)
         Me.threeLifelinesStatus_Label.Name = "threeLifelinesStatus_Label"
         Me.threeLifelinesStatus_Label.Size = New System.Drawing.Size(53, 23)
         Me.threeLifelinesStatus_Label.TabIndex = 204
@@ -665,7 +667,7 @@ Partial Class Quiz_Operator
         Me.fourLifelinesStatus_Label.BackColor = System.Drawing.Color.Orange
         Me.fourLifelinesStatus_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.fourLifelinesStatus_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fourLifelinesStatus_Label.Location = New System.Drawing.Point(1098, 9)
+        Me.fourLifelinesStatus_Label.Location = New System.Drawing.Point(1037, 9)
         Me.fourLifelinesStatus_Label.Name = "fourLifelinesStatus_Label"
         Me.fourLifelinesStatus_Label.Size = New System.Drawing.Size(53, 23)
         Me.fourLifelinesStatus_Label.TabIndex = 205
@@ -901,6 +903,16 @@ Partial Class Quiz_Operator
         Me.TabPage1.Size = New System.Drawing.Size(919, 247)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "     QuestionPlayOut     "
+        '
+        'RandomizeAnswers_CheckBox
+        '
+        Me.RandomizeAnswers_CheckBox.AutoSize = True
+        Me.RandomizeAnswers_CheckBox.Location = New System.Drawing.Point(764, 141)
+        Me.RandomizeAnswers_CheckBox.Name = "RandomizeAnswers_CheckBox"
+        Me.RandomizeAnswers_CheckBox.Size = New System.Drawing.Size(139, 19)
+        Me.RandomizeAnswers_CheckBox.TabIndex = 1255
+        Me.RandomizeAnswers_CheckBox.Text = "Randomize Answers"
+        Me.RandomizeAnswers_CheckBox.UseVisualStyleBackColor = True
         '
         'Pronunciation_TextBox
         '
@@ -1334,7 +1346,7 @@ Partial Class Quiz_Operator
         Me.MoneyTreeHide_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.MoneyTreeHide_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.MoneyTreeHide_Label.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.MoneyTreeHide_Label.Location = New System.Drawing.Point(1098, 43)
+        Me.MoneyTreeHide_Label.Location = New System.Drawing.Point(1037, 43)
         Me.MoneyTreeHide_Label.Name = "MoneyTreeHide_Label"
         Me.MoneyTreeHide_Label.Size = New System.Drawing.Size(52, 52)
         Me.MoneyTreeHide_Label.TabIndex = 1247
@@ -1346,7 +1358,7 @@ Partial Class Quiz_Operator
         Me.MoneyTreeShow_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.MoneyTreeShow_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.MoneyTreeShow_Label.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.MoneyTreeShow_Label.Location = New System.Drawing.Point(1040, 43)
+        Me.MoneyTreeShow_Label.Location = New System.Drawing.Point(979, 43)
         Me.MoneyTreeShow_Label.Name = "MoneyTreeShow_Label"
         Me.MoneyTreeShow_Label.Size = New System.Drawing.Size(52, 52)
         Me.MoneyTreeShow_Label.TabIndex = 1246
@@ -2565,7 +2577,7 @@ Partial Class Quiz_Operator
         Me.LevelQset_ComboBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
         Me.LevelQset_ComboBox.FormattingEnabled = True
         Me.LevelQset_ComboBox.Items.AddRange(New Object() {"15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"})
-        Me.LevelQset_ComboBox.Location = New System.Drawing.Point(1096, 611)
+        Me.LevelQset_ComboBox.Location = New System.Drawing.Point(1079, 622)
         Me.LevelQset_ComboBox.Name = "LevelQset_ComboBox"
         Me.LevelQset_ComboBox.Size = New System.Drawing.Size(67, 28)
         Me.LevelQset_ComboBox.TabIndex = 1295
@@ -2574,7 +2586,7 @@ Partial Class Quiz_Operator
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1020, 615)
+        Me.Label1.Location = New System.Drawing.Point(1001, 626)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 18)
         Me.Label1.TabIndex = 1296
@@ -2587,11 +2599,11 @@ Partial Class Quiz_Operator
         Me.SoundStop_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.SoundStop_Button.Font = New System.Drawing.Font("Arial", 8.0!)
         Me.SoundStop_Button.ForeColor = System.Drawing.Color.Black
-        Me.SoundStop_Button.Location = New System.Drawing.Point(968, 36)
+        Me.SoundStop_Button.Location = New System.Drawing.Point(1152, 102)
         Me.SoundStop_Button.Name = "SoundStop_Button"
-        Me.SoundStop_Button.Size = New System.Drawing.Size(52, 37)
+        Me.SoundStop_Button.Size = New System.Drawing.Size(52, 24)
         Me.SoundStop_Button.TabIndex = 1297
-        Me.SoundStop_Button.Text = "SOUND Stop"
+        Me.SoundStop_Button.Text = "STOP"
         Me.SoundStop_Button.UseVisualStyleBackColor = False
         '
         'RehearselLiveLock_Button
@@ -2601,22 +2613,34 @@ Partial Class Quiz_Operator
         Me.RehearselLiveLock_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.RehearselLiveLock_Button.Font = New System.Drawing.Font("Arial Narrow", 10.25!, System.Drawing.FontStyle.Bold)
         Me.RehearselLiveLock_Button.ForeColor = System.Drawing.Color.White
-        Me.RehearselLiveLock_Button.Location = New System.Drawing.Point(1043, 658)
+        Me.RehearselLiveLock_Button.Location = New System.Drawing.Point(1026, 661)
         Me.RehearselLiveLock_Button.Name = "RehearselLiveLock_Button"
         Me.RehearselLiveLock_Button.Size = New System.Drawing.Size(119, 37)
         Me.RehearselLiveLock_Button.TabIndex = 1298
         Me.RehearselLiveLock_Button.Text = "REHEARSEL TIME"
         Me.RehearselLiveLock_Button.UseVisualStyleBackColor = False
         '
-        'RandomizeAnswers_CheckBox
+        'MusicList_ComboBox
         '
-        Me.RandomizeAnswers_CheckBox.AutoSize = True
-        Me.RandomizeAnswers_CheckBox.Location = New System.Drawing.Point(764, 141)
-        Me.RandomizeAnswers_CheckBox.Name = "RandomizeAnswers_CheckBox"
-        Me.RandomizeAnswers_CheckBox.Size = New System.Drawing.Size(139, 19)
-        Me.RandomizeAnswers_CheckBox.TabIndex = 1255
-        Me.RandomizeAnswers_CheckBox.Text = "Randomize Answers"
-        Me.RandomizeAnswers_CheckBox.UseVisualStyleBackColor = True
+        Me.MusicList_ComboBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.MusicList_ComboBox.FormattingEnabled = True
+        Me.MusicList_ComboBox.Location = New System.Drawing.Point(969, 102)
+        Me.MusicList_ComboBox.Name = "MusicList_ComboBox"
+        Me.MusicList_ComboBox.Size = New System.Drawing.Size(177, 24)
+        Me.MusicList_ComboBox.TabIndex = 1299
+        '
+        'SoundPlay_Button
+        '
+        Me.SoundPlay_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.SoundPlay_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.SoundPlay_Button.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.SoundPlay_Button.ForeColor = System.Drawing.Color.Black
+        Me.SoundPlay_Button.Location = New System.Drawing.Point(1152, 132)
+        Me.SoundPlay_Button.Name = "SoundPlay_Button"
+        Me.SoundPlay_Button.Size = New System.Drawing.Size(52, 25)
+        Me.SoundPlay_Button.TabIndex = 1300
+        Me.SoundPlay_Button.Text = "PLAY"
+        Me.SoundPlay_Button.UseVisualStyleBackColor = False
         '
         'Quiz_Operator
         '
@@ -2624,6 +2648,8 @@ Partial Class Quiz_Operator
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1211, 710)
+        Me.Controls.Add(Me.SoundPlay_Button)
+        Me.Controls.Add(Me.MusicList_ComboBox)
         Me.Controls.Add(Me.RehearselLiveLock_Button)
         Me.Controls.Add(Me.SoundStop_Button)
         Me.Controls.Add(Me.Label1)
@@ -2895,4 +2921,6 @@ Partial Class Quiz_Operator
     Friend WithEvents SoundStop_Button As Button
     Friend WithEvents RehearselLiveLock_Button As Button
     Friend WithEvents RandomizeAnswers_CheckBox As CheckBox
+    Friend WithEvents MusicList_ComboBox As ComboBox
+    Friend WithEvents SoundPlay_Button As Button
 End Class
