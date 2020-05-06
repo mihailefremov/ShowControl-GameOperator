@@ -6,9 +6,6 @@ Public Class FastestFingerManaging
     Public Shared FFFClocks()
     Public Shared FFFIsCorrect() As Boolean
 
-    Public Shared strHostName As String = System.Net.Dns.GetHostName()
-    Public Shared strIPAddress As String = My.Settings.QuizOperatorIPAddress ' System.Net.Dns.Resolve(strHostName).AddressList(0).ToString()
-
     Public Shared Devices As List(Of FFFDataFromDevice) = New List(Of FFFDataFromDevice) From {
      New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice(),
           New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice(), New FFFDataFromDevice()
@@ -82,6 +79,7 @@ Public Class FastestFingerManaging
     End Sub
 
     Shared Sub StandByFFFGame()
+        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostFFFPlayState.php?FFFPlayState=StandByFFFGame")
 
     End Sub
 

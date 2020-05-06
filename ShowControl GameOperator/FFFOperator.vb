@@ -10,7 +10,18 @@ Public Class FFFOperator
     Dim casparFNS As New CasparDevice
     Dim cgDataQA, cgDataRO, cgDataWAC, cgDataFNS As New CasparCGDataCollection
     Dim questionID As String = "0"
-    Dim MomentStatus As String
+
+    Private Shared _MomentStatus As String
+    Private Shared Property MomentStatus
+        Get
+            Return _MomentStatus
+        End Get
+        Set(value)
+            _MomentStatus = value
+            GUIOperatorStateSet(value)
+        End Set
+    End Property
+
     Dim checkConnection As Short = 0
     Dim MusicFF As FFFMusicLayer
 
@@ -623,11 +634,57 @@ Public Class FFFOperator
     End Sub
 
     Private Sub FFFOperator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ParseContestantsToUI(String.Format("{0}\{1}", GameConfiguration.Default.DefaultContestantsOnTheShowPath, "ContestantsOnTheShow.txt"))
         UpdateNames()
         UpdateActiveStatus()
         ActivateXNumberOfContestantsAtStartUp()
         MusicFF = New FFFMusicLayer
     End Sub
+
+    Public Shared Function ParseContestantsToUI(FileName As String)
+        Try
+            Dim ContArray As String() = System.IO.File.ReadAllLines(FileName)
+
+            Dim Contestants As New List(Of String)
+            Dim Cities As New List(Of String)
+
+            For Each cont As String In ContArray
+                Dim txt As String() = cont.Split("|")
+                If txt.Length < 1 Then
+                    Continue For
+                ElseIf txt.Length = 1 Then
+                    Contestants.Add(txt(0))
+                    Cities.Add("")
+                Else
+                    Contestants.Add(txt(0))
+                    Cities.Add(txt(1))
+                End If
+            Next
+
+            For i As Int16 = 1 To 10
+                Dim TextBox As String = "ContestantName" + i.ToString + "_TextBox"
+                For Each tb As TextBox In FFFOperator.TabPage1.Controls.OfType(Of TextBox)()
+                    If String.Compare(TextBox, tb.Name, True) = 0 Then
+                        If Cities.Count >= i Then
+                            tb.Text = Contestants(i - 1)
+                        End If
+                    End If
+                Next
+            Next
+            For i As Int16 = 1 To 10
+                Dim TextBox As String = "ContestantCity" + i.ToString + "_TextBox"
+                For Each tb As TextBox In FFFOperator.TabPage1.Controls.OfType(Of TextBox)()
+                    If String.Compare(TextBox, tb.Name, True) = 0 Then
+                        If Cities.Count >= i Then
+                            tb.Text = Cities(i - 1)
+                        End If
+                    End If
+                Next
+            Next
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Function
 
     Private Sub FFFOperator_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Try
@@ -715,7 +772,7 @@ Public Class FFFOperator
     End Sub
 
     Private Sub ConfigurationFFF_Button_Click(sender As Object, e As EventArgs) Handles ConfigurationFFF_Button.Click
-
+        FFFConfigurationFrm.Show()
     End Sub
 
     Private Sub RightOrderFlyIN_Label_Click(sender As Object, e As EventArgs) Handles RightOrderFlyIN_Label.Click
@@ -828,5 +885,54 @@ Public Class FFFOperator
     End Sub
 
 #End Region
+
+    Public Shared Sub GUIOperatorStateSet(MomentStatus As String)
+        FFFOperator.QuestionFFFReveal_Button.Visible = False
+        FFFOperator.AnswersABCDFFFReveal_Button.Visible = False
+        FFFOperator.DissolveQAFFF_Label.Visible = False
+        FFFOperator.RightOrderReady_Label.Visible = False
+        FFFOperator.RightOrderFlyIN_Label.Visible = False
+        FFFOperator.NextRevealRightOrder_Label.Visible = False
+        FFFOperator.WhoAnswerCorrectReady_Label.Visible = False
+        FFFOperator.WhoAnswerCorrectGreen_Label.Visible = False
+        FFFOperator.WhoAnswerCorrectBlink_Label.Visible = False
+        FFFOperator.WinnerClock_Label.Visible = False
+        FFFOperator.UpdateFFFClock_Button.Visible = False
+        'ClearGUI_Button.Visible = False
+
+        Select Case MomentStatus
+            Case "LoadedQuestion_Fired"
+                FFFOperator.QuestionFFFReveal_Button.Visible = True
+            Case "QuestionFFF_Fired"
+                FFFOperator.AnswersABCDFFFReveal_Button.Visible = True
+            Case "AnswersABCDFFF_Fired"
+                FFFOperator.DissolveQAFFF_Label.Visible = True
+            Case "QuestionAnswers_Dissolved"
+                FFFOperator.RightOrderReady_Label.Visible = True
+                FFFOperator.UpdateFFFClock_Button.Visible = True
+            Case "RightOrderReady"
+                FFFOperator.RightOrderFlyIN_Label.Visible = True
+                FFFOperator.UpdateFFFClock_Button.Visible = True
+            Case "RightOrderFlyIN"
+                FFFOperator.NextRevealRightOrder_Label.Visible = True
+                FFFOperator.UpdateFFFClock_Button.Visible = True
+            Case "NextRevealRightOrder"
+                FFFOperator.WhoAnswerCorrectReady_Label.Visible = True
+                FFFOperator.UpdateFFFClock_Button.Visible = True
+            Case "WhoAnsweredCorrectlyReady"
+                FFFOperator.WhoAnswerCorrectGreen_Label.Visible = True
+                FFFOperator.UpdateFFFClock_Button.Visible = True
+            Case "WhoAnsweredCorrectlyGreen"
+                FFFOperator.WhoAnswerCorrectBlink_Label.Visible = True
+            Case "WhoAnsweredCorrectlyBlink"
+                FFFOperator.WinnerClock_Label.Visible = True
+            Case "WinnerClockName"
+
+        End Select
+
+    End Sub
+    Public Shared Sub SetMomentStatus(mmStatus As String)
+        MomentStatus = mmStatus
+    End Sub
 
 End Class

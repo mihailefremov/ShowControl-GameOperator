@@ -34,7 +34,6 @@ Partial Class FFFOperator
         Me.AnswerBappear_Label = New System.Windows.Forms.Label()
         Me.AnswerCappear_Label = New System.Windows.Forms.Label()
         Me.AnswerDappear_Label = New System.Windows.Forms.Label()
-        Me.TextBox34 = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.ClearGUI_Button = New System.Windows.Forms.Button()
@@ -133,10 +132,10 @@ Partial Class FFFOperator
         'LevelQFF_TextBox
         '
         Me.LevelQFF_TextBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LevelQFF_TextBox.Font = New System.Drawing.Font("Arial", 14.25!)
+        Me.LevelQFF_TextBox.Font = New System.Drawing.Font("Arial", 15.25!)
         Me.LevelQFF_TextBox.Location = New System.Drawing.Point(15, 35)
         Me.LevelQFF_TextBox.Name = "LevelQFF_TextBox"
-        Me.LevelQFF_TextBox.Size = New System.Drawing.Size(33, 29)
+        Me.LevelQFF_TextBox.Size = New System.Drawing.Size(33, 31)
         Me.LevelQFF_TextBox.TabIndex = 1292
         Me.LevelQFF_TextBox.Text = "1"
         Me.LevelQFF_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -154,44 +153,44 @@ Partial Class FFFOperator
         'QuestionFFF_TextBox
         '
         Me.QuestionFFF_TextBox.AcceptsReturn = True
-        Me.QuestionFFF_TextBox.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.QuestionFFF_TextBox.Location = New System.Drawing.Point(55, 19)
+        Me.QuestionFFF_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
+        Me.QuestionFFF_TextBox.Location = New System.Drawing.Point(54, 18)
         Me.QuestionFFF_TextBox.Multiline = True
         Me.QuestionFFF_TextBox.Name = "QuestionFFF_TextBox"
-        Me.QuestionFFF_TextBox.Size = New System.Drawing.Size(825, 46)
+        Me.QuestionFFF_TextBox.Size = New System.Drawing.Size(1000, 51)
         Me.QuestionFFF_TextBox.TabIndex = 1342
         Me.QuestionFFF_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'AnswerAFFF_TextBox
         '
-        Me.AnswerAFFF_TextBox.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.AnswerAFFF_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
         Me.AnswerAFFF_TextBox.Location = New System.Drawing.Point(55, 71)
         Me.AnswerAFFF_TextBox.Name = "AnswerAFFF_TextBox"
-        Me.AnswerAFFF_TextBox.Size = New System.Drawing.Size(386, 26)
+        Me.AnswerAFFF_TextBox.Size = New System.Drawing.Size(475, 29)
         Me.AnswerAFFF_TextBox.TabIndex = 1343
         '
         'AnswerBFFF_TextBox
         '
-        Me.AnswerBFFF_TextBox.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.AnswerBFFF_TextBox.Location = New System.Drawing.Point(494, 72)
+        Me.AnswerBFFF_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
+        Me.AnswerBFFF_TextBox.Location = New System.Drawing.Point(580, 71)
         Me.AnswerBFFF_TextBox.Name = "AnswerBFFF_TextBox"
-        Me.AnswerBFFF_TextBox.Size = New System.Drawing.Size(386, 26)
+        Me.AnswerBFFF_TextBox.Size = New System.Drawing.Size(475, 29)
         Me.AnswerBFFF_TextBox.TabIndex = 1344
         '
         'AnswerCFFF_TextBox
         '
-        Me.AnswerCFFF_TextBox.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.AnswerCFFF_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
         Me.AnswerCFFF_TextBox.Location = New System.Drawing.Point(55, 103)
         Me.AnswerCFFF_TextBox.Name = "AnswerCFFF_TextBox"
-        Me.AnswerCFFF_TextBox.Size = New System.Drawing.Size(386, 26)
+        Me.AnswerCFFF_TextBox.Size = New System.Drawing.Size(475, 29)
         Me.AnswerCFFF_TextBox.TabIndex = 1345
         '
         'AnswerDFFF_TextBox
         '
-        Me.AnswerDFFF_TextBox.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.AnswerDFFF_TextBox.Location = New System.Drawing.Point(494, 104)
+        Me.AnswerDFFF_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
+        Me.AnswerDFFF_TextBox.Location = New System.Drawing.Point(580, 103)
         Me.AnswerDFFF_TextBox.Name = "AnswerDFFF_TextBox"
-        Me.AnswerDFFF_TextBox.Size = New System.Drawing.Size(386, 26)
+        Me.AnswerDFFF_TextBox.Size = New System.Drawing.Size(475, 29)
         Me.AnswerDFFF_TextBox.TabIndex = 1346
         '
         'AnswerAappear_Label
@@ -200,7 +199,7 @@ Partial Class FFFOperator
         Me.AnswerAappear_Label.BackColor = System.Drawing.Color.Yellow
         Me.AnswerAappear_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.AnswerAappear_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AnswerAappear_Label.Location = New System.Drawing.Point(11, 72)
+        Me.AnswerAappear_Label.Location = New System.Drawing.Point(11, 76)
         Me.AnswerAappear_Label.Name = "AnswerAappear_Label"
         Me.AnswerAappear_Label.Size = New System.Drawing.Size(40, 19)
         Me.AnswerAappear_Label.TabIndex = 1347
@@ -212,7 +211,7 @@ Partial Class FFFOperator
         Me.AnswerBappear_Label.BackColor = System.Drawing.Color.Yellow
         Me.AnswerBappear_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.AnswerBappear_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AnswerBappear_Label.Location = New System.Drawing.Point(450, 74)
+        Me.AnswerBappear_Label.Location = New System.Drawing.Point(536, 73)
         Me.AnswerBappear_Label.Name = "AnswerBappear_Label"
         Me.AnswerBappear_Label.Size = New System.Drawing.Size(41, 19)
         Me.AnswerBappear_Label.TabIndex = 1348
@@ -224,7 +223,7 @@ Partial Class FFFOperator
         Me.AnswerCappear_Label.BackColor = System.Drawing.Color.Yellow
         Me.AnswerCappear_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.AnswerCappear_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AnswerCappear_Label.Location = New System.Drawing.Point(11, 103)
+        Me.AnswerCappear_Label.Location = New System.Drawing.Point(11, 107)
         Me.AnswerCappear_Label.Name = "AnswerCappear_Label"
         Me.AnswerCappear_Label.Size = New System.Drawing.Size(41, 19)
         Me.AnswerCappear_Label.TabIndex = 1349
@@ -236,21 +235,11 @@ Partial Class FFFOperator
         Me.AnswerDappear_Label.BackColor = System.Drawing.Color.Yellow
         Me.AnswerDappear_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.AnswerDappear_Label.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AnswerDappear_Label.Location = New System.Drawing.Point(450, 105)
+        Me.AnswerDappear_Label.Location = New System.Drawing.Point(536, 104)
         Me.AnswerDappear_Label.Name = "AnswerDappear_Label"
         Me.AnswerDappear_Label.Size = New System.Drawing.Size(41, 19)
         Me.AnswerDappear_Label.TabIndex = 1350
         Me.AnswerDappear_Label.Text = "•D:  "
-        '
-        'TextBox34
-        '
-        Me.TextBox34.BackColor = System.Drawing.Color.White
-        Me.TextBox34.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.TextBox34.Location = New System.Drawing.Point(644, 44)
-        Me.TextBox34.Name = "TextBox34"
-        Me.TextBox34.Size = New System.Drawing.Size(20, 20)
-        Me.TextBox34.TabIndex = 1351
-        Me.TextBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TabControl1
         '
@@ -261,7 +250,7 @@ Partial Class FFFOperator
         Me.TabControl1.Location = New System.Drawing.Point(12, 13)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(895, 638)
+        Me.TabControl1.Size = New System.Drawing.Size(1079, 640)
         Me.TabControl1.TabIndex = 1364
         '
         'TabPage1
@@ -346,7 +335,6 @@ Partial Class FFFOperator
         Me.TabPage1.Controls.Add(Me.QuestionFFF_TextBox)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Controls.Add(Me.LevelQFF_TextBox)
-        Me.TabPage1.Controls.Add(Me.TextBox34)
         Me.TabPage1.Controls.Add(Me.AnswerDappear_Label)
         Me.TabPage1.Controls.Add(Me.AnswerCappear_Label)
         Me.TabPage1.Controls.Add(Me.AnswerBappear_Label)
@@ -358,7 +346,7 @@ Partial Class FFFOperator
         Me.TabPage1.Location = New System.Drawing.Point(4, 24)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(887, 610)
+        Me.TabPage1.Size = New System.Drawing.Size(1071, 612)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "   QuestionAnswer    "
         '
@@ -368,9 +356,9 @@ Partial Class FFFOperator
         Me.ClearGUI_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ClearGUI_Button.Font = New System.Drawing.Font("Arial", 11.0!)
         Me.ClearGUI_Button.ForeColor = System.Drawing.Color.Black
-        Me.ClearGUI_Button.Location = New System.Drawing.Point(24, 558)
+        Me.ClearGUI_Button.Location = New System.Drawing.Point(230, 502)
         Me.ClearGUI_Button.Name = "ClearGUI_Button"
-        Me.ClearGUI_Button.Size = New System.Drawing.Size(149, 37)
+        Me.ClearGUI_Button.Size = New System.Drawing.Size(168, 37)
         Me.ClearGUI_Button.TabIndex = 1445
         Me.ClearGUI_Button.Text = "CLEAR GUI"
         Me.ClearGUI_Button.UseVisualStyleBackColor = False
@@ -379,11 +367,11 @@ Partial Class FFFOperator
         '
         Me.NextActivity_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.NextActivity_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.NextActivity_Button.Font = New System.Drawing.Font("Arial", 11.0!)
+        Me.NextActivity_Button.Font = New System.Drawing.Font("Arial", 13.0!)
         Me.NextActivity_Button.ForeColor = System.Drawing.Color.White
-        Me.NextActivity_Button.Location = New System.Drawing.Point(24, 350)
+        Me.NextActivity_Button.Location = New System.Drawing.Point(27, 557)
         Me.NextActivity_Button.Name = "NextActivity_Button"
-        Me.NextActivity_Button.Size = New System.Drawing.Size(149, 34)
+        Me.NextActivity_Button.Size = New System.Drawing.Size(371, 34)
         Me.NextActivity_Button.TabIndex = 1444
         Me.NextActivity_Button.Text = "Next Activity"
         Me.NextActivity_Button.UseVisualStyleBackColor = False
@@ -393,9 +381,9 @@ Partial Class FFFOperator
         Me.AnswersABCDFFFReveal_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.AnswersABCDFFFReveal_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.AnswersABCDFFFReveal_Button.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.AnswersABCDFFFReveal_Button.Location = New System.Drawing.Point(24, 265)
+        Me.AnswersABCDFFFReveal_Button.Location = New System.Drawing.Point(27, 316)
         Me.AnswersABCDFFFReveal_Button.Name = "AnswersABCDFFFReveal_Button"
-        Me.AnswersABCDFFFReveal_Button.Size = New System.Drawing.Size(149, 42)
+        Me.AnswersABCDFFFReveal_Button.Size = New System.Drawing.Size(187, 42)
         Me.AnswersABCDFFFReveal_Button.TabIndex = 1443
         Me.AnswersABCDFFFReveal_Button.Text = " •A:  •B:  •C:  •D: " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "reveal "
         Me.AnswersABCDFFFReveal_Button.UseVisualStyleBackColor = False
@@ -405,9 +393,9 @@ Partial Class FFFOperator
         Me.QuestionFFFReveal_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.QuestionFFFReveal_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.QuestionFFFReveal_Button.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.QuestionFFFReveal_Button.Location = New System.Drawing.Point(24, 221)
+        Me.QuestionFFFReveal_Button.Location = New System.Drawing.Point(27, 272)
         Me.QuestionFFFReveal_Button.Name = "QuestionFFFReveal_Button"
-        Me.QuestionFFFReveal_Button.Size = New System.Drawing.Size(149, 37)
+        Me.QuestionFFFReveal_Button.Size = New System.Drawing.Size(187, 37)
         Me.QuestionFFFReveal_Button.TabIndex = 1442
         Me.QuestionFFFReveal_Button.Text = "•Question Reveal•"
         Me.QuestionFFFReveal_Button.UseVisualStyleBackColor = False
@@ -417,9 +405,9 @@ Partial Class FFFOperator
         Me.LoadFFFQuestion_Button.BackColor = System.Drawing.Color.Khaki
         Me.LoadFFFQuestion_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.LoadFFFQuestion_Button.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.LoadFFFQuestion_Button.Location = New System.Drawing.Point(24, 171)
+        Me.LoadFFFQuestion_Button.Location = New System.Drawing.Point(27, 222)
         Me.LoadFFFQuestion_Button.Name = "LoadFFFQuestion_Button"
-        Me.LoadFFFQuestion_Button.Size = New System.Drawing.Size(147, 42)
+        Me.LoadFFFQuestion_Button.Size = New System.Drawing.Size(185, 42)
         Me.LoadFFFQuestion_Button.TabIndex = 1441
         Me.LoadFFFQuestion_Button.Text = " Load " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Question"
         Me.LoadFFFQuestion_Button.UseVisualStyleBackColor = False
@@ -429,9 +417,9 @@ Partial Class FFFOperator
         Me.StandByContestant_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.StandByContestant_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.StandByContestant_Button.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.StandByContestant_Button.Location = New System.Drawing.Point(24, 141)
+        Me.StandByContestant_Button.Location = New System.Drawing.Point(27, 184)
         Me.StandByContestant_Button.Name = "StandByContestant_Button"
-        Me.StandByContestant_Button.Size = New System.Drawing.Size(147, 24)
+        Me.StandByContestant_Button.Size = New System.Drawing.Size(185, 32)
         Me.StandByContestant_Button.TabIndex = 1440
         Me.StandByContestant_Button.Text = "StandBy FFF-Name"
         Me.StandByContestant_Button.UseVisualStyleBackColor = False
@@ -441,7 +429,7 @@ Partial Class FFFOperator
         Me.Label5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.Label5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Label5.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.Label5.Location = New System.Drawing.Point(410, 471)
+        Me.Label5.Location = New System.Drawing.Point(516, 519)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(259, 23)
         Me.Label5.TabIndex = 1439
@@ -452,7 +440,7 @@ Partial Class FFFOperator
         '
         Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TextBox1.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(682, 429)
+        Me.TextBox1.Location = New System.Drawing.Point(788, 477)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(33, 24)
         Me.TextBox1.TabIndex = 1438
@@ -465,7 +453,7 @@ Partial Class FFFOperator
         Me.ContestantIntroNext_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ContestantIntroNext_Label.Font = New System.Drawing.Font("Arial", 11.0!)
         Me.ContestantIntroNext_Label.ForeColor = System.Drawing.Color.White
-        Me.ContestantIntroNext_Label.Location = New System.Drawing.Point(553, 424)
+        Me.ContestantIntroNext_Label.Location = New System.Drawing.Point(659, 472)
         Me.ContestantIntroNext_Label.Name = "ContestantIntroNext_Label"
         Me.ContestantIntroNext_Label.Size = New System.Drawing.Size(116, 37)
         Me.ContestantIntroNext_Label.TabIndex = 1437
@@ -477,7 +465,7 @@ Partial Class FFFOperator
         Me.ContestantIntroReady_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.ContestantIntroReady_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ContestantIntroReady_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantIntroReady_Label.Location = New System.Drawing.Point(409, 424)
+        Me.ContestantIntroReady_Label.Location = New System.Drawing.Point(515, 472)
         Me.ContestantIntroReady_Label.Name = "ContestantIntroReady_Label"
         Me.ContestantIntroReady_Label.Size = New System.Drawing.Size(134, 37)
         Me.ContestantIntroReady_Label.TabIndex = 1436
@@ -487,10 +475,10 @@ Partial Class FFFOperator
         'TheFastestContestantName_TextBox
         '
         Me.TheFastestContestantName_TextBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(202, Byte), Integer))
-        Me.TheFastestContestantName_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.TheFastestContestantName_TextBox.Location = New System.Drawing.Point(504, 380)
+        Me.TheFastestContestantName_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.TheFastestContestantName_TextBox.Location = New System.Drawing.Point(543, 420)
         Me.TheFastestContestantName_TextBox.Name = "TheFastestContestantName_TextBox"
-        Me.TheFastestContestantName_TextBox.Size = New System.Drawing.Size(220, 24)
+        Me.TheFastestContestantName_TextBox.Size = New System.Drawing.Size(291, 27)
         Me.TheFastestContestantName_TextBox.TabIndex = 1435
         '
         'UpdateFFFClock_Button
@@ -500,9 +488,9 @@ Partial Class FFFOperator
         Me.UpdateFFFClock_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.UpdateFFFClock_Button.Font = New System.Drawing.Font("Arial Narrow", 9.25!)
         Me.UpdateFFFClock_Button.ForeColor = System.Drawing.Color.Black
-        Me.UpdateFFFClock_Button.Location = New System.Drawing.Point(739, 419)
+        Me.UpdateFFFClock_Button.Location = New System.Drawing.Point(860, 458)
         Me.UpdateFFFClock_Button.Name = "UpdateFFFClock_Button"
-        Me.UpdateFFFClock_Button.Size = New System.Drawing.Size(117, 42)
+        Me.UpdateFFFClock_Button.Size = New System.Drawing.Size(165, 42)
         Me.UpdateFFFClock_Button.TabIndex = 1434
         Me.UpdateFFFClock_Button.Text = "Update FFF" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Clock and Answers"
         Me.UpdateFFFClock_Button.UseVisualStyleBackColor = False
@@ -512,9 +500,9 @@ Partial Class FFFOperator
         Me.RightOrderFlyIN_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.RightOrderFlyIN_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.RightOrderFlyIN_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.RightOrderFlyIN_Label.Location = New System.Drawing.Point(200, 259)
+        Me.RightOrderFlyIN_Label.Location = New System.Drawing.Point(227, 310)
         Me.RightOrderFlyIN_Label.Name = "RightOrderFlyIN_Label"
-        Me.RightOrderFlyIN_Label.Size = New System.Drawing.Size(145, 37)
+        Me.RightOrderFlyIN_Label.Size = New System.Drawing.Size(171, 37)
         Me.RightOrderFlyIN_Label.TabIndex = 1433
         Me.RightOrderFlyIN_Label.Text = "RIGHT ORDER" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FLY IN"
         Me.RightOrderFlyIN_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -522,20 +510,20 @@ Partial Class FFFOperator
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.Label1.Location = New System.Drawing.Point(390, 385)
+        Me.Label1.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.Label1.Location = New System.Drawing.Point(413, 425)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 15)
+        Me.Label1.Size = New System.Drawing.Size(88, 16)
         Me.Label1.TabIndex = 1432
         Me.Label1.Text = "The Fastest:"
         '
         'TheFastestContestantIndex_TextBox
         '
         Me.TheFastestContestantIndex_TextBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(202, Byte), Integer))
-        Me.TheFastestContestantIndex_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.TheFastestContestantIndex_TextBox.Location = New System.Drawing.Point(466, 380)
+        Me.TheFastestContestantIndex_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.TheFastestContestantIndex_TextBox.Location = New System.Drawing.Point(504, 420)
         Me.TheFastestContestantIndex_TextBox.Name = "TheFastestContestantIndex_TextBox"
-        Me.TheFastestContestantIndex_TextBox.Size = New System.Drawing.Size(33, 24)
+        Me.TheFastestContestantIndex_TextBox.Size = New System.Drawing.Size(33, 27)
         Me.TheFastestContestantIndex_TextBox.TabIndex = 1431
         Me.TheFastestContestantIndex_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -544,109 +532,109 @@ Partial Class FFFOperator
         Me.DissolveQAFFF_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.DissolveQAFFF_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DissolveQAFFF_Label.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.DissolveQAFFF_Label.Location = New System.Drawing.Point(24, 317)
+        Me.DissolveQAFFF_Label.Location = New System.Drawing.Point(27, 368)
         Me.DissolveQAFFF_Label.Name = "DissolveQAFFF_Label"
-        Me.DissolveQAFFF_Label.Size = New System.Drawing.Size(147, 23)
+        Me.DissolveQAFFF_Label.Size = New System.Drawing.Size(185, 23)
         Me.DissolveQAFFF_Label.TabIndex = 1430
         Me.DissolveQAFFF_Label.Text = "End FFF Game"
         Me.DissolveQAFFF_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ContestantOrder10_TextBox
         '
-        Me.ContestantOrder10_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder10_TextBox.Location = New System.Drawing.Point(803, 348)
+        Me.ContestantOrder10_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder10_TextBox.Location = New System.Drawing.Point(947, 374)
         Me.ContestantOrder10_TextBox.Name = "ContestantOrder10_TextBox"
-        Me.ContestantOrder10_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder10_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder10_TextBox.TabIndex = 1429
         Me.ContestantOrder10_TextBox.Text = "0000"
         Me.ContestantOrder10_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder9_TextBox
         '
-        Me.ContestantOrder9_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder9_TextBox.Location = New System.Drawing.Point(803, 325)
+        Me.ContestantOrder9_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder9_TextBox.Location = New System.Drawing.Point(947, 348)
         Me.ContestantOrder9_TextBox.Name = "ContestantOrder9_TextBox"
-        Me.ContestantOrder9_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder9_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder9_TextBox.TabIndex = 1428
         Me.ContestantOrder9_TextBox.Text = "0000"
         Me.ContestantOrder9_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder8_TextBox
         '
-        Me.ContestantOrder8_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder8_TextBox.Location = New System.Drawing.Point(803, 302)
+        Me.ContestantOrder8_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder8_TextBox.Location = New System.Drawing.Point(947, 322)
         Me.ContestantOrder8_TextBox.Name = "ContestantOrder8_TextBox"
-        Me.ContestantOrder8_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder8_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder8_TextBox.TabIndex = 1427
         Me.ContestantOrder8_TextBox.Text = "0000"
         Me.ContestantOrder8_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder7_TextBox
         '
-        Me.ContestantOrder7_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder7_TextBox.Location = New System.Drawing.Point(803, 279)
+        Me.ContestantOrder7_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder7_TextBox.Location = New System.Drawing.Point(947, 296)
         Me.ContestantOrder7_TextBox.Name = "ContestantOrder7_TextBox"
-        Me.ContestantOrder7_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder7_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder7_TextBox.TabIndex = 1426
         Me.ContestantOrder7_TextBox.Text = "0000"
         Me.ContestantOrder7_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder6_TextBox
         '
-        Me.ContestantOrder6_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder6_TextBox.Location = New System.Drawing.Point(803, 256)
+        Me.ContestantOrder6_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder6_TextBox.Location = New System.Drawing.Point(947, 270)
         Me.ContestantOrder6_TextBox.Name = "ContestantOrder6_TextBox"
-        Me.ContestantOrder6_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder6_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder6_TextBox.TabIndex = 1425
         Me.ContestantOrder6_TextBox.Text = "0000"
         Me.ContestantOrder6_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder5_TextBox
         '
-        Me.ContestantOrder5_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder5_TextBox.Location = New System.Drawing.Point(803, 233)
+        Me.ContestantOrder5_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder5_TextBox.Location = New System.Drawing.Point(947, 244)
         Me.ContestantOrder5_TextBox.Name = "ContestantOrder5_TextBox"
-        Me.ContestantOrder5_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder5_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder5_TextBox.TabIndex = 1424
         Me.ContestantOrder5_TextBox.Text = "0000"
         Me.ContestantOrder5_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder4_TextBox
         '
-        Me.ContestantOrder4_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder4_TextBox.Location = New System.Drawing.Point(803, 210)
+        Me.ContestantOrder4_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder4_TextBox.Location = New System.Drawing.Point(947, 218)
         Me.ContestantOrder4_TextBox.Name = "ContestantOrder4_TextBox"
-        Me.ContestantOrder4_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder4_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder4_TextBox.TabIndex = 1423
         Me.ContestantOrder4_TextBox.Text = "0000"
         Me.ContestantOrder4_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder3_TextBox
         '
-        Me.ContestantOrder3_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder3_TextBox.Location = New System.Drawing.Point(803, 187)
+        Me.ContestantOrder3_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder3_TextBox.Location = New System.Drawing.Point(947, 192)
         Me.ContestantOrder3_TextBox.Name = "ContestantOrder3_TextBox"
-        Me.ContestantOrder3_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder3_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder3_TextBox.TabIndex = 1422
         Me.ContestantOrder3_TextBox.Text = "0000"
         Me.ContestantOrder3_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder2_TextBox
         '
-        Me.ContestantOrder2_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder2_TextBox.Location = New System.Drawing.Point(803, 164)
+        Me.ContestantOrder2_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder2_TextBox.Location = New System.Drawing.Point(947, 166)
         Me.ContestantOrder2_TextBox.Name = "ContestantOrder2_TextBox"
-        Me.ContestantOrder2_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder2_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder2_TextBox.TabIndex = 1421
         Me.ContestantOrder2_TextBox.Text = "0000"
         Me.ContestantOrder2_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantOrder1_TextBox
         '
-        Me.ContestantOrder1_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantOrder1_TextBox.Location = New System.Drawing.Point(803, 141)
+        Me.ContestantOrder1_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantOrder1_TextBox.Location = New System.Drawing.Point(947, 140)
         Me.ContestantOrder1_TextBox.Name = "ContestantOrder1_TextBox"
-        Me.ContestantOrder1_TextBox.Size = New System.Drawing.Size(53, 24)
+        Me.ContestantOrder1_TextBox.Size = New System.Drawing.Size(79, 27)
         Me.ContestantOrder1_TextBox.TabIndex = 1420
         Me.ContestantOrder1_TextBox.Text = "0000"
         Me.ContestantOrder1_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -654,10 +642,10 @@ Partial Class FFFOperator
         'CorrectAnswer_TextBox
         '
         Me.CorrectAnswer_TextBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.CorrectAnswer_TextBox.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CorrectAnswer_TextBox.Location = New System.Drawing.Point(318, 141)
+        Me.CorrectAnswer_TextBox.Font = New System.Drawing.Font("Arial", 14.0!)
+        Me.CorrectAnswer_TextBox.Location = New System.Drawing.Point(145, 140)
         Me.CorrectAnswer_TextBox.Name = "CorrectAnswer_TextBox"
-        Me.CorrectAnswer_TextBox.Size = New System.Drawing.Size(63, 26)
+        Me.CorrectAnswer_TextBox.Size = New System.Drawing.Size(69, 29)
         Me.CorrectAnswer_TextBox.TabIndex = 1418
         Me.CorrectAnswer_TextBox.Text = "0000"
         Me.CorrectAnswer_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -666,7 +654,7 @@ Partial Class FFFOperator
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(200, 144)
+        Me.Label6.Location = New System.Drawing.Point(27, 143)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(115, 18)
         Me.Label6.TabIndex = 1419
@@ -679,9 +667,9 @@ Partial Class FFFOperator
         Me.UpdateFFFNames_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.UpdateFFFNames_Button.Font = New System.Drawing.Font("Arial Narrow", 9.25!)
         Me.UpdateFFFNames_Button.ForeColor = System.Drawing.Color.Black
-        Me.UpdateFFFNames_Button.Location = New System.Drawing.Point(739, 380)
+        Me.UpdateFFFNames_Button.Location = New System.Drawing.Point(860, 414)
         Me.UpdateFFFNames_Button.Name = "UpdateFFFNames_Button"
-        Me.UpdateFFFNames_Button.Size = New System.Drawing.Size(117, 29)
+        Me.UpdateFFFNames_Button.Size = New System.Drawing.Size(165, 29)
         Me.UpdateFFFNames_Button.TabIndex = 1417
         Me.UpdateFFFNames_Button.Text = "Update FFF Names"
         Me.UpdateFFFNames_Button.UseVisualStyleBackColor = False
@@ -689,7 +677,7 @@ Partial Class FFFOperator
         'ContestantIsActive10_CheckBox
         '
         Me.ContestantIsActive10_CheckBox.AutoSize = True
-        Me.ContestantIsActive10_CheckBox.Location = New System.Drawing.Point(863, 353)
+        Me.ContestantIsActive10_CheckBox.Location = New System.Drawing.Point(1032, 380)
         Me.ContestantIsActive10_CheckBox.Name = "ContestantIsActive10_CheckBox"
         Me.ContestantIsActive10_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive10_CheckBox.TabIndex = 1416
@@ -698,7 +686,7 @@ Partial Class FFFOperator
         'ContestantIsActive9_CheckBox
         '
         Me.ContestantIsActive9_CheckBox.AutoSize = True
-        Me.ContestantIsActive9_CheckBox.Location = New System.Drawing.Point(863, 330)
+        Me.ContestantIsActive9_CheckBox.Location = New System.Drawing.Point(1032, 354)
         Me.ContestantIsActive9_CheckBox.Name = "ContestantIsActive9_CheckBox"
         Me.ContestantIsActive9_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive9_CheckBox.TabIndex = 1415
@@ -707,7 +695,7 @@ Partial Class FFFOperator
         'ContestantIsActive8_CheckBox
         '
         Me.ContestantIsActive8_CheckBox.AutoSize = True
-        Me.ContestantIsActive8_CheckBox.Location = New System.Drawing.Point(863, 308)
+        Me.ContestantIsActive8_CheckBox.Location = New System.Drawing.Point(1032, 328)
         Me.ContestantIsActive8_CheckBox.Name = "ContestantIsActive8_CheckBox"
         Me.ContestantIsActive8_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive8_CheckBox.TabIndex = 1414
@@ -716,7 +704,7 @@ Partial Class FFFOperator
         'ContestantIsActive7_CheckBox
         '
         Me.ContestantIsActive7_CheckBox.AutoSize = True
-        Me.ContestantIsActive7_CheckBox.Location = New System.Drawing.Point(863, 285)
+        Me.ContestantIsActive7_CheckBox.Location = New System.Drawing.Point(1032, 302)
         Me.ContestantIsActive7_CheckBox.Name = "ContestantIsActive7_CheckBox"
         Me.ContestantIsActive7_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive7_CheckBox.TabIndex = 1413
@@ -725,7 +713,7 @@ Partial Class FFFOperator
         'ContestantIsActive6_CheckBox
         '
         Me.ContestantIsActive6_CheckBox.AutoSize = True
-        Me.ContestantIsActive6_CheckBox.Location = New System.Drawing.Point(863, 262)
+        Me.ContestantIsActive6_CheckBox.Location = New System.Drawing.Point(1032, 276)
         Me.ContestantIsActive6_CheckBox.Name = "ContestantIsActive6_CheckBox"
         Me.ContestantIsActive6_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive6_CheckBox.TabIndex = 1412
@@ -734,7 +722,7 @@ Partial Class FFFOperator
         'ContestantIsActive5_CheckBox
         '
         Me.ContestantIsActive5_CheckBox.AutoSize = True
-        Me.ContestantIsActive5_CheckBox.Location = New System.Drawing.Point(863, 239)
+        Me.ContestantIsActive5_CheckBox.Location = New System.Drawing.Point(1032, 250)
         Me.ContestantIsActive5_CheckBox.Name = "ContestantIsActive5_CheckBox"
         Me.ContestantIsActive5_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive5_CheckBox.TabIndex = 1411
@@ -743,7 +731,7 @@ Partial Class FFFOperator
         'ContestantIsActive4_CheckBox
         '
         Me.ContestantIsActive4_CheckBox.AutoSize = True
-        Me.ContestantIsActive4_CheckBox.Location = New System.Drawing.Point(863, 215)
+        Me.ContestantIsActive4_CheckBox.Location = New System.Drawing.Point(1032, 224)
         Me.ContestantIsActive4_CheckBox.Name = "ContestantIsActive4_CheckBox"
         Me.ContestantIsActive4_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive4_CheckBox.TabIndex = 1410
@@ -752,7 +740,7 @@ Partial Class FFFOperator
         'ContestantIsActive3_CheckBox
         '
         Me.ContestantIsActive3_CheckBox.AutoSize = True
-        Me.ContestantIsActive3_CheckBox.Location = New System.Drawing.Point(863, 192)
+        Me.ContestantIsActive3_CheckBox.Location = New System.Drawing.Point(1032, 198)
         Me.ContestantIsActive3_CheckBox.Name = "ContestantIsActive3_CheckBox"
         Me.ContestantIsActive3_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive3_CheckBox.TabIndex = 1409
@@ -761,7 +749,7 @@ Partial Class FFFOperator
         'ContestantIsActive2_CheckBox
         '
         Me.ContestantIsActive2_CheckBox.AutoSize = True
-        Me.ContestantIsActive2_CheckBox.Location = New System.Drawing.Point(863, 169)
+        Me.ContestantIsActive2_CheckBox.Location = New System.Drawing.Point(1032, 172)
         Me.ContestantIsActive2_CheckBox.Name = "ContestantIsActive2_CheckBox"
         Me.ContestantIsActive2_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive2_CheckBox.TabIndex = 1408
@@ -770,7 +758,7 @@ Partial Class FFFOperator
         'ContestantIsActive1_CheckBox
         '
         Me.ContestantIsActive1_CheckBox.AutoSize = True
-        Me.ContestantIsActive1_CheckBox.Location = New System.Drawing.Point(863, 145)
+        Me.ContestantIsActive1_CheckBox.Location = New System.Drawing.Point(1032, 147)
         Me.ContestantIsActive1_CheckBox.Name = "ContestantIsActive1_CheckBox"
         Me.ContestantIsActive1_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.ContestantIsActive1_CheckBox.TabIndex = 1407
@@ -778,300 +766,300 @@ Partial Class FFFOperator
         '
         'ContestantElapsedTime10_TextBox
         '
-        Me.ContestantElapsedTime10_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime10_TextBox.Location = New System.Drawing.Point(728, 348)
+        Me.ContestantElapsedTime10_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime10_TextBox.Location = New System.Drawing.Point(840, 374)
         Me.ContestantElapsedTime10_TextBox.Name = "ContestantElapsedTime10_TextBox"
-        Me.ContestantElapsedTime10_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime10_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime10_TextBox.TabIndex = 1406
         Me.ContestantElapsedTime10_TextBox.Text = "0.000"
         Me.ContestantElapsedTime10_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime9_TextBox
         '
-        Me.ContestantElapsedTime9_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime9_TextBox.Location = New System.Drawing.Point(728, 325)
+        Me.ContestantElapsedTime9_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime9_TextBox.Location = New System.Drawing.Point(840, 348)
         Me.ContestantElapsedTime9_TextBox.Name = "ContestantElapsedTime9_TextBox"
-        Me.ContestantElapsedTime9_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime9_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime9_TextBox.TabIndex = 1405
         Me.ContestantElapsedTime9_TextBox.Text = "0.000"
         Me.ContestantElapsedTime9_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime8_TextBox
         '
-        Me.ContestantElapsedTime8_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime8_TextBox.Location = New System.Drawing.Point(728, 302)
+        Me.ContestantElapsedTime8_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime8_TextBox.Location = New System.Drawing.Point(840, 322)
         Me.ContestantElapsedTime8_TextBox.Name = "ContestantElapsedTime8_TextBox"
-        Me.ContestantElapsedTime8_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime8_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime8_TextBox.TabIndex = 1404
         Me.ContestantElapsedTime8_TextBox.Text = "0.000"
         Me.ContestantElapsedTime8_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime7_TextBox
         '
-        Me.ContestantElapsedTime7_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime7_TextBox.Location = New System.Drawing.Point(728, 279)
+        Me.ContestantElapsedTime7_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime7_TextBox.Location = New System.Drawing.Point(840, 296)
         Me.ContestantElapsedTime7_TextBox.Name = "ContestantElapsedTime7_TextBox"
-        Me.ContestantElapsedTime7_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime7_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime7_TextBox.TabIndex = 1403
         Me.ContestantElapsedTime7_TextBox.Text = "0.000"
         Me.ContestantElapsedTime7_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime6_TextBox
         '
-        Me.ContestantElapsedTime6_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime6_TextBox.Location = New System.Drawing.Point(728, 256)
+        Me.ContestantElapsedTime6_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime6_TextBox.Location = New System.Drawing.Point(840, 270)
         Me.ContestantElapsedTime6_TextBox.Name = "ContestantElapsedTime6_TextBox"
-        Me.ContestantElapsedTime6_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime6_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime6_TextBox.TabIndex = 1402
         Me.ContestantElapsedTime6_TextBox.Text = "0.000"
         Me.ContestantElapsedTime6_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime5_TextBox
         '
-        Me.ContestantElapsedTime5_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime5_TextBox.Location = New System.Drawing.Point(728, 233)
+        Me.ContestantElapsedTime5_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime5_TextBox.Location = New System.Drawing.Point(840, 244)
         Me.ContestantElapsedTime5_TextBox.Name = "ContestantElapsedTime5_TextBox"
-        Me.ContestantElapsedTime5_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime5_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime5_TextBox.TabIndex = 1401
         Me.ContestantElapsedTime5_TextBox.Text = "0.000"
         Me.ContestantElapsedTime5_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime4_TextBox
         '
-        Me.ContestantElapsedTime4_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime4_TextBox.Location = New System.Drawing.Point(728, 210)
+        Me.ContestantElapsedTime4_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime4_TextBox.Location = New System.Drawing.Point(840, 218)
         Me.ContestantElapsedTime4_TextBox.Name = "ContestantElapsedTime4_TextBox"
-        Me.ContestantElapsedTime4_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime4_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime4_TextBox.TabIndex = 1400
         Me.ContestantElapsedTime4_TextBox.Text = "0.000"
         Me.ContestantElapsedTime4_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime3_TextBox
         '
-        Me.ContestantElapsedTime3_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime3_TextBox.Location = New System.Drawing.Point(728, 187)
+        Me.ContestantElapsedTime3_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime3_TextBox.Location = New System.Drawing.Point(840, 192)
         Me.ContestantElapsedTime3_TextBox.Name = "ContestantElapsedTime3_TextBox"
-        Me.ContestantElapsedTime3_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime3_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime3_TextBox.TabIndex = 1399
         Me.ContestantElapsedTime3_TextBox.Text = "0.000"
         Me.ContestantElapsedTime3_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime2_TextBox
         '
-        Me.ContestantElapsedTime2_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime2_TextBox.Location = New System.Drawing.Point(728, 164)
+        Me.ContestantElapsedTime2_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime2_TextBox.Location = New System.Drawing.Point(840, 166)
         Me.ContestantElapsedTime2_TextBox.Name = "ContestantElapsedTime2_TextBox"
-        Me.ContestantElapsedTime2_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime2_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime2_TextBox.TabIndex = 1398
         Me.ContestantElapsedTime2_TextBox.Text = "0.000"
         Me.ContestantElapsedTime2_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantElapsedTime1_TextBox
         '
-        Me.ContestantElapsedTime1_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantElapsedTime1_TextBox.Location = New System.Drawing.Point(728, 141)
+        Me.ContestantElapsedTime1_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantElapsedTime1_TextBox.Location = New System.Drawing.Point(840, 140)
         Me.ContestantElapsedTime1_TextBox.Name = "ContestantElapsedTime1_TextBox"
-        Me.ContestantElapsedTime1_TextBox.Size = New System.Drawing.Size(71, 24)
+        Me.ContestantElapsedTime1_TextBox.Size = New System.Drawing.Size(101, 27)
         Me.ContestantElapsedTime1_TextBox.TabIndex = 1397
         Me.ContestantElapsedTime1_TextBox.Text = "0.000"
         Me.ContestantElapsedTime1_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity10_TextBox
         '
-        Me.ContestantCity10_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity10_TextBox.Location = New System.Drawing.Point(596, 348)
+        Me.ContestantCity10_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity10_TextBox.Location = New System.Drawing.Point(679, 374)
         Me.ContestantCity10_TextBox.Name = "ContestantCity10_TextBox"
-        Me.ContestantCity10_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity10_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity10_TextBox.TabIndex = 19
         Me.ContestantCity10_TextBox.Text = "City"
         Me.ContestantCity10_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity9_TextBox
         '
-        Me.ContestantCity9_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity9_TextBox.Location = New System.Drawing.Point(596, 325)
+        Me.ContestantCity9_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity9_TextBox.Location = New System.Drawing.Point(679, 348)
         Me.ContestantCity9_TextBox.Name = "ContestantCity9_TextBox"
-        Me.ContestantCity9_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity9_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity9_TextBox.TabIndex = 17
         Me.ContestantCity9_TextBox.Text = "City"
         Me.ContestantCity9_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity8_TextBox
         '
-        Me.ContestantCity8_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity8_TextBox.Location = New System.Drawing.Point(596, 302)
+        Me.ContestantCity8_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity8_TextBox.Location = New System.Drawing.Point(679, 322)
         Me.ContestantCity8_TextBox.Name = "ContestantCity8_TextBox"
-        Me.ContestantCity8_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity8_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity8_TextBox.TabIndex = 15
         Me.ContestantCity8_TextBox.Text = "City"
         Me.ContestantCity8_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity7_TextBox
         '
-        Me.ContestantCity7_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity7_TextBox.Location = New System.Drawing.Point(596, 279)
+        Me.ContestantCity7_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity7_TextBox.Location = New System.Drawing.Point(679, 296)
         Me.ContestantCity7_TextBox.Name = "ContestantCity7_TextBox"
-        Me.ContestantCity7_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity7_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity7_TextBox.TabIndex = 13
         Me.ContestantCity7_TextBox.Text = "City"
         Me.ContestantCity7_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity6_TextBox
         '
-        Me.ContestantCity6_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity6_TextBox.Location = New System.Drawing.Point(596, 256)
+        Me.ContestantCity6_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity6_TextBox.Location = New System.Drawing.Point(679, 270)
         Me.ContestantCity6_TextBox.Name = "ContestantCity6_TextBox"
-        Me.ContestantCity6_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity6_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity6_TextBox.TabIndex = 11
         Me.ContestantCity6_TextBox.Text = "City"
         Me.ContestantCity6_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity5_TextBox
         '
-        Me.ContestantCity5_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity5_TextBox.Location = New System.Drawing.Point(596, 233)
+        Me.ContestantCity5_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity5_TextBox.Location = New System.Drawing.Point(679, 244)
         Me.ContestantCity5_TextBox.Name = "ContestantCity5_TextBox"
-        Me.ContestantCity5_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity5_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity5_TextBox.TabIndex = 9
         Me.ContestantCity5_TextBox.Text = "City"
         Me.ContestantCity5_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity4_TextBox
         '
-        Me.ContestantCity4_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity4_TextBox.Location = New System.Drawing.Point(596, 210)
+        Me.ContestantCity4_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity4_TextBox.Location = New System.Drawing.Point(679, 218)
         Me.ContestantCity4_TextBox.Name = "ContestantCity4_TextBox"
-        Me.ContestantCity4_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity4_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity4_TextBox.TabIndex = 7
         Me.ContestantCity4_TextBox.Text = "City"
         Me.ContestantCity4_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity3_TextBox
         '
-        Me.ContestantCity3_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity3_TextBox.Location = New System.Drawing.Point(596, 187)
+        Me.ContestantCity3_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity3_TextBox.Location = New System.Drawing.Point(679, 192)
         Me.ContestantCity3_TextBox.Name = "ContestantCity3_TextBox"
-        Me.ContestantCity3_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity3_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity3_TextBox.TabIndex = 5
         Me.ContestantCity3_TextBox.Text = "City"
         Me.ContestantCity3_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity2_TextBox
         '
-        Me.ContestantCity2_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity2_TextBox.Location = New System.Drawing.Point(596, 164)
+        Me.ContestantCity2_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity2_TextBox.Location = New System.Drawing.Point(679, 166)
         Me.ContestantCity2_TextBox.Name = "ContestantCity2_TextBox"
-        Me.ContestantCity2_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity2_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity2_TextBox.TabIndex = 3
         Me.ContestantCity2_TextBox.Text = "City"
         Me.ContestantCity2_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantCity1_TextBox
         '
-        Me.ContestantCity1_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantCity1_TextBox.Location = New System.Drawing.Point(596, 141)
+        Me.ContestantCity1_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantCity1_TextBox.Location = New System.Drawing.Point(679, 140)
         Me.ContestantCity1_TextBox.Name = "ContestantCity1_TextBox"
-        Me.ContestantCity1_TextBox.Size = New System.Drawing.Size(128, 24)
+        Me.ContestantCity1_TextBox.Size = New System.Drawing.Size(155, 27)
         Me.ContestantCity1_TextBox.TabIndex = 1
         Me.ContestantCity1_TextBox.Text = "City"
         Me.ContestantCity1_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName10_TextBox
         '
-        Me.ContestantName10_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName10_TextBox.Location = New System.Drawing.Point(392, 348)
+        Me.ContestantName10_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName10_TextBox.Location = New System.Drawing.Point(416, 374)
         Me.ContestantName10_TextBox.Name = "ContestantName10_TextBox"
-        Me.ContestantName10_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName10_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName10_TextBox.TabIndex = 18
         Me.ContestantName10_TextBox.Text = "ContestantName10"
         Me.ContestantName10_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName9_TextBox
         '
-        Me.ContestantName9_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName9_TextBox.Location = New System.Drawing.Point(392, 325)
+        Me.ContestantName9_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName9_TextBox.Location = New System.Drawing.Point(416, 348)
         Me.ContestantName9_TextBox.Name = "ContestantName9_TextBox"
-        Me.ContestantName9_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName9_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName9_TextBox.TabIndex = 16
         Me.ContestantName9_TextBox.Text = "ContestantName9"
         Me.ContestantName9_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName8_TextBox
         '
-        Me.ContestantName8_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName8_TextBox.Location = New System.Drawing.Point(392, 302)
+        Me.ContestantName8_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName8_TextBox.Location = New System.Drawing.Point(416, 322)
         Me.ContestantName8_TextBox.Name = "ContestantName8_TextBox"
-        Me.ContestantName8_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName8_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName8_TextBox.TabIndex = 14
         Me.ContestantName8_TextBox.Text = "ContestantName8"
         Me.ContestantName8_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName7_TextBox
         '
-        Me.ContestantName7_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName7_TextBox.Location = New System.Drawing.Point(392, 279)
+        Me.ContestantName7_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName7_TextBox.Location = New System.Drawing.Point(416, 296)
         Me.ContestantName7_TextBox.Name = "ContestantName7_TextBox"
-        Me.ContestantName7_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName7_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName7_TextBox.TabIndex = 12
         Me.ContestantName7_TextBox.Text = "ContestantName7"
         Me.ContestantName7_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName6_TextBox
         '
-        Me.ContestantName6_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName6_TextBox.Location = New System.Drawing.Point(392, 256)
+        Me.ContestantName6_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName6_TextBox.Location = New System.Drawing.Point(416, 270)
         Me.ContestantName6_TextBox.Name = "ContestantName6_TextBox"
-        Me.ContestantName6_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName6_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName6_TextBox.TabIndex = 10
         Me.ContestantName6_TextBox.Text = "ContestantName6"
         Me.ContestantName6_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName5_TextBox
         '
-        Me.ContestantName5_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName5_TextBox.Location = New System.Drawing.Point(392, 233)
+        Me.ContestantName5_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName5_TextBox.Location = New System.Drawing.Point(416, 244)
         Me.ContestantName5_TextBox.Name = "ContestantName5_TextBox"
-        Me.ContestantName5_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName5_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName5_TextBox.TabIndex = 8
         Me.ContestantName5_TextBox.Text = "ContestantName5"
         Me.ContestantName5_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName4_TextBox
         '
-        Me.ContestantName4_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName4_TextBox.Location = New System.Drawing.Point(392, 210)
+        Me.ContestantName4_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName4_TextBox.Location = New System.Drawing.Point(416, 218)
         Me.ContestantName4_TextBox.Name = "ContestantName4_TextBox"
-        Me.ContestantName4_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName4_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName4_TextBox.TabIndex = 6
         Me.ContestantName4_TextBox.Text = "ContestantName4"
         Me.ContestantName4_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName3_TextBox
         '
-        Me.ContestantName3_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName3_TextBox.Location = New System.Drawing.Point(392, 187)
+        Me.ContestantName3_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName3_TextBox.Location = New System.Drawing.Point(416, 192)
         Me.ContestantName3_TextBox.Name = "ContestantName3_TextBox"
-        Me.ContestantName3_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName3_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName3_TextBox.TabIndex = 4
         Me.ContestantName3_TextBox.Text = "ContestantName3"
         Me.ContestantName3_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName2_TextBox
         '
-        Me.ContestantName2_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName2_TextBox.Location = New System.Drawing.Point(392, 164)
+        Me.ContestantName2_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName2_TextBox.Location = New System.Drawing.Point(416, 166)
         Me.ContestantName2_TextBox.Name = "ContestantName2_TextBox"
-        Me.ContestantName2_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName2_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName2_TextBox.TabIndex = 2
         Me.ContestantName2_TextBox.Text = "ContestantName2"
         Me.ContestantName2_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ContestantName1_TextBox
         '
-        Me.ContestantName1_TextBox.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.ContestantName1_TextBox.Location = New System.Drawing.Point(392, 141)
+        Me.ContestantName1_TextBox.Font = New System.Drawing.Font("Arial", 13.0!)
+        Me.ContestantName1_TextBox.Location = New System.Drawing.Point(416, 140)
         Me.ContestantName1_TextBox.Name = "ContestantName1_TextBox"
-        Me.ContestantName1_TextBox.Size = New System.Drawing.Size(199, 24)
+        Me.ContestantName1_TextBox.Size = New System.Drawing.Size(257, 27)
         Me.ContestantName1_TextBox.TabIndex = 0
         Me.ContestantName1_TextBox.Text = "ContestantName1"
         Me.ContestantName1_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1081,9 +1069,9 @@ Partial Class FFFOperator
         Me.NextRevealRightOrder_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.NextRevealRightOrder_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.NextRevealRightOrder_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.NextRevealRightOrder_Label.Location = New System.Drawing.Point(200, 310)
+        Me.NextRevealRightOrder_Label.Location = New System.Drawing.Point(227, 361)
         Me.NextRevealRightOrder_Label.Name = "NextRevealRightOrder_Label"
-        Me.NextRevealRightOrder_Label.Size = New System.Drawing.Size(145, 34)
+        Me.NextRevealRightOrder_Label.Size = New System.Drawing.Size(171, 34)
         Me.NextRevealRightOrder_Label.TabIndex = 1375
         Me.NextRevealRightOrder_Label.Text = "Next Reveal Order"
         Me.NextRevealRightOrder_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1093,9 +1081,9 @@ Partial Class FFFOperator
         Me.RightOrderReady_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.RightOrderReady_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.RightOrderReady_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.RightOrderReady_Label.Location = New System.Drawing.Point(200, 212)
+        Me.RightOrderReady_Label.Location = New System.Drawing.Point(227, 263)
         Me.RightOrderReady_Label.Name = "RightOrderReady_Label"
-        Me.RightOrderReady_Label.Size = New System.Drawing.Size(145, 37)
+        Me.RightOrderReady_Label.Size = New System.Drawing.Size(171, 37)
         Me.RightOrderReady_Label.TabIndex = 1374
         Me.RightOrderReady_Label.Text = "RIGHT ORDER READY"
         Me.RightOrderReady_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1105,9 +1093,9 @@ Partial Class FFFOperator
         Me.WinnerClock_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.WinnerClock_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.WinnerClock_Label.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.WinnerClock_Label.Location = New System.Drawing.Point(200, 441)
+        Me.WinnerClock_Label.Location = New System.Drawing.Point(227, 438)
         Me.WinnerClock_Label.Name = "WinnerClock_Label"
-        Me.WinnerClock_Label.Size = New System.Drawing.Size(145, 37)
+        Me.WinnerClock_Label.Size = New System.Drawing.Size(171, 37)
         Me.WinnerClock_Label.TabIndex = 1373
         Me.WinnerClock_Label.Text = "WINNER NAME-TIME"
         Me.WinnerClock_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1117,9 +1105,9 @@ Partial Class FFFOperator
         Me.WhoAnswerCorrectBlink_Label.BackColor = System.Drawing.Color.Lime
         Me.WhoAnswerCorrectBlink_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.WhoAnswerCorrectBlink_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.WhoAnswerCorrectBlink_Label.Location = New System.Drawing.Point(24, 499)
+        Me.WhoAnswerCorrectBlink_Label.Location = New System.Drawing.Point(27, 502)
         Me.WhoAnswerCorrectBlink_Label.Name = "WhoAnswerCorrectBlink_Label"
-        Me.WhoAnswerCorrectBlink_Label.Size = New System.Drawing.Size(149, 37)
+        Me.WhoAnswerCorrectBlink_Label.Size = New System.Drawing.Size(185, 37)
         Me.WhoAnswerCorrectBlink_Label.TabIndex = 1372
         Me.WhoAnswerCorrectBlink_Label.Text = "WhoAnswerCorrect BLINK"
         Me.WhoAnswerCorrectBlink_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1129,9 +1117,9 @@ Partial Class FFFOperator
         Me.WhoAnswerCorrectGreen_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.WhoAnswerCorrectGreen_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.WhoAnswerCorrectGreen_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.WhoAnswerCorrectGreen_Label.Location = New System.Drawing.Point(24, 453)
+        Me.WhoAnswerCorrectGreen_Label.Location = New System.Drawing.Point(27, 456)
         Me.WhoAnswerCorrectGreen_Label.Name = "WhoAnswerCorrectGreen_Label"
-        Me.WhoAnswerCorrectGreen_Label.Size = New System.Drawing.Size(149, 37)
+        Me.WhoAnswerCorrectGreen_Label.Size = New System.Drawing.Size(185, 37)
         Me.WhoAnswerCorrectGreen_Label.TabIndex = 1371
         Me.WhoAnswerCorrectGreen_Label.Text = "WhoAnswerCorrect GREEN"
         Me.WhoAnswerCorrectGreen_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1141,9 +1129,9 @@ Partial Class FFFOperator
         Me.WhoAnswerCorrectReady_Label.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.WhoAnswerCorrectReady_Label.Cursor = System.Windows.Forms.Cursors.Hand
         Me.WhoAnswerCorrectReady_Label.Font = New System.Drawing.Font("Arial", 11.0!)
-        Me.WhoAnswerCorrectReady_Label.Location = New System.Drawing.Point(24, 407)
+        Me.WhoAnswerCorrectReady_Label.Location = New System.Drawing.Point(27, 410)
         Me.WhoAnswerCorrectReady_Label.Name = "WhoAnswerCorrectReady_Label"
-        Me.WhoAnswerCorrectReady_Label.Size = New System.Drawing.Size(149, 37)
+        Me.WhoAnswerCorrectReady_Label.Size = New System.Drawing.Size(185, 37)
         Me.WhoAnswerCorrectReady_Label.TabIndex = 1370
         Me.WhoAnswerCorrectReady_Label.Text = "WhoAnswerCorrect READY"
         Me.WhoAnswerCorrectReady_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1155,7 +1143,7 @@ Partial Class FFFOperator
         Me.ConfigurationFFF_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ConfigurationFFF_Button.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ConfigurationFFF_Button.ForeColor = System.Drawing.Color.Black
-        Me.ConfigurationFFF_Button.Location = New System.Drawing.Point(739, 554)
+        Me.ConfigurationFFF_Button.Location = New System.Drawing.Point(908, 559)
         Me.ConfigurationFFF_Button.Name = "ConfigurationFFF_Button"
         Me.ConfigurationFFF_Button.Size = New System.Drawing.Size(117, 32)
         Me.ConfigurationFFF_Button.TabIndex = 1368
@@ -1170,7 +1158,7 @@ Partial Class FFFOperator
         Me.TabPage2.Location = New System.Drawing.Point(4, 24)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(887, 610)
+        Me.TabPage2.Size = New System.Drawing.Size(1071, 612)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "CG Connection"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -1216,7 +1204,7 @@ Partial Class FFFOperator
         Me.TabPage3.Controls.Add(Me.FFLog_TextBox)
         Me.TabPage3.Location = New System.Drawing.Point(4, 24)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(887, 610)
+        Me.TabPage3.Size = New System.Drawing.Size(1071, 612)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "FFF Devices"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -1282,7 +1270,7 @@ Partial Class FFFOperator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(920, 651)
+        Me.ClientSize = New System.Drawing.Size(1090, 661)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "FFFOperator"
         Me.Text = "FFFOperator"
@@ -1307,7 +1295,6 @@ Partial Class FFFOperator
     Friend WithEvents AnswerBappear_Label As Label
     Friend WithEvents AnswerCappear_Label As Label
     Friend WithEvents AnswerDappear_Label As Label
-    Friend WithEvents TextBox34 As TextBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents CorrectAnswer_TextBox As TextBox

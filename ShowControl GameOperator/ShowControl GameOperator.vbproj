@@ -22,6 +22,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,10 +36,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,6 +137,12 @@
     <Compile Include="Deserializers\BASICGAMECONFIGURATIONS.vb" />
     <Compile Include="ConfigurationContext.vb" />
     <Compile Include="Deserializers\MUSICPLAYLISTCONFIGURATION.vb" />
+    <Compile Include="FFFConfigurationFrm.Designer.vb">
+      <DependentUpon>FFFConfigurationFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FFFConfigurationFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GameConfiguration.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -189,6 +195,9 @@
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FFFConfigurationFrm.resx">
+      <DependentUpon>FFFConfigurationFrm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FFFOperator.resx">
       <DependentUpon>FFFOperator.vb</DependentUpon>
     </EmbeddedResource>

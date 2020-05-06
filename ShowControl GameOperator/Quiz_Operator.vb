@@ -367,6 +367,7 @@ Public Class Quiz_Operator
 
             MusicList_ComboBox.DataSource = MainGameMusicLayerObj.WwtbamMusicPlaylistConfig.SOUND
             MusicList_ComboBox.DisplayMember = "TITLE"
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 
@@ -378,6 +379,7 @@ Public Class Quiz_Operator
     Private Sub Quiz_Operator_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         LoadConfiguration()
+        LiveRehearselViewButton(m_IsGameGoingLive)
 
         TimerPAFsecondDrop.Interval = 1000
         TimerEndPAF.Interval = 30000
@@ -448,7 +450,7 @@ Public Class Quiz_Operator
 
     End Sub
 
-    Private Sub QuestionAppear_Button_Click(sender As Object, e As EventArgs) Handles QuestionAppear_Button.Click
+    Private Sub QuestionAppear()
         MomentStatus = "Question_Fired"
 
         finalAnswerGiven = False
@@ -700,6 +702,7 @@ Public Class Quiz_Operator
 #End Region
     Private Sub CorrectAnswerProcedure()
 
+        MainGameMusicLayerObj.StopIncorrectAnswer()
         MainGameMusicLayerObj.PlayCorrectAnswer(LevelQ, VariableMilestone_TextBox.Text)
 
         If LevelQ <> "888" And LevelQ <> "666" Then
@@ -1762,7 +1765,7 @@ Public Class Quiz_Operator
         'MessageBox.Show(MomentStatus)
 
         If MomentStatus = "QuestionAnswers_Load" Or MomentStatus = "VariableMilestone_Set" Then
-            QuestionAppear_Button_Click(QuestionAppear_Button, Nothing)
+            QuestionAppear()
             Exit Sub
         End If
 
@@ -2021,12 +2024,12 @@ Public Class Quiz_Operator
 
     End Sub
 
-    Private Sub QuizOperator_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown, WonPrizeReveal_Button.KeyDown, QuestionAppear_Button.KeyDown, NextThing_Button.KeyDown, RemoveQuestion_Button.KeyDown, CorrectAnswerReveal_Button.KeyDown, FinalD_Button.KeyDown, FinalC_Button.KeyDown, FinalB_Button.KeyDown, FinalA_Button.KeyDown, SoundLX_Button.KeyDown
+    Private Sub QuizOperator_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown, WonPrizeReveal_Button.KeyDown, NextThing_Button.KeyDown, RemoveQuestion_Button.KeyDown, CorrectAnswerReveal_Button.KeyDown, FinalD_Button.KeyDown, FinalC_Button.KeyDown, FinalB_Button.KeyDown, FinalA_Button.KeyDown, SoundLX_Button.KeyDown
         If e.KeyCode = Keys.N Then
             NextThing_Button_Click(NextThing_Button, Nothing)
         End If
         If e.KeyCode = Keys.Q Then
-            QuestionAppear_Button_Click(QuestionAppear_Button, Nothing)
+            QuestionAppear()
         End If
         If e.KeyCode = Keys.D1 Then
             FinalA_Button_Click(FinalA_Button, Nothing)
@@ -2336,7 +2339,6 @@ Public Class Quiz_Operator
 
         Select Case MomentStatus
             Case "EmptyQuestion_Fired", "QuestionAnswers_Load"
-                QuestionAppear_Button.Visible = True
                 FinalA_Button.Visible = False
                 FinalB_Button.Visible = False
                 FinalC_Button.Visible = False
@@ -2356,7 +2358,6 @@ Public Class Quiz_Operator
                 Lifeline4_PictureBox.Visible = False
 
             Case "Question_Fired"
-                QuestionAppear_Button.Visible = False
                 FinalA_Button.Visible = False
                 FinalB_Button.Visible = False
                 FinalC_Button.Visible = False
@@ -2384,7 +2385,6 @@ Public Class Quiz_Operator
                 FinalB_Button.Visible = False
                 FinalC_Button.Visible = False
                 FinalD_Button.Visible = False
-                QuestionAppear_Button.Visible = False
                 WonPrizeReveal_Button.Visible = False
                 CorrectAnswerReveal_Button.Visible = True
                 SoundLX_Button.Visible = False
@@ -2403,7 +2403,6 @@ Public Class Quiz_Operator
                 FinalB_Button.Visible = True
                 FinalC_Button.Visible = True
                 FinalD_Button.Visible = True
-                QuestionAppear_Button.Visible = False
                 WonPrizeReveal_Button.Visible = False
                 SoundLX_Button.Visible = False
                 LifelineRemind_Button.Visible = True
@@ -2417,12 +2416,14 @@ Public Class Quiz_Operator
                 Lifeline3_PictureBox.Visible = True
                 Lifeline4_PictureBox.Visible = True
 
+            Case "WonPrize_Fired"
+                WonPrizeReveal_Button.Visible = False
+
             Case "CorrectAnswer_Fired"
                 FinalA_Button.Visible = False
                 FinalB_Button.Visible = False
                 FinalC_Button.Visible = False
                 FinalD_Button.Visible = False
-                QuestionAppear_Button.Visible = False
                 CorrectAnswerReveal_Button.Visible = False
                 WonPrizeReveal_Button.Visible = True
                 SoundLX_Button.Visible = True
@@ -2437,6 +2438,21 @@ Public Class Quiz_Operator
                 Lifeline3_PictureBox.Visible = False
                 Lifeline4_PictureBox.Visible = False
 
+            Case "DoubleDipIsFirstFinalAnswer_Correct_Fired"
+                FinalA_Button.Visible = True
+                FinalB_Button.Visible = True
+                FinalC_Button.Visible = True
+                FinalD_Button.Visible = True
+                WonPrizeReveal_Button.Visible = False
+                CorrectAnswerReveal_Button.Visible = False
+                SoundLX_Button.Visible = False
+                LifelineRemind_Button.Visible = False
+                QFor_Button.Visible = True
+                VariableMilestoneSet_Button.Visible = False
+                VariableMilestone_TextBox.Visible = False
+                WalkAwayStart_Button.Visible = False
+                WalkAwayQoppinion_Label.Visible = False
+
             Case "Walkaway_Fired", "JustOpinion_Fired"
                 WonPrizeReveal_Button.Visible = True
                 CorrectAnswerReveal_Button.Visible = False
@@ -2447,7 +2463,7 @@ Public Class Quiz_Operator
 
         End Select
 
-        NextThing_Button.Text = "Next Activity..." + NextActivity
+        NextThing_Button.Text = "CUE NEXT..." + NextActivity
     End Sub
 
     Public ReadOnly Property NextActivity() As String
@@ -2520,19 +2536,48 @@ Public Class Quiz_Operator
         MainGameMusicLayerObj.StopAll()
     End Sub
 
-    Public Property IsGameGoingLive As Boolean = False
+    Private Sub SoundPlay_Button_Click(sender As Object, e As EventArgs) Handles SoundPlay_Button.Click
+        Try
+            Dim soundToPlay As Xml2CSharp.SOUND = MusicList_ComboBox.SelectedItem
+            MainGameMusicLayerObj.PlayArbitrarySound(soundToPlay)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Public m_IsGameGoingLive As Boolean = True
+    Public Property IsGameGoingLive As Boolean
+        Get
+            Return m_IsGameGoingLive
+        End Get
+        Set(value As Boolean)
+            m_IsGameGoingLive = value
+            LiveRehearselViewButton(m_IsGameGoingLive)
+        End Set
+    End Property
     Private Sub RehearselLiveLock_Button_Click(sender As Object, e As EventArgs) Handles RehearselLiveLock_Button.Click
         If IsGameGoingLive Then
-            RehearselLiveLock_Button.BackColor = Color.Silver
-            RehearselLiveLock_Button.Text = "REHEARSEL TIME"
-
             IsGameGoingLive = False
         Else
-            RehearselLiveLock_Button.BackColor = Color.Red
-            RehearselLiveLock_Button.Text = "YOU ARE LIVE"
-
             IsGameGoingLive = True
         End If
+    End Sub
+    Private Sub LiveRehearselViewButton(m_IsGameGoingLive As Boolean)
+        If m_IsGameGoingLive Then
+            RehearselLiveLock_Button.BackColor = Color.Red
+            RehearselLiveLock_Button.Text = "YOU ARE LIVE"
+        Else
+            RehearselLiveLock_Button.BackColor = Color.Silver
+            RehearselLiveLock_Button.Text = "REHEARSEL TIME"
+        End If
+    End Sub
 
+    Private Sub StarCasparCG_Button_Click(sender As Object, e As EventArgs) Handles StarCasparCG_Button.Click
+        Try
+            Process.Start("C:\\CasparCG Server\\server\\casparcg.exe")
+            'https://stackoverflow.com/questions/9679375/run-an-exe-from-c-sharp-code
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 End Class

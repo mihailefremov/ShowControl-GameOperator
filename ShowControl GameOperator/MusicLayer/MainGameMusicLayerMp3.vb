@@ -30,6 +30,8 @@
     Public CorrectAnswerQ14MediaPlayer As New System.Windows.Media.MediaPlayer
     Public CorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
 
+    Public IncorrectAnswerQMediaPlayer As New System.Windows.Media.MediaPlayer
+
     Public LimitedClock_WindowsMediaPlayer As New System.Windows.Media.MediaPlayer
     Public DoubleDipBackground_WindowsMediaPlayer As New AxWMPLib.AxWindowsMediaPlayer
     Public LetsPLAYQ1to5AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
@@ -41,6 +43,7 @@
     Public WalkAwayLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
 
     Public AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Public ArbitrarySoundMediaPlayer As New Windows.Media.MediaPlayer
 
     Public WwtbamMusicPlaylistConfig As New Xml2CSharp.MUSICPLAYLISTCONFIGURATION
 
@@ -242,6 +245,11 @@
     End Sub
 
     Sub PlayFinalAnswerSound(LevelQ As String, DoubleDipState As String)
+
+        If Not (LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5") Then
+            StopAll()
+        End If
+
         StopFinalAnswer()
 
         If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
@@ -341,37 +349,38 @@
 
         StopAll()
 
-        Dim IncorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
-        IncorrectAnswerQ15MediaPlayer.Stop()
-
         If String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(106).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(106).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(106).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(106).TITLE)))
 
         ElseIf LevelQ = "6" Or LevelQ = "11" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(60).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(60).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(60).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(60).TITLE)))
 
         ElseIf LevelQ = "7" Or LevelQ = "12" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(65).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(65).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(65).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(65).TITLE)))
 
         ElseIf LevelQ = "8" Or LevelQ = "13" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(70).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(70).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(70).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(70).TITLE)))
 
         ElseIf LevelQ = "9" Or LevelQ = "14" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(75).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(75).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(75).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(75).TITLE)))
 
         ElseIf LevelQ = "10" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(80).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(80).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(80).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(80).TITLE)))
 
         ElseIf LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5" Or LevelQ = "666" Or LevelQ = "888" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(30).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(30).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(30).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(30).TITLE)))
 
         ElseIf LevelQ = "15" Then
-            IncorrectAnswerQ15MediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(100).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(100).TITLE)))
+            IncorrectAnswerQMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(100).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(100).TITLE)))
 
         End If
 
-        IncorrectAnswerQ15MediaPlayer.Play()
+        IncorrectAnswerQMediaPlayer.Play()
 
+    End Sub
+
+    Sub StopIncorrectAnswer()
+        IncorrectAnswerQMediaPlayer.Stop()
     End Sub
 
     Sub StopCorrectAnswer()
@@ -413,12 +422,18 @@
     End Sub
 
     Sub StopAll()
-        Me.StopHeartbeaLetsPlay()
-        Me.StopFinalAnswer()
-        Me.StopCorrectAnswer()
+        StopHeartbeaLetsPlay()
+        StopFinalAnswer()
+        StopCorrectAnswer()
+        StopIncorrectAnswer()
         My.Computer.Audio.Stop()
+        ArbitrarySoundMediaPlayer.Stop()
     End Sub
 
-
+    Sub PlayArbitrarySound(Sound As Xml2CSharp.SOUND)
+        ArbitrarySoundMediaPlayer.Stop()
+        ArbitrarySoundMediaPlayer.Open(New Uri(String.Format("{0}\{1}", Sound.LOCATION, Sound.TITLE)))
+        ArbitrarySoundMediaPlayer.Play()
+    End Sub
 
 End Class

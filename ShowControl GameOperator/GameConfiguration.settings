@@ -5,5 +5,8 @@
     <Setting Name="DefaultGameConfigurationPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\ShowControl</Value>
     </Setting>
+  <Setting Name="DefaultContestantsOnTheShowPath" Type="System.String" Scope="User">
+    <Value Profile="(Default)">C:\ShowControl</Value>
+  </Setting>  
   </Settings>
 </SettingsFile>

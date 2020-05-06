@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Data.SqlClient
+Imports MySql.Data.MySqlClient
 
 
 Public Class DataLayer
@@ -9,6 +10,8 @@ Public Class DataLayer
                    & "database=" + My.Settings.audienceVotesDatabase + ";"
 
     Private Shared ReadOnly ConnectionStringQuestionDB As String = audienceVotesConnection
+
+    Private Shared ReadOnly ConnectionStringQuestionDBMSSQL As String = $"server={My.Settings.gameQuestionsServer};database={My.Settings.audienceVotesDatabase};integrated security=true;"
 
     Public Shared percentA, percentB, percentC, percentD As Decimal
 
@@ -125,6 +128,19 @@ Public Class DataLayer
             MySqlConn.Dispose()
         End Try
 
+        'Paralelno mssql
+        'Try
+        '    Using con As New SqlConnection(ConnectionStringQuestionDBMSSQL)
+        '        Using cmd As New SqlCommand("update questionsforcontestant SET Answered='1' where QuestionID=@QID", con)
+        '            cmd.Parameters.Add("@QID", SqlDbType.VarChar).Value = questionID
+        '            con.Open()
+        '            cmd.ExecuteNonQuery()
+        '        End Using
+        '    End Using
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.Message)
+        'End Try
+
     End Sub
 
     'Friend Shared Sub MarkQuestionAnsweredDB(questionID As String)
@@ -178,6 +194,20 @@ Public Class DataLayer
             MySqlConn.Dispose()
         End Try
 
+        'Paralelno mssql
+        Try
+            Using con As New SqlConnection(ConnectionStringQuestionDBMSSQL)
+                Using cmd As New SqlCommand("update gamequestions SET TimesAnswered='1', LastDateAnswered=@LDate where QuestionID=@QID", con)
+                    cmd.Parameters.Add("@QID", SqlDbType.VarChar).Value = questionID
+                    cmd.Parameters.Add("@LDate", SqlDbType.DateTime).Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                    con.Open()
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
 
     'Friend Shared Sub MarkQuestionFiredDB(questionID As String, Optional qtype As String = "1")
@@ -226,6 +256,17 @@ Public Class DataLayer
 
             conn.Close()
             conn.Dispose()
+        End Try
+
+        'Paralelno mssql
+        Try
+            Using con As New SqlConnection(ConnectionStringQuestionDBMSSQL)
+                Using cmd1 As New SqlCommand("delete from " + "questionsforcontestant" + " where Answered='1' and Type=" + QuestionType, con)
+                    con.Open()
+                    cmd1.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
         End Try
 
     End Sub

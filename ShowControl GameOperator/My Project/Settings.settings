@@ -71,5 +71,8 @@
     <Setting Name="IsInteractiveScreenOn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="gameQuestionsServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">IDEA-PC\SQLEXPRESS02</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
