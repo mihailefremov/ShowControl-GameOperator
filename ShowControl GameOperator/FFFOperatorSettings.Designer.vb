@@ -14,7 +14,7 @@ Option Explicit On
 
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")>  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")>  _
 Partial Friend NotInheritable Class FFFOperatorSettings
     Inherits Global.System.Configuration.ApplicationSettingsBase
     
@@ -28,7 +28,7 @@ Partial Friend NotInheritable Class FFFOperatorSettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
     Public Property StartUpNumberOfFFFContestants() As String
         Get
             Return CType(Me("StartUpNumberOfFFFContestants"),String)

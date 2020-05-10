@@ -1,51 +1,53 @@
 ﻿Public Class MainGameMusicLayer
 
-    Public Q1to5AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q6AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q7AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q8AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q9AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q10AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q11AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q12AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q13AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q14AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public Q15AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
-    Public FinalAnswer611MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public FinalAnswer712MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public FinalAnswer813MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public FinalAnswer914MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public FinalAnswer1015MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private Q1to5AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q6AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q7AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q8AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q9AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q10AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q11AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q12AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q13AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q14AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private Q15AxWindowsMediaPlayer1 As New System.Windows.Media.MediaPlayer
+    Private FinalAnswer611MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private FinalAnswer712MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private FinalAnswer813MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private FinalAnswer914MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private FinalAnswer1015MediaPlayer As New System.Windows.Media.MediaPlayer
 
-    Public CorrectAnswerQ1MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ5MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ6MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ7MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ8MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ9MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ10MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ11MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ12MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ13MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ14MediaPlayer As New System.Windows.Media.MediaPlayer
-    Public CorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ1MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ5MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ6MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ7MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ8MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ9MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ10MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ11MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ12MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ13MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ14MediaPlayer As New System.Windows.Media.MediaPlayer
+    Private CorrectAnswerQ15MediaPlayer As New System.Windows.Media.MediaPlayer
 
-    Public IncorrectAnswerQMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private IncorrectAnswerQMediaPlayer As New System.Windows.Media.MediaPlayer
 
-    Public LimitedClock_WindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public DoubleDipBackground_WindowsMediaPlayer As New AxWMPLib.AxWindowsMediaPlayer
-    Public LetsPLAYQ1to5AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public LetsPLAYQ6AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public LetsPLAYQ7AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public LetsPLAYQ8AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public LetsPLAYQ9AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public LetsPLAYQ10AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public WalkAwayLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LimitedClock_WindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private DoubleDipBackground_WindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ1to5AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ6AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ7AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ8AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ9AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private LetsPLAYQ10AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private WalkAwayLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
 
-    Public AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
-    Public ArbitrarySoundMediaPlayer As New Windows.Media.MediaPlayer
+    Private AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+    Private ArbitrarySoundMediaPlayer As New Windows.Media.MediaPlayer
 
     Public WwtbamMusicPlaylistConfig As New Xml2CSharp.MUSICPLAYLISTCONFIGURATION
+
+    Public Mute As Boolean = False
 
     Sub New()
         'Music configuration
@@ -100,9 +102,8 @@
         'Q15AxWindowsMediaPlayer1.Open(New Uri("C\WWTBAM Removable Disc\UK 2007\129.Q15 - Heartbeat Loop.wav"))
         Q15AxWindowsMediaPlayer1.Stop()
 
-        DoubleDipBackground_WindowsMediaPlayer.CreateControl()
-        DoubleDipBackground_WindowsMediaPlayer.URL = String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(107).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(107).TITLE)
-        DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.stop()
+        DoubleDipBackground_WindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(107).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(107).TITLE)))
+        DoubleDipBackground_WindowsMediaPlayer.Stop()
 
         LetsPLAYQ1to5AxWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(27).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(27).TITLE)))
         LetsPLAYQ1to5AxWindowsMediaPlayer.Stop()
@@ -173,7 +174,13 @@
         Me.Q14AxWindowsMediaPlayer1.Stop() 'Ctlcontrols.stop()
         Me.Q15AxWindowsMediaPlayer1.Stop() 'Ctlcontrols.stop()
         Me.LimitedClock_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        Me.DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.stop() 'Ctlcontrols.stop()
+        Me.DoubleDipBackground_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
+        StopLetsPlay()
+    End Sub
+
+    Sub StopLetsPlay()
+        Me.LimitedClock_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
+        Me.DoubleDipBackground_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
         Me.LetsPLAYQ1to5AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
         Me.LetsPLAYQ6AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
         Me.LetsPLAYQ7AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
@@ -211,7 +218,7 @@
     End Sub
 
     Sub PlayHeartbeatMusic(level As String)
-
+        If Mute Then Return
         Select Case level
             Case "1", "2", "3", "4", "5"
                 Q1to5AxWindowsMediaPlayer1.Play()
@@ -240,15 +247,23 @@
     End Sub
 
     Sub PlayDoubleDipBackground()
+        If Mute Then Return
         StopHeartbeaLetsPlay()
-        DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.play()
+        DoubleDipBackground_WindowsMediaPlayer.Play()
     End Sub
+
+    Sub StopDoubleDipBackground()
+        DoubleDipBackground_WindowsMediaPlayer.Stop()
+    End Sub
+
 
     Sub PlayFinalAnswerSound(LevelQ As String, DoubleDipState As String)
 
         If Not (LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5") Then
             StopAll()
         End If
+
+        If Mute Then Return
 
         StopFinalAnswer()
 
@@ -288,6 +303,7 @@
     Sub PlayCorrectAnswer(LevelQ As String, VariableMilestone As String)
         StopFinalAnswer()
         StopCorrectAnswer()
+        If Mute Then Return
 
         If LevelQ = "5" Then
             CorrectAnswerQ5MediaPlayer.Play()
@@ -346,6 +362,7 @@
     End Sub
 
     Sub PlayIncorrectAnswer(LevelQ, DoubleDipState)
+        If Mute Then Return
 
         StopAll()
 
@@ -399,6 +416,9 @@
     End Sub
 
     Sub PlayLXSound(LevelQ_TextBox As String, VariableMilestone_TextBox As String)
+        StopLetsPlay()
+        If Mute Then Return
+
         If Val(LevelQ_TextBox) >= 1 And Val(LevelQ_TextBox) <= 5 Then
             LetsPLAYQ1to5AxWindowsMediaPlayer.Play()
         ElseIf Val(LevelQ_TextBox) = 11 And (Val(VariableMilestone_TextBox) <> 10) Then
@@ -432,8 +452,18 @@
 
     Sub PlayArbitrarySound(Sound As Xml2CSharp.SOUND)
         ArbitrarySoundMediaPlayer.Stop()
+        If Mute Then Return
+
         ArbitrarySoundMediaPlayer.Open(New Uri(String.Format("{0}\{1}", Sound.LOCATION, Sound.TITLE)))
         ArbitrarySoundMediaPlayer.Play()
+    End Sub
+
+    Sub LimitedClockPlay()
+
+    End Sub
+
+    Sub LimitedClockStop()
+
     End Sub
 
 End Class

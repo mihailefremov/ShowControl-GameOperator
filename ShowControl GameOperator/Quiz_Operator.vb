@@ -498,7 +498,7 @@ Public Class Quiz_Operator
 
         AnswerDappear_Label.BackColor = Color.Yellow
 
-        TimerQuestionRemove.Interval = Val(TextBox32.Text) * 1000
+        TimerQuestionRemove.Interval = Val(SecondsToDissolveAfterCorrectAnswer_TextBox.Text) * 1000
 
         If GraphicsProcessingUnit.casparQA.IsConnected Then
             GraphicsProcessingUnit.CGQuestionSet(QuestionText, Answer1Text, Answer2Text, Answer3Text, Answer4Text, QuestionForSume)
@@ -529,7 +529,7 @@ Public Class Quiz_Operator
 
         MomentStatus = "Question_AnswerA_Fired" ''IZMENA!!
 
-        StopLXsound()
+        MainGameMusicLayerObj.StopLetsPlay()
 
         ''SQL
         DataLayer.MarkQuestionFiredDB(questionID, Me.IsGameGoingLive)
@@ -1256,11 +1256,15 @@ Public Class Quiz_Operator
         End If
 
         If ataVoteTime_TextBox.Text <> defaultATAvoteTime Then
-            DataLayer.GetATAvoteData() 'Performance Issues
-            A_pub.Text = DataLayer.percentA.ToString
-            B_pub.Text = DataLayer.percentB.ToString
-            C_pub.Text = DataLayer.percentC.ToString
-            D_pub.Text = DataLayer.percentD.ToString
+            Try
+                Dim VoteArray As String() = DataLayer.GetATAvoteData()
+                A_pub.Text = VoteArray.ElementAt(0)
+                B_pub.Text = VoteArray.ElementAt(1)
+                C_pub.Text = VoteArray.ElementAt(2)
+                D_pub.Text = VoteArray.ElementAt(3)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
 
             A_pub.Text = A_pub.Text + "%"
             B_pub.Text = B_pub.Text + "%"
@@ -1534,7 +1538,7 @@ Public Class Quiz_Operator
     End Sub
     Private Sub CorrectAnswerReveal_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CorrectAnswerReveal_Button.Click
 
-        TimerQuestionRemove.Interval = Val(TextBox32.Text) * 1000
+        TimerQuestionRemove.Interval = Val(SecondsToDissolveAfterCorrectAnswer_TextBox.Text) * 1000
 
         Timer_STOP.Interval = 555
 
@@ -1898,7 +1902,7 @@ Public Class Quiz_Operator
 
     Public Sub limitedClockStart()
 
-        MainGameMusicLayerObj.LimitedClock_WindowsMediaPlayer.Play() 'Ctlcontrols.play()
+        MainGameMusicLayerObj.LimitedClockPlay() 'Ctlcontrols.play()
 
         TimerLimitedGameSecDropClock.Start()
 
@@ -1922,7 +1926,7 @@ Public Class Quiz_Operator
 
         If LimitedGameClock_TextBox.Text = 0 Then
             TimerLimitedGameSecDropClock.Stop()
-            MainGameMusicLayerObj.LimitedClock_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
+            MainGameMusicLayerObj.LimitedClockStop() 'Ctlcontrols.stop()
         End If
 
         If LevelQ <= 5 Then
@@ -1976,7 +1980,7 @@ Public Class Quiz_Operator
 
     Private Sub LimitedGameClockStop_Label_Click(sender As Object, e As EventArgs) Handles LimitedGameClockStop_Label.Click
         TimerLimitedGameSecDropClock.Stop()
-        MainGameMusicLayerObj.LimitedClock_WindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
+        MainGameMusicLayerObj.LimitedClockStop() 'Ctlcontrols.stop()
 
         If LimitedGame_RadioButton.Checked Then
             My.Computer.Audio.Play("C:\WWTBAM Removable Disc\US 2008\Stop The Clock.wav", AudioPlayMode.Background)
@@ -1989,12 +1993,11 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub LimitedGameClockRestart_Label_Click(sender As Object, e As EventArgs) Handles LimitedGameClockRestart_Label.Click
-        TimerLimitedGameSecDropClock.Start()
-        MainGameMusicLayerObj.LimitedClock_WindowsMediaPlayer.Play() 'Ctlcontrols.play()
+        TimerLimitedGameSecDropClock.Start() 'Ctlcontrols.play()
 
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\US 2008\Resume The Clock.wav", AudioPlayMode.Background)
 
-        MainGameMusicLayerObj.LimitedClock_WindowsMediaPlayer.Play() 'Ctlcontrols.play()
+        MainGameMusicLayerObj.LimitedClockPlay() 'Ctlcontrols.play()
 
         ''''
         GraphicsProcessingUnit.showClockBarCG(LevelQ)
@@ -2008,19 +2011,8 @@ Public Class Quiz_Operator
     End Sub
 
     Public Sub PlayLXsound()
-        StopLXsound()
         Timer_STOP.Stop()
         MainGameMusicLayerObj.PlayLXSound(LevelQ, VariableMilestone_TextBox.Text)
-
-    End Sub
-
-    Public Sub StopLXsound()
-        MainGameMusicLayerObj.LetsPLAYQ1to5AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        MainGameMusicLayerObj.LetsPLAYQ6AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        MainGameMusicLayerObj.LetsPLAYQ7AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        MainGameMusicLayerObj.LetsPLAYQ8AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        MainGameMusicLayerObj.LetsPLAYQ9AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
-        MainGameMusicLayerObj.LetsPLAYQ10AxWindowsMediaPlayer.Stop() 'Ctlcontrols.stop()
 
     End Sub
 
@@ -2221,7 +2213,7 @@ Public Class Quiz_Operator
 
     Private Sub DoubleDipCancel_Label_Click(sender As Object, e As EventArgs) Handles DoubleDipCancel_Label.Click
         DoubleDipState = ""
-        MainGameMusicLayerObj.DoubleDipBackground_WindowsMediaPlayer.Ctlcontrols.stop() 'Ctlcontrols.stop()
+        MainGameMusicLayerObj.StopDoubleDipBackground() 'Ctlcontrols.stop()
         DDIP_0_Label_Click(DDIP_0_Label, Nothing)
         'MainGameMusicLayerObj.PlayHeartbeatMusic()
     End Sub
@@ -2579,5 +2571,21 @@ Public Class Quiz_Operator
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub SoundMute_Button_Click(sender As Object, e As EventArgs) Handles SoundMute_Button.Click
+        If SoundMute_Button.BackColor = Color.Gainsboro Then
+            SoundMute_Button.BackColor = Color.Red
+            MainGameMusicLayerObj.Mute = True
+            MainGameMusicLayerObj.StopAll()
+        Else
+            SoundMute_Button.BackColor = Color.Gainsboro
+            MainGameMusicLayerObj.Mute = False
+        End If
+
+    End Sub
+
+    Private Sub UpdateQuestionText_Event(sender As Object, e As MouseEventArgs) Handles Question_TextBox.MouseDoubleClick
+        QuestionText = Question_TextBox.Text
     End Sub
 End Class

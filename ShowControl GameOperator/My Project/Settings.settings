@@ -74,5 +74,8 @@
     <Setting Name="gameQuestionsServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">IDEA-PC\SQLEXPRESS02</Value>
     </Setting>
+    <Setting Name="UseMySqlForAta" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

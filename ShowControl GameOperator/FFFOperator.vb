@@ -77,7 +77,7 @@ Public Class FFFOperator
         FastestFingerManaging.QuestionLoad(QuestionFFF_TextBox.Text, AnswerAFFF_TextBox.Text, AnswerBFFF_TextBox.Text, AnswerCFFF_TextBox.Text, AnswerDFFF_TextBox.Text)
         FastestFingerManaging.QuestionFire()
         DataLayer.MarkQuestionAnsweredDB(questionID, Quiz_Operator.IsGameGoingLive)
-        MusicFF.FFFQuestionAxWindowsMediaPlayer.Ctlcontrols.play()
+        MusicFF.FFFQuestionPlay()
         GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion("2001")
     End Sub
 
@@ -93,7 +93,7 @@ Public Class FFFOperator
                                         End Sub)
         DataLayer.MarkQuestionFiredDB(questionID, Quiz_Operator.IsGameGoingLive)
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\11.Three Beeps.wav", AudioPlayMode.Background)
-        MusicFF.FFFastestFingerFirstAxWindowsMediaPlayer.Ctlcontrols.play()
+        MusicFF.FFFastestFingerFirstPlay()
 
         For i As Integer = 1 To Int(FFNumberOfDevicesToConnect_TextBox.Text)
             FastestFingerManaging.ConnectFFDevice(i.ToString, FFLog_TextBox.Text)
@@ -144,17 +144,17 @@ Public Class FFFOperator
     Private Sub NextRevealRightOrder_Label_Click(sender As Object, e As EventArgs) Handles NextRevealRightOrder_Label.Click
         Select Case NextRevealOrder
             Case 1
-                MusicFF.FF1stinOrderAxWindowsMediaPlayer.Ctlcontrols.play()
-                MusicFF.FFFastestFingerFirstAxWindowsMediaPlayer.Ctlcontrols.stop()
+                MusicFF.FF1stinOrderPlay()
+                MusicFF.FFFastestFingerFirstStop()
                 CGNextOrder(1)
             Case 2
-                MusicFF.FF2ndinOrderAxWindowsMediaPlayer.Ctlcontrols.play()
+                MusicFF.FF2ndinOrderPlay()
                 CGNextOrder(2)
             Case 3
-                MusicFF.FF3rdinOrderAxWindowsMediaPlayer.Ctlcontrols.play()
+                MusicFF.FF3rdinOrderPlay()
                 CGNextOrder(3)
             Case 4
-                MusicFF.FF4thinOrderAxWindowsMediaPlayer.Ctlcontrols.play()
+                MusicFF.FF4thinOrderPlay()
                 CGNextOrder(4)
                 MomentStatus = "NextRevealRightOrder"
         End Select
@@ -184,7 +184,7 @@ Public Class FFFOperator
             End Try
         End If
         If IndexPositionOfFastestContestantByTime > -1 Then
-            MusicFF.FFWhoIsCorrectNamesAxWindowsMediaPlayer.Ctlcontrols.play()
+            MusicFF.FFWhoIsCorrectNamesPlay()
         End If
     End Sub
 
@@ -200,7 +200,7 @@ Public Class FFFOperator
         If IndexPositionOfFastestContestantByTime > -1 Then
             My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\Q5Win.wav", AudioPlayMode.Background)
         End If
-        MusicFF.FFRightOrderAxWindowsMediaPlayer.Ctlcontrols.stop()
+        MusicFF.FFFastestFingerFirstStop()
     End Sub
     Private Sub UpdateFFF_Button_Click(sender As Object, e As EventArgs) Handles UpdateFFFNames_Button.Click
         UpdateNames()
@@ -784,7 +784,7 @@ Public Class FFFOperator
                 MessageBox.Show("RightOrderFlyIN|" + ex.Message)
             End Try
         End If
-        MusicFF.FFRightOrderAxWindowsMediaPlayer.Ctlcontrols.play()
+        MusicFF.FFRightOrderPlay()
     End Sub
 
     Public Sub CGRightOrderSet()

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="StartUpNumberOfFFFContestants" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ClockDecimalPlaces" Type="System.String" Scope="User">
       <Value Profile="(Default)">3</Value>

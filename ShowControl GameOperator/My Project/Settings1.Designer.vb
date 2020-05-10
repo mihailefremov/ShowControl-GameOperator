@@ -341,6 +341,18 @@ Namespace My
                 Me("gameQuestionsServer") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property UseMySqlForAta() As Boolean
+            Get
+                Return CType(Me("UseMySqlForAta"),Boolean)
+            End Get
+            Set
+                Me("UseMySqlForAta") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -93,7 +93,7 @@ Partial Class Quiz_Operator
         Me.AnswerCappear_Label = New System.Windows.Forms.Label()
         Me.AnswerDappear_Label = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.TextBox32 = New System.Windows.Forms.TextBox()
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox = New System.Windows.Forms.TextBox()
         Me.Empty_CheckBox = New System.Windows.Forms.CheckBox()
         Me.SumeShow_CheckBox = New System.Windows.Forms.CheckBox()
         Me.MoneyTreeSet_Label = New System.Windows.Forms.Label()
@@ -109,6 +109,7 @@ Partial Class Quiz_Operator
         Me.UnlimitedGame_RadioButton = New System.Windows.Forms.RadioButton()
         Me.LimitedGame_RadioButton = New System.Windows.Forms.RadioButton()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.StarCasparCG_Button = New System.Windows.Forms.Button()
         Me.CASPARCGLog_TextBox = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AutoWhiteGleen_CheckBox = New System.Windows.Forms.CheckBox()
@@ -224,7 +225,7 @@ Partial Class Quiz_Operator
         Me.MusicList_ComboBox = New System.Windows.Forms.ComboBox()
         Me.SoundPlay_Button = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.StarCasparCG_Button = New System.Windows.Forms.Button()
+        Me.SoundMute_Button = New System.Windows.Forms.Button()
         Me.GameControl_TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -964,7 +965,7 @@ Partial Class Quiz_Operator
         '
         'TabPage4
         '
-        Me.TabPage4.Controls.Add(Me.TextBox32)
+        Me.TabPage4.Controls.Add(Me.SecondsToDissolveAfterCorrectAnswer_TextBox)
         Me.TabPage4.Controls.Add(Me.Empty_CheckBox)
         Me.TabPage4.Controls.Add(Me.SumeShow_CheckBox)
         Me.TabPage4.Controls.Add(Me.MoneyTreeSet_Label)
@@ -991,17 +992,17 @@ Partial Class Quiz_Operator
         Me.TabPage4.Text = "     MoneyPlayOut      "
         Me.TabPage4.UseVisualStyleBackColor = True
         '
-        'TextBox32
+        'SecondsToDissolveAfterCorrectAnswer_TextBox
         '
-        Me.TextBox32.BackColor = System.Drawing.Color.White
-        Me.TextBox32.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox32.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox32.Location = New System.Drawing.Point(39, 139)
-        Me.TextBox32.Name = "TextBox32"
-        Me.TextBox32.Size = New System.Drawing.Size(18, 13)
-        Me.TextBox32.TabIndex = 1262
-        Me.TextBox32.Text = "4.0"
-        Me.TextBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.BackColor = System.Drawing.Color.White
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Location = New System.Drawing.Point(39, 139)
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Name = "SecondsToDissolveAfterCorrectAnswer_TextBox"
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Size = New System.Drawing.Size(18, 13)
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TabIndex = 1262
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Text = "3.8"
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Empty_CheckBox
         '
@@ -1191,6 +1192,15 @@ Partial Class Quiz_Operator
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "CharacterGenerator"
         Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'StarCasparCG_Button
+        '
+        Me.StarCasparCG_Button.Location = New System.Drawing.Point(19, 105)
+        Me.StarCasparCG_Button.Name = "StarCasparCG_Button"
+        Me.StarCasparCG_Button.Size = New System.Drawing.Size(100, 33)
+        Me.StarCasparCG_Button.TabIndex = 1243
+        Me.StarCasparCG_Button.Text = "Start CasparCG"
+        Me.StarCasparCG_Button.UseVisualStyleBackColor = True
         '
         'CASPARCGLog_TextBox
         '
@@ -2081,7 +2091,7 @@ Partial Class Quiz_Operator
         '
         Me.AutoEndATA_CheckBox.AutoSize = True
         Me.AutoEndATA_CheckBox.Checked = True
-        Me.AutoEndATA_CheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.AutoEndATA_CheckBox.CheckState = System.Windows.Forms.CheckState.Indeterminate
         Me.AutoEndATA_CheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AutoEndATA_CheckBox.Location = New System.Drawing.Point(255, 14)
         Me.AutoEndATA_CheckBox.Name = "AutoEndATA_CheckBox"
@@ -2618,14 +2628,18 @@ Partial Class Quiz_Operator
         Me.Button6.Text = "RELOAD"
         Me.Button6.UseVisualStyleBackColor = False
         '
-        'StarCasparCG_Button
+        'SoundMute_Button
         '
-        Me.StarCasparCG_Button.Location = New System.Drawing.Point(19, 105)
-        Me.StarCasparCG_Button.Name = "StarCasparCG_Button"
-        Me.StarCasparCG_Button.Size = New System.Drawing.Size(100, 33)
-        Me.StarCasparCG_Button.TabIndex = 1243
-        Me.StarCasparCG_Button.Text = "Start CasparCG"
-        Me.StarCasparCG_Button.UseVisualStyleBackColor = True
+        Me.SoundMute_Button.BackColor = System.Drawing.Color.Gainsboro
+        Me.SoundMute_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.SoundMute_Button.Font = New System.Drawing.Font("Arial", 6.0!)
+        Me.SoundMute_Button.ForeColor = System.Drawing.Color.Black
+        Me.SoundMute_Button.Location = New System.Drawing.Point(1217, 56)
+        Me.SoundMute_Button.Name = "SoundMute_Button"
+        Me.SoundMute_Button.Size = New System.Drawing.Size(41, 24)
+        Me.SoundMute_Button.TabIndex = 1302
+        Me.SoundMute_Button.Text = "MUTE"
+        Me.SoundMute_Button.UseVisualStyleBackColor = False
         '
         'Quiz_Operator
         '
@@ -2633,6 +2647,7 @@ Partial Class Quiz_Operator
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1344, 711)
+        Me.Controls.Add(Me.SoundMute_Button)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.SoundPlay_Button)
         Me.Controls.Add(Me.MusicList_ComboBox)
@@ -2903,8 +2918,9 @@ Partial Class Quiz_Operator
     Friend WithEvents MusicList_ComboBox As ComboBox
     Friend WithEvents SoundPlay_Button As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents TextBox32 As TextBox
+    Friend WithEvents SecondsToDissolveAfterCorrectAnswer_TextBox As TextBox
     Friend WithEvents Empty_CheckBox As CheckBox
     Friend WithEvents SumeShow_CheckBox As CheckBox
     Friend WithEvents StarCasparCG_Button As Button
+    Friend WithEvents SoundMute_Button As Button
 End Class
