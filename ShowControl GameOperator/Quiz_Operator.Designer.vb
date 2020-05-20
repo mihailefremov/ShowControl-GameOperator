@@ -109,7 +109,6 @@ Partial Class Quiz_Operator
         Me.UnlimitedGame_RadioButton = New System.Windows.Forms.RadioButton()
         Me.LimitedGame_RadioButton = New System.Windows.Forms.RadioButton()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.StarCasparCG_Button = New System.Windows.Forms.Button()
         Me.CASPARCGLog_TextBox = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AutoWhiteGleen_CheckBox = New System.Windows.Forms.CheckBox()
@@ -226,6 +225,7 @@ Partial Class Quiz_Operator
         Me.SoundPlay_Button = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.SoundMute_Button = New System.Windows.Forms.Button()
+        Me.StarApacheServer_Button = New System.Windows.Forms.Button()
         Me.GameControl_TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -1001,7 +1001,7 @@ Partial Class Quiz_Operator
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Name = "SecondsToDissolveAfterCorrectAnswer_TextBox"
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Size = New System.Drawing.Size(18, 13)
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TabIndex = 1262
-        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Text = "3.8"
+        Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Text = "4.0"
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Empty_CheckBox
@@ -1180,7 +1180,6 @@ Partial Class Quiz_Operator
         '
         'TabPage5
         '
-        Me.TabPage5.Controls.Add(Me.StarCasparCG_Button)
         Me.TabPage5.Controls.Add(Me.CASPARCGLog_TextBox)
         Me.TabPage5.Controls.Add(Me.TextBox1)
         Me.TabPage5.Controls.Add(Me.AutoWhiteGleen_CheckBox)
@@ -1192,15 +1191,6 @@ Partial Class Quiz_Operator
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "CharacterGenerator"
         Me.TabPage5.UseVisualStyleBackColor = True
-        '
-        'StarCasparCG_Button
-        '
-        Me.StarCasparCG_Button.Location = New System.Drawing.Point(19, 105)
-        Me.StarCasparCG_Button.Name = "StarCasparCG_Button"
-        Me.StarCasparCG_Button.Size = New System.Drawing.Size(100, 33)
-        Me.StarCasparCG_Button.TabIndex = 1243
-        Me.StarCasparCG_Button.Text = "Start CasparCG"
-        Me.StarCasparCG_Button.UseVisualStyleBackColor = True
         '
         'CASPARCGLog_TextBox
         '
@@ -1238,6 +1228,7 @@ Partial Class Quiz_Operator
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.StarApacheServer_Button)
         Me.TabPage2.Controls.Add(Me.ContestantPartner_Textbox)
         Me.TabPage2.Controls.Add(Me.ContestantCity_Textbox)
         Me.TabPage2.Controls.Add(Me.ContestantLastName_Textbox)
@@ -2641,6 +2632,15 @@ Partial Class Quiz_Operator
         Me.SoundMute_Button.Text = "MUTE"
         Me.SoundMute_Button.UseVisualStyleBackColor = False
         '
+        'StarApacheServer_Button
+        '
+        Me.StarApacheServer_Button.Location = New System.Drawing.Point(581, 22)
+        Me.StarApacheServer_Button.Name = "StarApacheServer_Button"
+        Me.StarApacheServer_Button.Size = New System.Drawing.Size(100, 41)
+        Me.StarApacheServer_Button.TabIndex = 1244
+        Me.StarApacheServer_Button.Text = "Start Apache Server"
+        Me.StarApacheServer_Button.UseVisualStyleBackColor = True
+        '
         'Quiz_Operator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2921,6 +2921,6 @@ Partial Class Quiz_Operator
     Friend WithEvents SecondsToDissolveAfterCorrectAnswer_TextBox As TextBox
     Friend WithEvents Empty_CheckBox As CheckBox
     Friend WithEvents SumeShow_CheckBox As CheckBox
-    Friend WithEvents StarCasparCG_Button As Button
     Friend WithEvents SoundMute_Button As Button
+    Friend WithEvents StarApacheServer_Button As Button
 End Class

@@ -1107,9 +1107,6 @@ Public Class Quiz_Operator
 
         PAFsec_TextBox.Text = "30"
 
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\PAF_1.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\45.Friend Clock.wav", AudioPlayMode.Background)
 
         Timer_PAUSE.Start()
@@ -1690,9 +1687,6 @@ Public Class Quiz_Operator
 
     Private Sub PAFCall_lbl_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAFready_Label.Click
         Timer_PAUSE.Start()
-
-        Me.Lifeline2_PictureBox.BackgroundImage = Image.FromFile("C:\WWTBAM Removable Disc\Graphics\PAF_1.png")
-        Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
 
         'LightDown.URL = "C:\WWTBAM Removable Disc\UK 2007\44.Phone a Friend.wav"
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\44.Phone a Friend.wav", AudioPlayMode.BackgroundLoop)
@@ -2564,15 +2558,6 @@ Public Class Quiz_Operator
         End If
     End Sub
 
-    Private Sub StarCasparCG_Button_Click(sender As Object, e As EventArgs) Handles StarCasparCG_Button.Click
-        Try
-            Process.Start("C:\\CasparCG Server\\server\\casparcg.exe")
-            'https://stackoverflow.com/questions/9679375/run-an-exe-from-c-sharp-code
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-    End Sub
-
     Private Sub SoundMute_Button_Click(sender As Object, e As EventArgs) Handles SoundMute_Button.Click
         If SoundMute_Button.BackColor = Color.Gainsboro Then
             SoundMute_Button.BackColor = Color.Red
@@ -2587,5 +2572,14 @@ Public Class Quiz_Operator
 
     Private Sub UpdateQuestionText_Event(sender As Object, e As MouseEventArgs) Handles Question_TextBox.MouseDoubleClick
         QuestionText = Question_TextBox.Text
+    End Sub
+
+    Private Sub StarApacheServer_Button_Click(sender As Object, e As EventArgs) Handles StarApacheServer_Button.Click
+        Try
+            Dim proc As Process = Process.Start("C:\\Users\\mihai\\Documents\\laragon-lite\\laragon.exe")
+            'https://stackoverflow.com/questions/9679375/run-an-exe-from-c-sharp-code
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 End Class

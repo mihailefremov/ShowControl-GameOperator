@@ -133,6 +133,7 @@
   <ItemGroup>
     <Compile Include="Deserializers\BASICGAMECONFIGURATIONS.vb" />
     <Compile Include="ConfigurationContext.vb" />
+    <Compile Include="Deserializers\GRAPHICSGAMECONFIGURATION.vb" />
     <Compile Include="Deserializers\MUSICPLAYLISTCONFIGURATION.vb" />
     <Compile Include="FFFConfigurationFrm.Designer.vb">
       <DependentUpon>FFFConfigurationFrm.vb</DependentUpon>
