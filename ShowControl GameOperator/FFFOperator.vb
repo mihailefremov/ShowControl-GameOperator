@@ -200,7 +200,7 @@ Public Class FFFOperator
         If IndexPositionOfFastestContestantByTime > -1 Then
             My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\Q5Win.wav", AudioPlayMode.Background)
         End If
-        MusicFF.FFFastestFingerFirstStop()
+        MusicFF.FFRightOrderStop()
     End Sub
     Private Sub UpdateFFF_Button_Click(sender As Object, e As EventArgs) Handles UpdateFFFNames_Button.Click
         UpdateNames()

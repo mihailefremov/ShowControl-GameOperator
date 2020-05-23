@@ -956,7 +956,7 @@ Public Class Quiz_Operator
         TimerATAsecDrop.Stop()
         TimerATAsecDrop.InitializeLifetimeService()
 
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\43.Audience Decide.wav", AudioPlayMode.Background)
+        MainGameMusicLayerObj.PlayLifelineSound("ATA", "DECIDE")
 
         A_pub.Text = A_pub.Text + "%"
         B_pub.Text = B_pub.Text + "%"
@@ -998,7 +998,7 @@ Public Class Quiz_Operator
 
         ataVoteTime_TextBox.Text = defaultATAvoteTime
 
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\42.Audience Keyboards.wav", AudioPlayMode.Background)
+        MainGameMusicLayerObj.PlayLifelineSound("ATA", "VOTE")
 
         TimerATAendVoteWithSec.Interval = Int(ataVoteTime_TextBox.Text) * 1000 + 5
         TimerATAendVoteWithSec.Start()
@@ -1107,7 +1107,7 @@ Public Class Quiz_Operator
 
         PAFsec_TextBox.Text = "30"
 
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\45.Friend Clock.wav", AudioPlayMode.Background)
+        MainGameMusicLayerObj.PlayLifelineSound("PAF", "CLOCK")
 
         Timer_PAUSE.Start()
 
@@ -1149,7 +1149,7 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub PAFabort_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAFabort_Label.Click
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\46.Interrupted Clock.wav", AudioPlayMode.Background)
+        MainGameMusicLayerObj.PlayLifelineSound("PAF", "ABORT")
 
         PAF_X_Label_Click(PAF_X_Label, Nothing)
 
@@ -1669,7 +1669,7 @@ Public Class Quiz_Operator
     Private Sub ATAready_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATAready_Label.Click
         Timer_PAUSE.Start()
 
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\41.Ask the Audience.wav", AudioPlayMode.BackgroundLoop)
+        MainGameMusicLayerObj.PlayLifelineSound("ATA", "ASK")
 
         ATA_1_Label_Click(ATA_1_Label, Nothing)
 
@@ -1689,7 +1689,7 @@ Public Class Quiz_Operator
         Timer_PAUSE.Start()
 
         'LightDown.URL = "C:\WWTBAM Removable Disc\UK 2007\44.Phone a Friend.wav"
-        My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\44.Phone a Friend.wav", AudioPlayMode.BackgroundLoop)
+        MainGameMusicLayerObj.PlayLifelineSound("PAF", "CALL")
 
         If GraphicsProcessingUnit.casparQA.IsConnected Then
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Invoke(1, "QuestionAnswersFadeOUT")
@@ -1850,9 +1850,11 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub CGConnection_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CGConnection_Button.Click
-        GraphicsProcessingUnit.ConnectCG(CasparServerIP_TextBox.Text, CASPARCGLog_TextBox)
-        System.Threading.Thread.Sleep(1000)
-        MoneyTreeSet_Label_Click(MoneyTreeSet_Label, Nothing)
+        Task.Run(Function()
+                     GraphicsProcessingUnit.ConnectCG(CasparServerIP_TextBox.Text, CASPARCGLog_TextBox)
+                     System.Threading.Thread.Sleep(1000)
+                     MoneyTreeSet_Label_Click(MoneyTreeSet_Label, Nothing)
+                 End Function)
     End Sub
 
     Private Sub ATAendVote_Label_Click(sender As Object, e As EventArgs) Handles ATAendVote_Label.Click

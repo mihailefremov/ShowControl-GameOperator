@@ -42,8 +42,11 @@
     Private LetsPLAYQ10AxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
     Private WalkAwayLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
 
+    Private LifelineSoundWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
+
     Private AnyMusicLXAxWindowsMediaPlayer As New System.Windows.Media.MediaPlayer
     Private ArbitrarySoundMediaPlayer As New Windows.Media.MediaPlayer
+
 
     Public WwtbamMusicPlaylistConfig As New Xml2CSharp.MUSICPLAYLISTCONFIGURATION
 
@@ -448,6 +451,31 @@
         StopIncorrectAnswer()
         My.Computer.Audio.Stop()
         ArbitrarySoundMediaPlayer.Stop()
+    End Sub
+
+    Sub PlayLifelineSound(Lifeline As String, State As String)
+        Lifeline = Lifeline.ToUpper
+        State = State.ToUpper
+
+        LifelineSoundWindowsMediaPlayer.Stop()
+
+        Select Case Lifeline + " " + State
+            Case "ATA ASK"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(41).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(41).TITLE)))
+            Case "ATA VOTE"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(42).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(42).TITLE)))
+            Case "ATA DECIDE"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(43).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(43).TITLE)))
+            Case "PAF CALL"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(44).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(44).TITLE)))
+            Case "PAF CLOCK"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(45).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(45).TITLE)))
+            Case "PAF ABORT"
+                LifelineSoundWindowsMediaPlayer.Open(New Uri(String.Format("{0}\{1}", WwtbamMusicPlaylistConfig.GetSoundByNumber(46).LOCATION, WwtbamMusicPlaylistConfig.GetSoundByNumber(46).TITLE)))
+        End Select
+
+        LifelineSoundWindowsMediaPlayer.Play()
+
     End Sub
 
     Sub PlayArbitrarySound(Sound As Xml2CSharp.SOUND)
