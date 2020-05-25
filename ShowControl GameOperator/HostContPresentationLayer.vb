@@ -44,7 +44,7 @@ Public Class HostContPresentationLayer
             Case "PHONEFRIEND_PROGRESS"
                 HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=Start")
 
-            Case "PHONEFRIEND_INTERRUPTED"
+            Case "PHONEFRIEND_INTERRUPTED", "PHONEFRIEND_END"
                 HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=None")
 
             Case "ASKAUDIENCE_QUESTIONING"
@@ -81,6 +81,8 @@ Public Class HostContPresentationLayer
             Case "EXPLANATION-NONE"
                 HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostOneTimeMessage.php?MessageType=Explanation&State=None")
                 'http://127.0.0.1/wwtbam-state/PostOneTimeMessage.php?MessageType=Explanation&State=None
+            Case "CONFIGURATION-RESET"
+                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostOneTimeMessage.php?MessageType=Other&State=ConfigurationReset")
         End Select
 
     End Sub

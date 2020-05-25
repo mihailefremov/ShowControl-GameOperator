@@ -382,8 +382,8 @@ Public Class Quiz_Operator
         LiveRehearselViewButton(m_IsGameGoingLive)
 
         TimerPAFsecondDrop.Interval = 1000
-        TimerEndPAF.Interval = 30000
         Timer_PLAY.Interval = 300
+
         If (Not Debugger.IsAttached) Or (Not Debugger.IsAttached And My.Settings.DebugMode = True) Then
             Timer_STOP.Start()
         End If
@@ -1017,7 +1017,22 @@ Public Class Quiz_Operator
 
     Private Sub TimerPAFsecondDrop_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerPAFsecondDrop.Tick
 
-        PAFsec_TextBox.Text -= 1
+        If PAFsec_TextBox.Text > 0 Then
+            PAFsec_TextBox.Text -= 1
+        Else
+            TimerPAFsecondDrop.Stop()
+            PAF_X_Label_Click(PAF_X_Label, Nothing)
+
+            MomentStatus = "PhoneFriend_End"
+
+            Timer_PLAY.Interval = 1000
+            Timer_PLAY.Start()
+
+            '*** CASPARCG
+            GraphicsProcessingUnit.PhoneAFriend("END")
+            '*** CASPARCG
+
+        End If
 
     End Sub
 
@@ -1112,7 +1127,6 @@ Public Class Quiz_Operator
         Timer_PAUSE.Start()
 
         TimerPAFsecondDrop.Start()
-        TimerEndPAF.Start()
 
         '*** CASPARCG
         GraphicsProcessingUnit.PhoneAFriend("START")
@@ -1124,43 +1138,15 @@ Public Class Quiz_Operator
 
     End Sub
 
-    Private Sub TimerEndPAF_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerEndPAF.Tick
-
-        PAFsec_TextBox.Text = "0"
-
-        PAF_X_Label_Click(PAF_X_Label, Nothing)
-
-        Timer_PLAY.Start()
-
-        Timer_PLAY.Interval = 1000
-
-        TimerPAFsecondDrop.Stop()
-        TimerPAFsecondDrop.InitializeLifetimeService()
-
-        TimerEndPAF.Stop()
-        TimerEndPAF.InitializeLifetimeService()
-
-        PAF_X_Label_Click(PAF_X_Label, Nothing)
-
-        '*** CASPARCG
-        GraphicsProcessingUnit.PhoneAFriend("END")
-        '*** CASPARCG
-
-    End Sub
-
     Private Sub PAFabort_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAFabort_Label.Click
         MainGameMusicLayerObj.PlayLifelineSound("PAF", "ABORT")
 
+        TimerPAFsecondDrop.Stop()
+
         PAF_X_Label_Click(PAF_X_Label, Nothing)
 
-        Timer_PLAY.Start()
         Timer_PLAY.Interval = 1500
-
-        TimerPAFsecondDrop.Stop()
-        TimerPAFsecondDrop.InitializeLifetimeService()
-
-        TimerEndPAF.Stop()
-        TimerEndPAF.InitializeLifetimeService()
+        Timer_PLAY.Start()
 
         '*** CASPARCG
         GraphicsProcessingUnit.PhoneAFriend("ABORT")
@@ -2583,5 +2569,10 @@ Public Class Quiz_Operator
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub ReloadConfiguration_Button_Click(sender As Object, e As EventArgs) Handles ReloadConfiguration_Button.Click
+        LoadConfiguration()
+        HostContPresentationLayer.OneTimeMessageSet("CONFIGURATION-RESET")
     End Sub
 End Class

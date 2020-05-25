@@ -28,7 +28,6 @@ Partial Class Quiz_Operator
         Me.TimerQuestionRemove = New System.Windows.Forms.Timer(Me.components)
         Me.RemoveQuestion_Button = New System.Windows.Forms.Button()
         Me.WalkAwayQoppinion_Label = New System.Windows.Forms.Label()
-        Me.TimerEndPAF = New System.Windows.Forms.Timer(Me.components)
         Me.TimerATAsecDrop = New System.Windows.Forms.Timer(Me.components)
         Me.TimerATAendVoteWithSec = New System.Windows.Forms.Timer(Me.components)
         Me.TimerABCDyellowLabels = New System.Windows.Forms.Timer(Me.components)
@@ -113,6 +112,7 @@ Partial Class Quiz_Operator
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AutoWhiteGleen_CheckBox = New System.Windows.Forms.CheckBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.StarApacheServer_Button = New System.Windows.Forms.Button()
         Me.ContestantPartner_Textbox = New System.Windows.Forms.TextBox()
         Me.ContestantCity_Textbox = New System.Windows.Forms.TextBox()
         Me.ContestantLastName_Textbox = New System.Windows.Forms.TextBox()
@@ -223,9 +223,8 @@ Partial Class Quiz_Operator
         Me.RehearselLiveLock_Button = New System.Windows.Forms.Button()
         Me.MusicList_ComboBox = New System.Windows.Forms.ComboBox()
         Me.SoundPlay_Button = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ReloadConfiguration_Button = New System.Windows.Forms.Button()
         Me.SoundMute_Button = New System.Windows.Forms.Button()
-        Me.StarApacheServer_Button = New System.Windows.Forms.Button()
         Me.GameControl_TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -284,9 +283,6 @@ Partial Class Quiz_Operator
         Me.WalkAwayQoppinion_Label.Text = "Guess Answer"
         Me.WalkAwayQoppinion_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.WalkAwayQoppinion_Label.Visible = False
-        '
-        'TimerEndPAF
-        '
         '
         'TimerATAsecDrop
         '
@@ -1245,6 +1241,15 @@ Partial Class Quiz_Operator
         Me.TabPage2.TabIndex = 5
         Me.TabPage2.Text = "HostContestant Screen"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'StarApacheServer_Button
+        '
+        Me.StarApacheServer_Button.Location = New System.Drawing.Point(581, 22)
+        Me.StarApacheServer_Button.Name = "StarApacheServer_Button"
+        Me.StarApacheServer_Button.Size = New System.Drawing.Size(100, 41)
+        Me.StarApacheServer_Button.TabIndex = 1244
+        Me.StarApacheServer_Button.Text = "Start Apache Server"
+        Me.StarApacheServer_Button.UseVisualStyleBackColor = True
         '
         'ContestantPartner_Textbox
         '
@@ -2606,18 +2611,18 @@ Partial Class Quiz_Operator
         Me.SoundPlay_Button.Text = "PLAY"
         Me.SoundPlay_Button.UseVisualStyleBackColor = False
         '
-        'Button6
+        'ReloadConfiguration_Button
         '
-        Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button6.Font = New System.Drawing.Font("Arial", 6.0!)
-        Me.Button6.ForeColor = System.Drawing.Color.Black
-        Me.Button6.Location = New System.Drawing.Point(1264, 6)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(59, 25)
-        Me.Button6.TabIndex = 1301
-        Me.Button6.Text = "RELOAD"
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.ReloadConfiguration_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ReloadConfiguration_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ReloadConfiguration_Button.Font = New System.Drawing.Font("Arial", 6.0!)
+        Me.ReloadConfiguration_Button.ForeColor = System.Drawing.Color.Black
+        Me.ReloadConfiguration_Button.Location = New System.Drawing.Point(1264, 6)
+        Me.ReloadConfiguration_Button.Name = "ReloadConfiguration_Button"
+        Me.ReloadConfiguration_Button.Size = New System.Drawing.Size(59, 25)
+        Me.ReloadConfiguration_Button.TabIndex = 1301
+        Me.ReloadConfiguration_Button.Text = "RELOAD"
+        Me.ReloadConfiguration_Button.UseVisualStyleBackColor = False
         '
         'SoundMute_Button
         '
@@ -2632,15 +2637,6 @@ Partial Class Quiz_Operator
         Me.SoundMute_Button.Text = "MUTE"
         Me.SoundMute_Button.UseVisualStyleBackColor = False
         '
-        'StarApacheServer_Button
-        '
-        Me.StarApacheServer_Button.Location = New System.Drawing.Point(581, 22)
-        Me.StarApacheServer_Button.Name = "StarApacheServer_Button"
-        Me.StarApacheServer_Button.Size = New System.Drawing.Size(100, 41)
-        Me.StarApacheServer_Button.TabIndex = 1244
-        Me.StarApacheServer_Button.Text = "Start Apache Server"
-        Me.StarApacheServer_Button.UseVisualStyleBackColor = True
-        '
         'Quiz_Operator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2648,7 +2644,7 @@ Partial Class Quiz_Operator
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1344, 711)
         Me.Controls.Add(Me.SoundMute_Button)
-        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.ReloadConfiguration_Button)
         Me.Controls.Add(Me.SoundPlay_Button)
         Me.Controls.Add(Me.MusicList_ComboBox)
         Me.Controls.Add(Me.RehearselLiveLock_Button)
@@ -2725,7 +2721,6 @@ Partial Class Quiz_Operator
     Friend WithEvents TimerQuestionRemove As System.Windows.Forms.Timer
     Friend WithEvents RemoveQuestion_Button As System.Windows.Forms.Button
     Friend WithEvents WalkAwayQoppinion_Label As System.Windows.Forms.Label
-    Friend WithEvents TimerEndPAF As System.Windows.Forms.Timer
     Friend WithEvents TimerATAsecDrop As System.Windows.Forms.Timer
     Friend WithEvents TimerATAendVoteWithSec As System.Windows.Forms.Timer
     Friend WithEvents TimerABCDyellowLabels As System.Windows.Forms.Timer
@@ -2917,7 +2912,7 @@ Partial Class Quiz_Operator
     Friend WithEvents RandomizeAnswers_CheckBox As CheckBox
     Friend WithEvents MusicList_ComboBox As ComboBox
     Friend WithEvents SoundPlay_Button As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents ReloadConfiguration_Button As Button
     Friend WithEvents SecondsToDissolveAfterCorrectAnswer_TextBox As TextBox
     Friend WithEvents Empty_CheckBox As CheckBox
     Friend WithEvents SumeShow_CheckBox As CheckBox
