@@ -1,8 +1,8 @@
 ﻿Imports System.Threading.Tasks
 
 Public Class Quiz_Operator
-    Dim RulesQcount As Integer
 
+    Dim RulesQcount As Integer
     Dim defaultATAvoteTime As String = 6
 
     Public Shared finalAnswerGiven As Boolean = False
@@ -11,6 +11,8 @@ Public Class Quiz_Operator
     Public Shared questionID As String
 
     Public MainGameMusicLayerObj As New MainGameMusicLayer
+
+    Public Localizer As WwtbamLocalizer
 
 #Region "PROPERTIЕS"
     Dim _MomentStatus As String = ""
@@ -273,6 +275,8 @@ Public Class Quiz_Operator
     Public AskTheHostPosition As Short = 0
     Public AskTheExpertPosition As Short = 0
 
+    Public AnswerMarks As String = "ABCD"
+
     Dim Lifelines_ As String
     Public Property Lifelines As String
         Get
@@ -294,7 +298,7 @@ Public Class Quiz_Operator
         End Set
     End Property
 
-    Dim MoneyTree As New List(Of Decimal)
+    Dim MoneyTree As List(Of Decimal)
 
 #End Region
 
@@ -333,6 +337,7 @@ Public Class Quiz_Operator
 
 #Region "MONEYTREE REAL VALUE"
 
+            MoneyTree = New List(Of Decimal)
             MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q1.REALVALUE)
             MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q2.REALVALUE)
             MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q3.REALVALUE)
@@ -352,6 +357,9 @@ Public Class Quiz_Operator
 
 #End Region
 
+            Localizer = New WwtbamLocalizer
+            Localizer.LocalizeControl(Me)
+
             HostContPresentationLayer.ConfigurationMoneyTreeSet()
 
             If WwtbamConfiguraiton.LIFELINES.DEFAULTLIFELINECOUNT.Equals(3) Then
@@ -362,6 +370,9 @@ Public Class Quiz_Operator
 
             Lifelines = $"{WwtbamConfiguraiton.LIFELINES.LIFELINE1};{WwtbamConfiguraiton.LIFELINES.LIFELINE2};{WwtbamConfiguraiton.LIFELINES.LIFELINE3};{WwtbamConfiguraiton.LIFELINES.LIFELINE4};{WwtbamConfiguraiton.LIFELINES.LIFELINE5}"
             HostContPresentationLayer.ConfigurationLifelines($"{WwtbamConfiguraiton.LIFELINES.LIFELINE1}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE2}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE3}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE4}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE5}")
+
+            AnswerMarks = IIf(Localizer.GetValueByKey("ANSWERMARKS").Length >= 4, Localizer.GetValueByKey("ANSWERMARKS"), AnswerMarks)
+            HostContPresentationLayer.ConfigurationLocalization(AnswerMarks, Localizer.GetValueByKey("TOTALPRIZEWONTAG"))
 
             GuiContext.ResetAll()
 
@@ -848,9 +859,11 @@ Public Class Quiz_Operator
 
     Private Sub WonPrizeReveal_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WonPrizeReveal_Button.Click
         WonPrizeReveal_Button.BackColor = Color.Gainsboro
-        GraphicsProcessingUnit.WonPrizeReveal(LevelQ, QuestionForSume)
+        GraphicsProcessingUnit.WonPrizeReveal(LevelQ,
+                                              Localizer.GetValueByKey("TOTALPRIZEWONTAG"),
+                                              QuestionForSume)
 
-        If LevelQ = "111" Or LevelQ = "666" Then
+        If LevelQ = "111" Or LevelQ = "666" Or LevelQ = "16" Then
             HostContPresentationLayer.GamePlayStateSet("TOTALPRIZEWON")
 
         ElseIf LevelQ <> "888" Then
@@ -2575,4 +2588,53 @@ Public Class Quiz_Operator
         LoadConfiguration()
         HostContPresentationLayer.OneTimeMessageSet("CONFIGURATION-RESET")
     End Sub
+
+    Dim ContestantClickStateID As String = ""
+    Private Sub GetContestantClicks_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles GetContestantClicks_CheckBox.CheckedChanged
+
+        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostContestantClickData.php?ClickType=-1&ClickValue=-1")
+
+        If GetContestantClicks_CheckBox.Checked Then
+            Task.Run(Sub()
+                         While GetContestantClicks_CheckBox.Checked
+                             If Me.InvokeRequired Then
+                                 Me.Invoke(New Action(AddressOf GetContestantClicks))
+                             Else
+                                 GetContestantClicks()
+                             End If
+                             System.Threading.Thread.Sleep(500)
+                         End While
+                     End Sub)
+        End If
+
+    End Sub
+
+    Sub GetContestantClicks()
+        Dim ContClicksText As String = HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/GetContestantClickData.php")
+        Dim ContClicksReader As System.IO.TextReader = New System.IO.StringReader(ContClicksText)
+
+        Dim serializer As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(Xml2CSharp.WWTBAMCONTESTANTCLICKSDATA))
+        Dim WwtbamClicks As Xml2CSharp.WWTBAMCONTESTANTCLICKSDATA
+        WwtbamClicks = serializer.Deserialize(ContClicksReader)
+
+        If Not String.Equals(ContestantClickStateID, WwtbamClicks.STATEID, StringComparison.OrdinalIgnoreCase) Then
+            ContestantClickStateID = WwtbamClicks.STATEID
+
+            If String.Equals("FINALANSWER", WwtbamClicks.CLICKTYPE, StringComparison.OrdinalIgnoreCase) Then
+                Select Case WwtbamClicks.CLICKVALUE
+                    Case "1"
+                        FinalA_Button_Click(FinalA_Button, Nothing)
+                    Case "2"
+                        FinalB_Button_Click(FinalB_Button, Nothing)
+                    Case "3"
+                        FinalC_Button_Click(FinalC_Button, Nothing)
+                    Case "4"
+                        FinalD_Button_Click(FinalD_Button, Nothing)
+                End Select
+            End If
+        End If
+
+
+    End Sub
+
 End Class

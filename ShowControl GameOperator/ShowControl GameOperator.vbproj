@@ -134,7 +134,9 @@
     <Compile Include="Deserializers\BASICGAMECONFIGURATIONS.vb" />
     <Compile Include="ConfigurationContext.vb" />
     <Compile Include="Deserializers\GRAPHICSGAMECONFIGURATION.vb" />
+    <Compile Include="Deserializers\LOCALIZATIONCONFIGURATION.vb" />
     <Compile Include="Deserializers\MUSICPLAYLISTCONFIGURATION.vb" />
+    <Compile Include="Deserializers\WWTBAMCONTESTANTCLICKSDATA.vb" />
     <Compile Include="FFFConfigurationFrm.Designer.vb">
       <DependentUpon>FFFConfigurationFrm.vb</DependentUpon>
     </Compile>
@@ -148,6 +150,7 @@
     </Compile>
     <Compile Include="GuiContext.vb" />
     <Compile Include="InteractiveWallScreen.vb" />
+    <Compile Include="WwtbamLocalizer.vb" />
     <Compile Include="MusicLayer\MainGameMusicLayerMp3.vb" />
     <Compile Include="Deserializers\WWTBAMMAINGAMEPLAYSTATE.vb" />
     <Compile Include="FastestFingerManaging.vb" />

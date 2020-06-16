@@ -101,10 +101,10 @@ Public Class GraphicsProcessingUnit
         '' ******* CASPARCG ******* 
     End Sub
 
-    Friend Shared Sub WonPrizeReveal(LevelQ_TextBox As String, QuestionForSume As String)
-        If LevelQ_TextBox = "111" Or LevelQ_TextBox = "666" Then
+    Friend Shared Sub WonPrizeReveal(LevelQ_TextBox As String, DescriptorPrizeWon As String, QuestionForSume As String)
+        If LevelQ_TextBox = "111" Or LevelQ_TextBox = "666" Or LevelQ_TextBox = "16" Then
             '' ******* CASPARCG ******* CASPARCG *******
-            cgDataQA.SetData("DescrPrizeWon_TextField", "ОСВОЕНА СУМА")
+            cgDataQA.SetData("DescrPrizeWon_TextField", DescriptorPrizeWon)
             cgDataQA.SetData("TotalPrizeWon_TextField", QuestionForSume)
 
             '' ******* CASPARCG ******* CASPARCG *******

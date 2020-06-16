@@ -70,6 +70,9 @@ Public Class HostContPresentationLayer
         HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/configuration-data/PostLifelineConfigurationData.php?Lifeline1={LF1}&Lifeline2={LF2}&Lifeline3={LF3}&Lifeline4={LF4}&Lifeline5={LF5}")
     End Sub
 
+    Public Shared Sub ConfigurationLocalization(ANSWERMARKS As String, TPWONTAG As String)
+        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/configuration-data/PostLocalizationConfigurationData.php?AnswerMarks={ANSWERMARKS}&TpWon={TPWONTAG}")
+    End Sub
 
     Public Shared Sub OneTimeMessageSet(Optional OneTimeMessage As String = "")
 

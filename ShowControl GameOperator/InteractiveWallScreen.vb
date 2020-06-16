@@ -72,9 +72,12 @@ Public Class InteractiveWallScreen
             ElseIf Level >= 6 And Level <= 10 Then
                 LevelX = "6to10"
                 versionNumber = randomGen.Next(1, 6)
-            ElseIf Level >= 11 And Level <= 15 Then 'od 11-15
+            ElseIf Level >= 11 And Level <= 14 Then 'od 11-14
                 LevelX = "11to15"
                 versionNumber = randomGen.Next(1, 8)
+            ElseIf Level = 15 Then '15
+                LevelX = "15"
+
             ElseIf Level = 2001 Then
                 LevelX = "FastetFingerFirst"
                 versionNumber = 1
@@ -113,6 +116,7 @@ Public Class InteractiveWallScreen
             Dim LevelX As String = ""
             Dim randomGen As New Random
             Dim versionNumber As Short
+            Dim isLoop As Boolean = False
 
             If Level >= 5 And Level <= 9 Then 'od 5-9
                 LevelX = "6to10"
@@ -123,16 +127,21 @@ Public Class InteractiveWallScreen
             ElseIf Level = 10 Then '10
                 LevelX = "10"
                 versionNumber = 1
-            ElseIf Level >= 11 And Level <= 15 Then 'od 11-15
+            ElseIf Level >= 11 And Level <= 14 Then 'od 11-14
                 LevelX = "11to15"
                 versionNumber = 1
+            ElseIf Level = 15 Then 'od 15
+                LevelX = "15"
+                versionNumber = 1
+                isLoop = True
             Else
                 Return
             End If
 
             If casparWallScreen.IsConnected Then
                 casparWallScreen.Channels(0).Clear(0)
-                casparWallScreen.Channels(0).LoadBG(20, $"Correct{LevelX}v{versionNumber.ToString}", False)
+                casparWallScreen.Channels(0).LoadBG(20, $"Correct{LevelX}v{versionNumber.ToString}", isLoop)
+                casparWallScreen.Channels(0).SetVolume(20, 0, 8, Easing.EaseInBack)
                 casparWallScreen.Channels(0).Play(20)
             End If
         Catch ex As Exception
