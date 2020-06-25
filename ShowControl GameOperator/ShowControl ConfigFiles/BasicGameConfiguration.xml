@@ -2,75 +2,104 @@
     <MONEYTREE>
         <NUMBEROFQUESTIONS>15</NUMBEROFQUESTIONS>
         <DECIMALSEPARATOR></DECIMALSEPARATOR>
-        <SAFETYNETS>5;10;15</SAFETYNETS>
         <VARIABLESAFETYNET>NO</VARIABLESAFETYNET>
         <LIFELINEDEPENDANTSAFETYNET>10</LIFELINEDEPENDANTSAFETYNET>
-        <Q15>
-            <REALVALUE>4000000</REALVALUE>
-            <PREVIEWVALUE>4 МИЛИОНИ</PREVIEWVALUE>
-        </Q15>
-        <Q14>
-            <REALVALUE>2000000</REALVALUE>
-            <PREVIEWVALUE>2 МИЛИОНИ</PREVIEWVALUE>
-        </Q14>
-        <Q13>
+        <LEVEL>
+            <POSITION>15</POSITION>
             <REALVALUE>1000000</REALVALUE>
-            <PREVIEWVALUE>1 МИЛИОН</PREVIEWVALUE>
-        </Q13>
-        <Q12>
+            <PREVIEWVALUE>$1 MILLION</PREVIEWVALUE>
+			<SAFEHEAVEN>1</SAFEHEAVEN>
+        </LEVEL>
+        <LEVEL>
+            <POSITION>14</POSITION>		
             <REALVALUE>500000</REALVALUE>
-            <PREVIEWVALUE>500.000</PREVIEWVALUE>
-        </Q12>
-        <Q11>
+            <PREVIEWVALUE>$500.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>
+        </LEVEL>
+        <LEVEL>
+            <POSITION>13</POSITION>		
             <REALVALUE>250000</REALVALUE>
-            <PREVIEWVALUE>250.000</PREVIEWVALUE>
-        </Q11>
-        <Q10>
+            <PREVIEWVALUE>$250.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>12</POSITION>		
             <REALVALUE>125000</REALVALUE>
-            <PREVIEWVALUE>125.000</PREVIEWVALUE>
-        </Q10>
-        <Q9>
+            <PREVIEWVALUE>$125.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>
+        <LEVEL>
+            <POSITION>11</POSITION>		
             <REALVALUE>64000</REALVALUE>
-            <PREVIEWVALUE>64.000</PREVIEWVALUE>
-        </Q9>
-        <Q8>
+            <PREVIEWVALUE>$64.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>
+        <LEVEL>
+            <POSITION>10</POSITION>		
             <REALVALUE>32000</REALVALUE>
-            <PREVIEWVALUE>32.000</PREVIEWVALUE>
-        </Q8>
-        <Q7>
+            <PREVIEWVALUE>$32.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>
+        <LEVEL>
+            <POSITION>9</POSITION>		
             <REALVALUE>16000</REALVALUE>
-            <PREVIEWVALUE>16.000</PREVIEWVALUE>
-        </Q7>
-        <Q6>
+            <PREVIEWVALUE>$16.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>8</POSITION>		
             <REALVALUE>8000</REALVALUE>
-            <PREVIEWVALUE>8.000</PREVIEWVALUE>
-        </Q6>
-        <Q5>
-            <REALVALUE>5000</REALVALUE>
-            <PREVIEWVALUE>5.000</PREVIEWVALUE>
-        </Q5>
-        <Q4>
-            <REALVALUE>3000</REALVALUE>
-            <PREVIEWVALUE>3.000</PREVIEWVALUE>
-        </Q4>
-        <Q3>
+            <PREVIEWVALUE>$8.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>7</POSITION>		
+            <REALVALUE>4000</REALVALUE>
+            <PREVIEWVALUE>$4.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>	
+        <LEVEL>
+            <POSITION>6</POSITION>		
             <REALVALUE>2000</REALVALUE>
-            <PREVIEWVALUE>2.000</PREVIEWVALUE>
-        </Q3>
-        <Q2>
+            <PREVIEWVALUE>$2.000</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>5</POSITION>		
             <REALVALUE>1000</REALVALUE>
-            <PREVIEWVALUE>1.000</PREVIEWVALUE>
-        </Q2>
-        <Q1>
+            <PREVIEWVALUE>$1.000</PREVIEWVALUE>
+			<SAFEHEAVEN>1</SAFEHEAVEN>			
+        </LEVEL>			
+        <LEVEL>
+            <POSITION>4</POSITION>		
             <REALVALUE>500</REALVALUE>
-            <PREVIEWVALUE>500</PREVIEWVALUE>
-        </Q1>
+            <PREVIEWVALUE>$500</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>3</POSITION>		
+            <REALVALUE>300</REALVALUE>
+            <PREVIEWVALUE>$300</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>		
+        <LEVEL>
+            <POSITION>2</POSITION>		
+            <REALVALUE>200</REALVALUE>
+            <PREVIEWVALUE>$200</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>	
+        <LEVEL>
+            <POSITION>1</POSITION>		
+            <REALVALUE>100</REALVALUE>
+            <PREVIEWVALUE>$100</PREVIEWVALUE>
+			<SAFEHEAVEN>0</SAFEHEAVEN>			
+        </LEVEL>			
     </MONEYTREE>
     <LIFELINES>
         <DEFAULTLIFELINECOUNT>3</DEFAULTLIFELINECOUNT>
         <LIFELINE1>5050</LIFELINE1>
         <LIFELINE2>DDIP</LIFELINE2>
-        <LIFELINE3>ATA</LIFELINE3>
+        <LIFELINE3>PAF</LIFELINE3>
         <LIFELINE4>STQ</LIFELINE4>
         <LIFELINE5>ATH</LIFELINE5>
     </LIFELINES>

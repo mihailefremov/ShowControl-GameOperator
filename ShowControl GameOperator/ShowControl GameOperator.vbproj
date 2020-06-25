@@ -131,12 +131,34 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLayerMySql.vb" />
     <Compile Include="Deserializers\BASICGAMECONFIGURATIONS.vb" />
     <Compile Include="ConfigurationContext.vb" />
     <Compile Include="Deserializers\GRAPHICSGAMECONFIGURATION.vb" />
     <Compile Include="Deserializers\LOCALIZATIONCONFIGURATION.vb" />
     <Compile Include="Deserializers\MUSICPLAYLISTCONFIGURATION.vb" />
     <Compile Include="Deserializers\WWTBAMCONTESTANTCLICKSDATA.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\ChainOfResponsibilityPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\CommandPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\InterpreterPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\IteratorPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\MediatorPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\StatePattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\StrategyPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\TemplatePattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\VisitorPattern.vb" />
+    <Compile Include="DesignPatterns\CreationalPatterns\AbstractFactoryPattern.vb" />
+    <Compile Include="DesignPatterns\CreationalPatterns\BuilderPattern.vb" />
+    <Compile Include="DesignPatterns\CreationalPatterns\FactoryMethodPattern.vb" />
+    <Compile Include="DesignPatterns\CreationalPatterns\PrototypePattern.vb" />
+    <Compile Include="DesignPatterns\CreationalPatterns\SingletonPattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\AdapterPattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\BridgePattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\CompositePattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\DecoratorPattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\FacadePattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\FlyweightPattern.vb" />
+    <Compile Include="DesignPatterns\StructuralPatterns\ProxyPattern.vb" />
     <Compile Include="FFFConfigurationFrm.Designer.vb">
       <DependentUpon>FFFConfigurationFrm.vb</DependentUpon>
     </Compile>
@@ -148,10 +170,21 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>GameConfiguration.settings</DependentUpon>
     </Compile>
+    <Compile Include="GameLevelTree.vb" />
+    <Compile Include="GamePlayContext.vb" />
     <Compile Include="GuiContext.vb" />
+    <Compile Include="IDataLayer.vb" />
+    <Compile Include="IGameLevel.vb" />
+    <Compile Include="ILevelTree.vb" />
     <Compile Include="InteractiveWallScreen.vb" />
+    <Compile Include="ILevel.vb" />
+    <Compile Include="Lifelines.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\MementoPattern.vb" />
+    <Compile Include="DesignPatterns\BehavioralPatterns\ObserverPattern.vb" />
+    <Compile Include="MainGameLevel.vb" />
+    <Compile Include="Question.vb" />
     <Compile Include="WwtbamLocalizer.vb" />
-    <Compile Include="MusicLayer\MainGameMusicLayerMp3.vb" />
+    <Compile Include="MusicLayer\MainGameMusicLayer.vb" />
     <Compile Include="Deserializers\WWTBAMMAINGAMEPLAYSTATE.vb" />
     <Compile Include="FastestFingerManaging.vb" />
     <Compile Include="FFFDevices.vb" />
@@ -169,7 +202,7 @@
     <Compile Include="GraphicsProcessingUnit.vb" />
     <Compile Include="Helpers.vb" />
     <Compile Include="HostContPresentationLayer.vb" />
-    <Compile Include="DataLayer.vb" />
+    <Compile Include="DataLayerMsSql.vb" />
     <Compile Include="Log.vb" />
     <Compile Include="MusicLayer\FFFMusicLayer.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

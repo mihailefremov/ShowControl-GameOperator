@@ -2,305 +2,17 @@
 
 Public Class Quiz_Operator
 
-    Dim RulesQcount As Integer
-    Dim defaultATAvoteTime As String = 6
+    Private RulesQcount As Integer
+    Private defaultATAvoteTime As String = 6
 
-    Public Shared finalAnswerGiven As Boolean = False
+    Private SwitchedQuestion As Integer
 
-    Public Shared SwitchedQuestion As Integer
-    Public Shared questionID As String
+    Private MainGameMusicLayerObj As MainGameMusicLayer
+    Private Localizer As WwtbamLocalizer
 
-    Public MainGameMusicLayerObj As New MainGameMusicLayer
+    Private DataLayer As IDataLayer = New DataLayerMsSql
 
-    Public Localizer As WwtbamLocalizer
-
-#Region "PROPERTIЕS"
-    Dim _MomentStatus As String = ""
-    Public Property MomentStatus() As String
-        Get
-            Return _MomentStatus
-        End Get
-        Set(value As String)
-            _MomentStatus = value
-            MomentStatusCUEorder_TextBox.Text = value
-            HostContPresentationLayer.GamePlayStateSet(value)
-            GUIOperatorStateSet(_MomentStatus)
-        End Set
-    End Property
-
-    Dim LifelinesState1 As String = ""
-    Public ReadOnly Property LifelinesState As String
-        Get
-            Dim AllLifelines As String = String.Format("{0};{1};{2};{3}", Helpers.ConvertLifelineStateToReadable(Lifeline1Active), Helpers.ConvertLifelineStateToReadable(Lifeline2Active), Helpers.ConvertLifelineStateToReadable(Lifeline3Active), Helpers.ConvertLifelineStateToReadable(Lifeline4Active))
-            Return AllLifelines
-        End Get
-    End Property
-
-    Dim lifeline1Active1 As Short = 1
-    Public Property Lifeline1Active As Short
-        Get
-            Return lifeline1Active1
-        End Get
-        Set(value As Short)
-            lifeline1Active1 = value
-            GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
-            HostContPresentationLayer.GamePlayStateSet("LIFELINE_UPDATE")
-        End Set
-    End Property
-
-    Dim lifeline2Active1 As Short = 1
-    Public Property Lifeline2Active As Short
-        Get
-            Return lifeline2Active1
-        End Get
-        Set(value As Short)
-            lifeline2Active1 = value
-            GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
-            HostContPresentationLayer.GamePlayStateSet("LIFELINE_UPDATE")
-        End Set
-    End Property
-
-    Dim lifeline3Active1 As Short = 1
-    Public Property Lifeline3Active As Short
-        Get
-            Return lifeline3Active1
-        End Get
-        Set(value As Short)
-            lifeline3Active1 = value
-            GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
-            HostContPresentationLayer.GamePlayStateSet("LIFELINE_UPDATE")
-        End Set
-    End Property
-
-    Dim lifeline4Active1 As Short = 1
-    Public Property Lifeline4Active As Short
-        Get
-            Return lifeline4Active1
-        End Get
-        Set(value As Short)
-            lifeline4Active1 = value
-            GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
-            HostContPresentationLayer.GamePlayStateSet("LIFELINE_UPDATE")
-        End Set
-    End Property
-
-    Dim doubleDipState1 As String = ""
-    Public Property DoubleDipState As String
-        Get
-            Return doubleDipState1
-        End Get
-        Set(value As String)
-            doubleDipState1 = value
-            GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
-        End Set
-    End Property
-
-    Dim doubleDipFirstAnswer1 As String = ""
-    Public Property DoubleDipFirstAnswer As String
-        Get
-            Return doubleDipFirstAnswer1
-        End Get
-        Set(value As String)
-            doubleDipFirstAnswer1 = value
-        End Set
-    End Property
-
-    Dim QuestionText1 As String = ""
-    Public Property QuestionText As String
-        Get
-            Return QuestionText1
-        End Get
-        Set(value As String)
-            QuestionText1 = value
-            Question_TextBox.Text = value.Replace(vbCr, " ").Replace(vbLf, " ")
-        End Set
-    End Property
-
-    Dim Answer1Text1 As String = ""
-    Public Property Answer1Text As String
-        Get
-            Return Answer1Text1
-        End Get
-        Set(value As String)
-            Answer1Text1 = value
-            AnswerA_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim Answer2Text1 As String = ""
-    Public Property Answer2Text As String
-        Get
-            Return Answer2Text1
-        End Get
-        Set(value As String)
-            Answer2Text1 = value
-            AnswerB_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim Answer3Text1 As String = ""
-    Public Property Answer3Text As String
-        Get
-            Return Answer3Text1
-        End Get
-        Set(value As String)
-            Answer3Text1 = value
-            AnswerC_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim Answer4Text1 As String = ""
-    Public Property Answer4Text As String
-        Get
-            Return Answer4Text1
-        End Get
-        Set(value As String)
-            Answer4Text1 = value
-            AnswerD_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim FinalAnswer1 As String = ""
-    Public Property FinalAnswer As String
-        Get
-            Return FinalAnswer1
-        End Get
-        Set(value As String)
-            FinalAnswer1 = value
-            FinalAnswer_TextBox.Text = Helpers.Convert1234ToABCD(value)
-        End Set
-    End Property
-
-    Dim CorrectAnswer1 As String = ""
-    Public Property CorrectAnswer As String
-        Get
-            Return CorrectAnswer1
-        End Get
-        Set(value As String)
-            CorrectAnswer1 = value
-            CorrectAnswer_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim Explanation1 As String = ""
-    Public Property Explanation As String
-        Get
-            Return Explanation1
-        End Get
-        Set(value As String)
-            Explanation1 = value
-            MoreQuestionInfoForHost_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim Pronunciation1 As String = ""
-    Public Property Pronunciation As String
-        Get
-            Return Pronunciation1
-        End Get
-        Set(value As String)
-            Pronunciation1 = value
-            Pronunciation_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim LevelQ1 As String = 0
-    Public Property LevelQ As String
-        Get
-            Return LevelQ1
-        End Get
-        Set(value As String)
-            LevelQ1 = value
-            LevelQ_TextBox.Text = value
-        End Set
-    End Property
-
-    Dim CurentGameStatusData1 As String = ""
-    Public Property CurentGameStatusData As String
-        Get
-            Return CurentGameStatusData1
-        End Get
-        Set(value As String)
-            CurentGameStatusData1 = value
-            HostContPresentationLayer.GamePlayStateSet("")
-        End Set
-    End Property
-
-    Dim ActiveLifelines1 As String = "4"
-    Public Property ActiveLifelines As String
-        Get
-            Return ActiveLifelines1
-        End Get
-        Set(value As String)
-            ActiveLifelines1 = value
-            HostContPresentationLayer.GamePlayStateSet("")
-        End Set
-    End Property
-
-    Dim FiftyFifty1 As String = ""
-    Public Property FiftyFifty As String
-        Get
-            Return FiftyFifty1
-        End Get
-        Set(value As String)
-            FiftyFifty1 = value
-        End Set
-    End Property
-
-    Dim AtaVotes1 As String = ""
-    Public Property AtaVotes As String
-        Get
-            Return AtaVotes1
-        End Get
-        Set(value As String)
-            AtaVotes1 = value
-        End Set
-    End Property
-
-    Dim QuestionForSume1 As String = ""
-    Public Property QuestionForSume As String
-        Get
-            Return QuestionForSume1
-        End Get
-        Set(value As String)
-            QuestionForSume1 = value
-        End Set
-    End Property
-
-    Public FiftyFiftyPosition As Short = 0
-    Public PhoneAFriendPosition As Short = 0
-    Public AskTheAudiencePosition As Short = 0
-    Public SwitchTheQuestionPosition As Short = 0
-    Public DoubleDipPosition As Short = 0
-    Public AskTheHostPosition As Short = 0
-    Public AskTheExpertPosition As Short = 0
-
-    Public AnswerMarks As String = "ABCD"
-
-    Dim Lifelines_ As String
-    Public Property Lifelines As String
-        Get
-            Return Lifelines_
-        End Get
-        Set(value As String)
-            Lifelines_ = value.ToUpper
-            Try
-                Dim Lifelines() As String = Lifelines_.Split(";")
-                FiftyFiftyPosition = Array.IndexOf(Lifelines, "5050") + 1
-                PhoneAFriendPosition = Array.IndexOf(Lifelines, "PAF") + 1
-                AskTheAudiencePosition = Array.IndexOf(Lifelines, "ATA") + 1
-                SwitchTheQuestionPosition = Array.IndexOf(Lifelines, "STQ") + 1
-                DoubleDipPosition = Array.IndexOf(Lifelines, "DDIP") + 1
-                AskTheHostPosition = Array.IndexOf(Lifelines, "ATH") + 1
-                AskTheExpertPosition = Array.IndexOf(Lifelines, "ATE") + 1
-            Catch ex As Exception
-            End Try
-        End Set
-    End Property
-
-    Dim MoneyTree As List(Of Decimal)
-
-#End Region
+    Public ViewModel As New GamePlayContext
 
     Private Sub LoadConfiguration()
 
@@ -315,45 +27,28 @@ Public Class Quiz_Operator
 
             WwtbamConfiguraiton = serializer.Deserialize(BasicConfigurationReader)
 
-#Region "MONEYTREE PREVIEW VALUE"
-            QSum1_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q1.PREVIEWVALUE
-            QSum2_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q2.PREVIEWVALUE
-            QSum3_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q3.PREVIEWVALUE
-            QSum4_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q4.PREVIEWVALUE
-            QSum5_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q5.PREVIEWVALUE
-
-            QSum6_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q6.PREVIEWVALUE
-            QSum7_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q7.PREVIEWVALUE
-            QSum8_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q8.PREVIEWVALUE
-            QSum9_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q9.PREVIEWVALUE
-            QSum10_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q10.PREVIEWVALUE
-
-            QSum11_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q11.PREVIEWVALUE
-            QSum12_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q12.PREVIEWVALUE
-            QSum13_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q13.PREVIEWVALUE
-            QSum14_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q14.PREVIEWVALUE
-            QSum15_TextBox.Text = WwtbamConfiguraiton.MONEYTREE.Q15.PREVIEWVALUE
-#End Region
-
 #Region "MONEYTREE REAL VALUE"
 
-            MoneyTree = New List(Of Decimal)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q1.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q2.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q3.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q4.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q5.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q6.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q7.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q8.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q9.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q10.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q11.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q12.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q13.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q14.REALVALUE)
-            MoneyTree.Add(WwtbamConfiguraiton.MONEYTREE.Q15.REALVALUE)
-            MoneyTree.Sort()
+            ViewModel.Gpx.CurrentGamePlayLevels = New LevelTree()
+            For Each level As Xml2CSharp.LEVEL In WwtbamConfiguraiton.MONEYTREE.LEVEL
+                ViewModel.Gpx.CurrentGamePlayLevels.Add(New MainGameLevel(level.POSITION, level.PREVIEWVALUE, level.REALVALUE, level.SAFEHEAVEN))
+            Next
+            ViewModel.Gpx.CurrentGamePlayLevels.OrderBy(Function(t) t.PositionLevel)
+
+#End Region
+
+#Region "MONEYTREE PREVIEW VALUE SET"
+
+            For Each level As Xml2CSharp.LEVEL In WwtbamConfiguraiton.MONEYTREE.LEVEL
+                Dim TextBoxSume As String = "QSum" + (level.POSITION).ToString + "_TextBox"
+                For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
+                    If String.Compare(TextBoxSume, tb.Name, True) = 0 Then
+                        tb.Text = level.PREVIEWVALUE
+                        tb.BackColor = Color.White
+                        If level.SAFEHEAVEN = "1" Then tb.BackColor = Color.Bisque
+                    End If
+                Next
+            Next
 
 #End Region
 
@@ -368,14 +63,15 @@ Public Class Quiz_Operator
                 FourLifelinesStatus_Label_Click(fourLifelinesStatus_Label, Nothing)
             End If
 
-            Lifelines = $"{WwtbamConfiguraiton.LIFELINES.LIFELINE1};{WwtbamConfiguraiton.LIFELINES.LIFELINE2};{WwtbamConfiguraiton.LIFELINES.LIFELINE3};{WwtbamConfiguraiton.LIFELINES.LIFELINE4};{WwtbamConfiguraiton.LIFELINES.LIFELINE5}"
+            ViewModel.Gpx.Lifelines.ThisGameLifelines = $"{WwtbamConfiguraiton.LIFELINES.LIFELINE1};{WwtbamConfiguraiton.LIFELINES.LIFELINE2};{WwtbamConfiguraiton.LIFELINES.LIFELINE3};{WwtbamConfiguraiton.LIFELINES.LIFELINE4};{WwtbamConfiguraiton.LIFELINES.LIFELINE5}"
             HostContPresentationLayer.ConfigurationLifelines($"{WwtbamConfiguraiton.LIFELINES.LIFELINE1}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE2}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE3}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE4}", $"{WwtbamConfiguraiton.LIFELINES.LIFELINE5}")
 
-            AnswerMarks = IIf(Localizer.GetValueByKey("ANSWERMARKS").Length >= 4, Localizer.GetValueByKey("ANSWERMARKS"), AnswerMarks)
-            HostContPresentationLayer.ConfigurationLocalization(AnswerMarks, Localizer.GetValueByKey("TOTALPRIZEWONTAG"))
+            ViewModel.Gpx.AnswerMarks = IIf(Localizer.GetValueByKey("ANSWERMARKS").Length >= 4, Localizer.GetValueByKey("ANSWERMARKS"), ViewModel.Gpx.AnswerMarks)
+            HostContPresentationLayer.ConfigurationLocalization(ViewModel.Gpx.AnswerMarks, Localizer.GetValueByKey("TOTALPRIZEWONTAG"))
 
             GuiContext.ResetAll()
 
+            MainGameMusicLayerObj = New MainGameMusicLayer(WwtbamConfiguraiton.MONEYTREE.LEVEL.Count)
             MusicList_ComboBox.DataSource = MainGameMusicLayerObj.WwtbamMusicPlaylistConfig.SOUND
             MusicList_ComboBox.DisplayMember = "TITLE"
 
@@ -392,6 +88,8 @@ Public Class Quiz_Operator
         LoadConfiguration()
         LiveRehearselViewButton(m_IsGameGoingLive)
 
+        ViewModel.Run()
+
         TimerPAFsecondDrop.Interval = 1000
         Timer_PLAY.Interval = 300
 
@@ -399,120 +97,57 @@ Public Class Quiz_Operator
             Timer_STOP.Start()
         End If
 
+
     End Sub
 
     Private Sub QuestionLoad_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuestionLoad_Label.Click
 
-        Dim CorrectAnswerInt As Integer
-
-        If LevelQ <> "111" Or LevelQ <> "666" Then
-            Using selectedQuestionTable As DataTable = DataLayer.SelectSuitableQuestion(LevelQ)
+        If ViewModel.Gpx.Question.LevelQ <> "111" Or ViewModel.Gpx.Question.LevelQ <> "666" Then
+            Using selectedQuestionTable As DataTable = DataLayer.SelectSuitableQuestion(ViewModel.Gpx.Question.LevelQ)
                 With selectedQuestionTable
                     If selectedQuestionTable.Rows.Count > 0 Then
-                        QuestionText = .Rows(0)("Question").ToString().Replace("|", vbCrLf)
-                        Answer1Text = .Rows(0)("Answer1").ToString()
-                        Answer2Text = .Rows(0)("Answer2").ToString()
-                        Answer3Text = .Rows(0)("Answer3").ToString()
-                        Answer4Text = .Rows(0)("Answer4").ToString()
-                        CorrectAnswer = .Rows(0)("CorrectAnswer").ToString()
-                        CorrectAnswerInt = .Rows(0)("CorrectAnswer")
-                        Explanation = .Rows(0)("MoreInformation").ToString()
-                        Pronunciation = .Rows(0)("Pronunciation").ToString()
-                        questionID = .Rows(0)("QuestionID").ToString()
+                        ViewModel.Gpx.Question.ID = .Rows(0)("QuestionID").ToString()
+                        ViewModel.Gpx.Question = New Question(selectedQuestionTable)
                     End If
                 End With
             End Using
         End If
 
-        Try
-            If RandomizeAnswers_CheckBox.Checked = True Then
+        If RandomizeAnswers_CheckBox.Checked = True Then
+            ViewModel.Gpx.Question.RandomizeAnswers()
+        End If
 
-                Dim QuestionAnswers As String() = {Answer1Text, Answer2Text, Answer3Text, Answer4Text}
-                Dim CorrectAnswerNormal As String = QuestionAnswers.ElementAt(CorrectAnswerInt - 1)
+        GuiContext.FiftyFiftyResetOptionOperator(ViewModel.Gpx.Question.CorrectAnswer)
 
-                Dim r As Random = New Random()
-                Dim QuestionAnswersRandom As String() = {Answer1Text, Answer2Text, Answer3Text, Answer4Text}
-                QuestionAnswersRandom = QuestionAnswersRandom.OrderBy(Function(x) r.[Next]()).ToArray()
-
-                Dim CorrectAnswerAfterRandom As Integer = Array.IndexOf(QuestionAnswersRandom, CorrectAnswerNormal)
-
-                Answer1Text = QuestionAnswersRandom.ElementAt(0)
-                Answer2Text = QuestionAnswersRandom.ElementAt(1)
-                Answer3Text = QuestionAnswersRandom.ElementAt(2)
-                Answer4Text = QuestionAnswersRandom.ElementAt(3)
-                CorrectAnswer = Helpers.Convert1234ToABCD(CorrectAnswerAfterRandom + 1)
-
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-
-
-        GuiContext.FiftyFiftyResetOptionOperator(CorrectAnswer)
-
-        MomentStatus = "QuestionAnswers_Load"
+        ViewModel.Gpx.MomentStatus = "QuestionAnswers_Load"
         '' ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
-            GraphicsProcessingUnit.CGQuestionSet(QuestionText, Answer1Text, Answer2Text, Answer3Text, Answer4Text, QuestionForSume)
+            GraphicsProcessingUnit.CGQuestionSet(ViewModel.Gpx.Question.QuestionText, ViewModel.Gpx.Question.Answer1Text, ViewModel.Gpx.Question.Answer2Text, ViewModel.Gpx.Question.Answer3Text, ViewModel.Gpx.Question.Answer4Text, ViewModel.Gpx.QuestionForSume)
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Add(1, My.Settings.questionFlashTempl, True, GraphicsProcessingUnit.cgDataQA)
 
         End If
+
+        'ViewModel.UpdateView()
         '' ******* CASPARCG ******* 
 
     End Sub
 
     Private Sub QuestionAppear()
-        MomentStatus = "Question_Fired"
+        ViewModel.Gpx.MomentStatus = "Question_Fired"
 
-        finalAnswerGiven = False
-
-        ''Mark All Yelow
-        For index As Integer = 8 To 22
-            For Each lb As Label In Me.Controls.OfType(Of Label)()
-                Dim Label As String = "Label" + index.ToString
-                If String.Compare(Label, lb.Name, True) = 0 Then
-                    lb.BackColor = Color.Yellow
-                End If
-            Next
-        Next
-
-        ''First Five Questions
-        If Val(LevelQ) >= 1 And Val(LevelQ) <= 5 Then
-            Dim TextBox As String = "QSum" + LevelQ + "_TextBox"
-            For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
-                If String.Compare(TextBox, tb.Name, True) = 0 Then
-                    QuestionForSume = tb.Text
-                End If
-            Next
-            MainGameMusicLayerObj.PlayHeartbeatMusic(LevelQ)
+        ViewModel.Gpx.QuestionForSume = 0
+        If ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(t) t.PositionLevel = ViewModel.Gpx.Question.LevelQ).FirstOrDefault IsNot Nothing Then
+            ViewModel.Gpx.QuestionForSume = DirectCast(ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(t) t.PositionLevel = ViewModel.Gpx.Question.LevelQ).FirstOrDefault, MainGameLevel).PreviewValueSume
         End If
+        MainGameMusicLayerObj.PlayHeartbeatMusic(ViewModel.Gpx.Question.LevelQ)
 
-        For Each lb As Label In Me.Controls.OfType(Of Label)()
-            Dim Label As String = "Label" + Val(Val(LevelQ) + 7).ToString
-            If String.Compare(Label, lb.Name, True) = 0 Then
-                lb.BackColor = Color.Orange
-            End If
-        Next
-
-        ''Second Ten Questions
-        If Val(LevelQ) >= 6 And Val(LevelQ) <= 15 Then
-            Dim TextBox As String = "QSum" + LevelQ + "_TextBox"
-            For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
-                If String.Compare(TextBox, tb.Name, True) = 0 Then
-                    QuestionForSume = tb.Text
-                End If
-            Next
-            MainGameMusicLayerObj.PlayHeartbeatMusic(LevelQ)
-        End If
-
-        FinalAnswer = "T"
-
+        ViewModel.Gpx.Question.FinalAnswer = -1
         AnswerDappear_Label.BackColor = Color.Yellow
 
         TimerQuestionRemove.Interval = Val(SecondsToDissolveAfterCorrectAnswer_TextBox.Text) * 1000
 
         If GraphicsProcessingUnit.casparQA.IsConnected Then
-            GraphicsProcessingUnit.CGQuestionSet(QuestionText, Answer1Text, Answer2Text, Answer3Text, Answer4Text, QuestionForSume)
+            GraphicsProcessingUnit.CGQuestionSet(ViewModel.Gpx.Question.QuestionText, ViewModel.Gpx.Question.Answer1Text, ViewModel.Gpx.Question.Answer2Text, ViewModel.Gpx.Question.Answer3Text, ViewModel.Gpx.Question.Answer4Text, ViewModel.Gpx.QuestionForSume)
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Update(1, GraphicsProcessingUnit.cgDataQA)
             'casparQA_.Channels(0).CG.Play(1)
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Invoke(1, "QuestionFlyIN")
@@ -520,7 +155,7 @@ Public Class Quiz_Operator
 
         DataLayer.DisposeATAvoteData()
 
-        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(LevelQ)
+        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(ViewModel.Gpx.Question.LevelQ)
 
     End Sub
 
@@ -538,13 +173,13 @@ Public Class Quiz_Operator
         End If
         '' ******* CASPARCG ******* CASPARCG *******
 
-        MomentStatus = "Question_AnswerA_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "Question_AnswerA_Fired" ''IZMENA!!
 
         MainGameMusicLayerObj.StopLetsPlay()
 
         ''SQL
-        DataLayer.MarkQuestionFiredDB(questionID, Me.IsGameGoingLive)
-        DataLayer.MarkQuestionAnsweredDB(questionID, Me.IsGameGoingLive)
+        DataLayer.MarkQuestionFiredDB(ViewModel.Gpx.Question.ID, Me.IsGameGoingLive)
+        DataLayer.MarkQuestionAnsweredDB(ViewModel.Gpx.Question.ID, Me.IsGameGoingLive)
         ''SQL
 
     End Sub
@@ -562,7 +197,7 @@ Public Class Quiz_Operator
         End If
         '' ******* CASPARCG ******* CASPARCG *******
 
-        MomentStatus = "Question_AnswerB_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "Question_AnswerB_Fired" ''IZMENA!!
 
     End Sub
 
@@ -579,7 +214,7 @@ Public Class Quiz_Operator
         End If
         '' ******* CASPARCG ******* CASPARCG *******
 
-        MomentStatus = "Question_AnswerC_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "Question_AnswerC_Fired" ''IZMENA!!
 
     End Sub
 
@@ -598,7 +233,7 @@ Public Class Quiz_Operator
         End If
         '' ******* CASPARCG ******* CASPARCG *******
 
-        MomentStatus = "Question_AnswerD_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "Question_AnswerD_Fired" ''IZMENA!!
 
     End Sub
 
@@ -609,14 +244,14 @@ Public Class Quiz_Operator
 
         LimitedGameClockStop_Label_Click(LimitedGameClockStop_Label, Nothing)
 
-        If Not FinalAnswer = CorrectAnswer Then
+        If Not ViewModel.Gpx.Question.FinalAnswer = ViewModel.Gpx.Question.CorrectAnswer Then
             SumeShow_CheckBox.Checked = False
             Empty_CheckBox.Checked = False
         End If
 
-        MainGameMusicLayerObj.PlayFinalAnswerSound(LevelQ_TextBox.Text, DoubleDipState)
+        MainGameMusicLayerObj.PlayFinalAnswerSound(ViewModel.Gpx.Question.LevelQ, ViewModel.Gpx.DoubleDipState)
 
-        If Val(LevelQ) >= 6 And Val(LevelQ) <= 15 Then
+        If Val(ViewModel.Gpx.Question.LevelQ) >= 6 And Val(ViewModel.Gpx.Question.LevelQ) <= 15 Then
             Timer_STOP.Interval = 500
             Timer_STOP.Start()
 
@@ -626,8 +261,6 @@ Public Class Quiz_Operator
             GraphicsProcessingUnit.ShowHideATAGraph()
         End If
 
-        finalAnswerGiven = True
-
         GraphicsProcessingUnit.CGgleenQAstop()
 
     End Sub
@@ -636,8 +269,7 @@ Public Class Quiz_Operator
 
         AnswerA_TextBox.BackColor = Color.Yellow
 
-        FinalAnswer = Helpers.Convert1234ToABCD(1)
-
+        ViewModel.Gpx.Question.FinalAnswer = 1
 
         '' ******* CASPARCG ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
@@ -647,7 +279,7 @@ Public Class Quiz_Operator
 
         HostFinalAnswerData()
 
-        MomentStatus = "AnswerA_Final_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "AnswerA_Final_Fired" ''IZMENA!!
 
     End Sub
 
@@ -655,7 +287,7 @@ Public Class Quiz_Operator
 
         AnswerB_TextBox.BackColor = Color.Yellow
 
-        FinalAnswer = Helpers.Convert1234ToABCD(2)
+        ViewModel.Gpx.Question.FinalAnswer = 2
 
         '' ******* CASPARCG ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
@@ -665,7 +297,7 @@ Public Class Quiz_Operator
 
         HostFinalAnswerData()
 
-        MomentStatus = "AnswerB_Final_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "AnswerB_Final_Fired" ''IZMENA!!
 
     End Sub
 
@@ -673,9 +305,9 @@ Public Class Quiz_Operator
 
         AnswerC_TextBox.BackColor = Color.Yellow
 
-        FinalAnswer = Helpers.Convert1234ToABCD(3)
+        ViewModel.Gpx.Question.FinalAnswer = 3
 
-        If LevelQ = "6" Or LevelQ = "7" Or LevelQ = "8" Or LevelQ = "9" Or LevelQ = "10" Or LevelQ = "11" Or LevelQ = "12" Or LevelQ = "13" Or LevelQ = "14" Or LevelQ = "15" Then
+        If ViewModel.Gpx.Question.LevelQ = "6" Or ViewModel.Gpx.Question.LevelQ = "7" Or ViewModel.Gpx.Question.LevelQ = "8" Or ViewModel.Gpx.Question.LevelQ = "9" Or ViewModel.Gpx.Question.LevelQ = "10" Or ViewModel.Gpx.Question.LevelQ = "11" Or ViewModel.Gpx.Question.LevelQ = "12" Or ViewModel.Gpx.Question.LevelQ = "13" Or ViewModel.Gpx.Question.LevelQ = "14" Or ViewModel.Gpx.Question.LevelQ = "15" Then
             Timer_STOP.Interval = 500
             Timer_STOP.Start()
         End If
@@ -688,7 +320,7 @@ Public Class Quiz_Operator
 
         HostFinalAnswerData()
 
-        MomentStatus = "AnswerC_Final_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "AnswerC_Final_Fired" ''IZMENA!!
 
     End Sub
 
@@ -696,7 +328,7 @@ Public Class Quiz_Operator
 
         AnswerD_TextBox.BackColor = Color.Yellow
 
-        FinalAnswer = Helpers.Convert1234ToABCD(4)
+        ViewModel.Gpx.Question.FinalAnswer = 4
 
         '' ******* CASPARCG ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
@@ -706,7 +338,7 @@ Public Class Quiz_Operator
 
         HostFinalAnswerData()
 
-        MomentStatus = "AnswerD_Final_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "AnswerD_Final_Fired" ''IZMENA!!
 
     End Sub
 
@@ -714,15 +346,15 @@ Public Class Quiz_Operator
     Private Sub CorrectAnswerProcedure()
 
         MainGameMusicLayerObj.StopIncorrectAnswer()
-        MainGameMusicLayerObj.PlayCorrectAnswer(LevelQ, VariableMilestone_TextBox.Text)
+        MainGameMusicLayerObj.PlayCorrectAnswer(ViewModel.Gpx.Question.LevelQ, VariableMilestone_TextBox.Text)
 
-        If LevelQ <> "888" And LevelQ <> "666" Then
-            LevelQ = Val(LevelQ) + 1
+        If ViewModel.Gpx.Question.LevelQ <> "888" And ViewModel.Gpx.Question.LevelQ <> "666" Then
+            ViewModel.Gpx.Question.LevelQ = Val(ViewModel.Gpx.Question.LevelQ) + 1
         End If
 
         Leveling()
 
-        GraphicsProcessingUnit.InteractiveWallScreenObj.CorrectAnswer(LevelQ)
+        GraphicsProcessingUnit.InteractiveWallScreenObj.CorrectAnswer(ViewModel.Gpx.Question.LevelQ)
 
     End Sub
 
@@ -750,22 +382,20 @@ Public Class Quiz_Operator
 
         If Not IsNumeric(levelq) Then Return ""
 
-        Dim reval As String = ""
-        If Val(levelq) >= 1 And levelq <= 5 Then
-            reval = "0"
-        End If
+        Dim reval As String = "0"
+        Dim Milestones As New List(Of MainGameLevel)
 
-        If Val(levelq) >= 6 And levelq <= 15 Then
-            reval = SetSecondMilestonePrize("5")
-            If realvalue Then
-                reval = MoneyTree.ElementAt(5 - 1)
+        For Each level As MainGameLevel In ViewModel.Gpx.CurrentGamePlayLevels
+            If level.SafeHeaven = True Then
+                Milestones.Add(level)
             End If
-            If (Val(levelq) > Val(VariableMilestone_TextBox.Text)) And Not String.IsNullOrEmpty(VariableMilestone_TextBox.Text.Trim) Then
-                reval = SetSecondMilestonePrize(VariableMilestone_TextBox.Text)
-                If realvalue Then
-                    reval = MoneyTree.ElementAt(VariableMilestone_TextBox.Text - 1)
-                End If
-            End If
+        Next
+
+        'zemi go prviot sto kje go najdes naopacki od nizata za koj vazi uslovot
+        If Milestones.Where(Function(t) t.PositionLevel < levelq).Count > 0 Then
+            Dim lastSafeSume As Long
+            lastSafeSume = Milestones.Where(Function(t) t.PositionLevel < levelq).First.RealValueSume
+            reval = lastSafeSume
         End If
 
         Return reval
@@ -774,18 +404,18 @@ Public Class Quiz_Operator
 
     Private Sub IncorrectAnswerProcedure()
 
-        If (LevelQ <> "666") And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
-            QuestionForSume = CalculateIncorrectAnswer(LevelQ)
+        If (ViewModel.Gpx.Question.LevelQ <> "666") And Not (String.Equals(ViewModel.Gpx.DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
+            ViewModel.Gpx.QuestionForSume = CalculateIncorrectAnswer(ViewModel.Gpx.Question.LevelQ)
         End If
 
-        If (LevelQ <> "666") And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
-            QuestionForSume = CalculateIncorrectAnswer(LevelQ)
+        If (ViewModel.Gpx.Question.LevelQ <> "666") And Not (String.Equals(ViewModel.Gpx.DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then 'Ne stavaj suma za utnato ako e vo walkaway mod, togas e samo radi reda
+            ViewModel.Gpx.QuestionForSume = CalculateIncorrectAnswer(ViewModel.Gpx.Question.LevelQ)
         End If
 
-        MainGameMusicLayerObj.PlayIncorrectAnswer(LevelQ, DoubleDipState)
+        MainGameMusicLayerObj.PlayIncorrectAnswer(ViewModel.Gpx.Question.LevelQ, ViewModel.Gpx.DoubleDipState)
 
-        If LevelQ <> "888" And LevelQ <> "666" And Not (String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then
-            LevelQ = "111"
+        If ViewModel.Gpx.Question.LevelQ <> "888" And ViewModel.Gpx.Question.LevelQ <> "666" And Not (String.Equals(ViewModel.Gpx.DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase)) Then
+            ViewModel.Gpx.Question.LevelQ = "111"
         End If
 
     End Sub
@@ -797,31 +427,31 @@ Public Class Quiz_Operator
         CremoveFF_Label.BackColor = Color.Yellow
         DremoveFF_Label.BackColor = Color.Yellow
 
-        QuestionText = ""
-        Answer1Text = ""
-        Answer2Text = ""
-        Answer3Text = ""
-        Answer4Text = ""
+        ViewModel.Gpx.Question.QuestionText = ""
+        ViewModel.Gpx.Question.Answer1Text = ""
+        ViewModel.Gpx.Question.Answer2Text = ""
+        ViewModel.Gpx.Question.Answer3Text = ""
+        ViewModel.Gpx.Question.Answer4Text = ""
 
-        Pronunciation = ""
-        Explanation = ""
+        ViewModel.Gpx.Question.Pronunciation = ""
+        ViewModel.Gpx.Question.Explanation = ""
 
         AnswerA_TextBox.BackColor = Color.White
         AnswerB_TextBox.BackColor = Color.White
         AnswerC_TextBox.BackColor = Color.White
         AnswerD_TextBox.BackColor = Color.White
 
-        FiftyFifty = ""
-        DoubleDipState = ""
-        DoubleDipFirstAnswer = ""
+        ViewModel.Gpx.FiftyFifty = ""
+        ViewModel.Gpx.DoubleDipState = ""
+        ViewModel.Gpx.DoubleDipFirstAnswer = ""
 
         TimerQuestionRemove.Stop() ''IZMENA!!! Dodadeno Timer2.Stop() bidejkji ako bese stisnato EmptyQuestion pred vreme, Timer2 pak go gasese posle izminatiot interval
-        MomentStatus = "EmptyQuestion_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "EmptyQuestion_Fired" ''IZMENA!!
 
         '' ******* CASPARCG ******* CASPARCG *******
         '' ******* CASPARCG ******* CASPARCG *******
         If GraphicsProcessingUnit.casparQA.IsConnected Then
-            If LevelQ <> "888" Then
+            If ViewModel.Gpx.Question.LevelQ <> "888" Then
                 GraphicsProcessingUnit.casparQA.Channels(0).CG.Remove(1)
                 GraphicsProcessingUnit.cgDataQA.Clear()
             Else
@@ -830,18 +460,18 @@ Public Class Quiz_Operator
             End If
         End If
 
-        If LevelQ = "888" Then
-            LevelQ = SwitchedQuestion.ToString
+        If ViewModel.Gpx.Question.LevelQ = "888" Then
+            ViewModel.Gpx.Question.LevelQ = SwitchedQuestion.ToString
             STQ_X_Label_Click(STQ_X_Label, Nothing)
         End If
 
         Leveling()
         LoadQuestion()
 
-        FinalA_Button.Text = "Final A: " + Answer1Text.Substring(0, Math.Min(20, Answer1Text.Length))
-        FinalB_Button.Text = "Final B: " + Answer2Text.Substring(0, Math.Min(20, Answer2Text.Length))
-        FinalC_Button.Text = "Final C: " + Answer3Text.Substring(0, Math.Min(20, Answer3Text.Length))
-        FinalD_Button.Text = "Final D: " + Answer4Text.Substring(0, Math.Min(20, Answer4Text.Length))
+        FinalA_Button.Text = "Final A: " + ViewModel.Gpx.Question.Answer1Text.Substring(0, Math.Min(20, ViewModel.Gpx.Question.Answer1Text.Length))
+        FinalB_Button.Text = "Final B: " + ViewModel.Gpx.Question.Answer2Text.Substring(0, Math.Min(20, ViewModel.Gpx.Question.Answer2Text.Length))
+        FinalC_Button.Text = "Final C: " + ViewModel.Gpx.Question.Answer3Text.Substring(0, Math.Min(20, ViewModel.Gpx.Question.Answer3Text.Length))
+        FinalD_Button.Text = "Final D: " + ViewModel.Gpx.Question.Answer4Text.Substring(0, Math.Min(20, ViewModel.Gpx.Question.Answer4Text.Length))
 
         '' ******* CASPARCG ******* CASPARCG *******
         GraphicsProcessingUnit.resetVariables()
@@ -851,7 +481,7 @@ Public Class Quiz_Operator
     End Sub
 
     Private Function LoadQuestion()
-        If LevelQ <> "111" Then
+        If ViewModel.Gpx.Question.LevelQ <> "111" Then
             QuestionLoad_Label_Click(QuestionLoad_Label, Nothing)
 
         End If
@@ -859,20 +489,20 @@ Public Class Quiz_Operator
 
     Private Sub WonPrizeReveal_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WonPrizeReveal_Button.Click
         WonPrizeReveal_Button.BackColor = Color.Gainsboro
-        GraphicsProcessingUnit.WonPrizeReveal(LevelQ,
+        GraphicsProcessingUnit.WonPrizeReveal(ViewModel.Gpx.Question.LevelQ,
                                               Localizer.GetValueByKey("TOTALPRIZEWONTAG"),
-                                              QuestionForSume)
+                                              ViewModel.Gpx.QuestionForSume)
 
-        If LevelQ = "111" Or LevelQ = "666" Or LevelQ = "16" Then
+        If ViewModel.Gpx.Question.LevelQ = "111" Or ViewModel.Gpx.Question.LevelQ = "666" Or ViewModel.Gpx.Question.LevelQ = "16" Then
             HostContPresentationLayer.GamePlayStateSet("TOTALPRIZEWON")
 
-        ElseIf LevelQ <> "888" Then
+        ElseIf ViewModel.Gpx.Question.LevelQ <> "888" Then
             'DO NOTHING
             'od prasanje na prasanje momentalen iznos
         End If
 
 
-        MomentStatus = "WonPrize_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "WonPrize_Fired" ''IZMENA!!
 
 
     End Sub
@@ -910,26 +540,26 @@ Public Class Quiz_Operator
             DremoveFF_Label.BackColor = Color.Yellow
 
             ListRemoved = New List(Of Short) From {1, 2, 3, 4}
-            ListRemoved.Remove(Helpers.ConvertABCDTo1234(CorrectAnswer))
+            ListRemoved.Remove(ViewModel.Gpx.Question.CorrectAnswer)
             Dim randomNumber As Short = New Random().Next(0, ListRemoved.Count)
             ListRemoved.RemoveAt(randomNumber)
         End If
 
         'Razmisli zosto go napravi ova vaka
         If AremoveFF_Label.BackColor = Color.Blue OrElse ListRemoved.Contains(1) Then
-            Answer1Text = ""
+            ViewModel.Gpx.Question.Answer1Text = ""
             ListRemoved.Add(1)
         End If
         If BremoveFF_Label.BackColor = Color.Blue OrElse ListRemoved.Contains(2) Then
-            Answer2Text = ""
+            ViewModel.Gpx.Question.Answer2Text = ""
             ListRemoved.Add(2)
         End If
         If CremoveFF_Label.BackColor = Color.Blue OrElse ListRemoved.Contains(3) Then
-            Answer3Text = ""
+            ViewModel.Gpx.Question.Answer3Text = ""
             ListRemoved.Add(3)
         End If
         If DremoveFF_Label.BackColor = Color.Blue OrElse ListRemoved.Contains(4) Then
-            Answer4Text = ""
+            ViewModel.Gpx.Question.Answer4Text = ""
             ListRemoved.Add(4)
         End If
 
@@ -937,11 +567,11 @@ Public Class Quiz_Operator
 
         Dim HashListOfRemoves As New HashSet(Of Short)(ListRemoved)
         If HashListOfRemoves.Count = 2 Then
-            FiftyFifty = String.Format("{0}{1}", HashListOfRemoves.ElementAt(0), HashListOfRemoves.ElementAt(1))
+            ViewModel.Gpx.FiftyFifty = String.Format("{0}{1}", HashListOfRemoves.ElementAt(0), HashListOfRemoves.ElementAt(1))
             'HostContPresentationLayer.FiftyFiftyFire(HashListOfRemoves.ElementAt(0), HashListOfRemoves.ElementAt(1))
         End If
 
-        MomentStatus = "5050_Fire"
+        ViewModel.Gpx.MomentStatus = "5050_Fire"
 
         GraphicsProcessingUnit.UpdateQAData()
 
@@ -960,7 +590,7 @@ Public Class Quiz_Operator
         C_pub.Text = AtaPercentData(2)
         D_pub.Text = AtaPercentData(3)
 
-        AtaVotes = String.Format("{0};{1};{2};{3}", A_pub.Text, B_pub.Text, C_pub.Text, D_pub.Text)
+        ViewModel.Gpx.AtaVotes = String.Format("{0};{1};{2};{3}", A_pub.Text, B_pub.Text, C_pub.Text, D_pub.Text)
 
         '**** CASPARCG
         GraphicsProcessingUnit.SetATAdata(A_pub.Text, B_pub.Text, C_pub.Text, D_pub.Text)
@@ -981,7 +611,7 @@ Public Class Quiz_Operator
 
         ATA_X_Label_Click(ATA_X_Label, Nothing)
 
-        MomentStatus = "AskAudience_EndVote"
+        ViewModel.Gpx.MomentStatus = "AskAudience_EndVote"
 
         '**** CASPARCG*****
 
@@ -1022,7 +652,7 @@ Public Class Quiz_Operator
 
         ''CASPARCG***** CASPARCG****
 
-        MomentStatus = "AskAudience_Voting" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "AskAudience_Voting" ''IZMENA!!!
 
         GraphicsProcessingUnit.InteractiveWallScreenObj.AudienceVoting()
 
@@ -1036,7 +666,7 @@ Public Class Quiz_Operator
             TimerPAFsecondDrop.Stop()
             PAF_X_Label_Click(PAF_X_Label, Nothing)
 
-            MomentStatus = "PhoneFriend_End"
+            ViewModel.Gpx.MomentStatus = "PhoneFriend_End"
 
             Timer_PLAY.Interval = 1000
             Timer_PLAY.Start()
@@ -1052,7 +682,7 @@ Public Class Quiz_Operator
     Private Sub FourLifelinesStatus_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles fourLifelinesStatus_Label.Click
         fourLifelinesStatus_Label.BackColor = Color.Orange
         threeLifelinesStatus_Label.BackColor = Color.Silver
-        ActiveLifelines = "4"
+        ViewModel.Gpx.Lifelines.ActiveLifelines = "4"
         GraphicsProcessingUnit.Activate4Lifelines()
 
     End Sub
@@ -1060,22 +690,27 @@ Public Class Quiz_Operator
     Private Sub ThreeLifelinesStatus_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles threeLifelinesStatus_Label.Click
         threeLifelinesStatus_Label.BackColor = Color.Orange
         fourLifelinesStatus_Label.BackColor = Color.Silver
-        ActiveLifelines = "3"
+        ViewModel.Gpx.Lifelines.ActiveLifelines = "3"
         GraphicsProcessingUnit.Activate3Lifelines()
 
     End Sub
 
     Private Sub LifelineRemind_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LifelineRemind_Button.Click
-        GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
+        GraphicsProcessingUnit.MarkCGlifelines(ViewModel.Gpx.Lifelines.Lifeline1Active, ViewModel.Gpx.Lifelines.Lifeline2Active, ViewModel.Gpx.Lifelines.Lifeline3Active, ViewModel.Gpx.Lifelines.Lifeline4Active)
         GraphicsProcessingUnit.LifelineRemind()
 
     End Sub
 
     Private Sub Label_SwitchQ_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label100.Click
 
-        SwitchedQuestion = Val(LevelQ)
 
-        LevelQ = "888"
+
+        SwitchedQuestion = Val(ViewModel.Gpx.Question.LevelQ)
+
+        'Dim vm As New ViewModel
+        'vm.UpdateModel(Instance.Question.)
+
+        ViewModel.Gpx.Question.LevelQ = "888"
 
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\102.Alternate Animate.wav", AudioPlayMode.Background)
 
@@ -1087,7 +722,7 @@ Public Class Quiz_Operator
         End If
         '' *** CASPARCG
 
-        MomentStatus = "SwitchTheQuestion_Progess"
+        ViewModel.Gpx.MomentStatus = "SwitchTheQuestion_Progess"
 
         ''STQ_X_Label_Click(STQ_X_Label, Nothing)
 
@@ -1100,23 +735,23 @@ Public Class Quiz_Operator
         SumeShow_CheckBox.Checked = False
         Empty_CheckBox.Checked = False
 
-        If LevelQ = "1" Or LevelQ = "2" Or LevelQ = "3" Or LevelQ = "4" Or LevelQ = "5" Or LevelQ = "6" Or LevelQ = "7" Or LevelQ = "8" Or LevelQ = "9" Or LevelQ = "10" Then
+        If ViewModel.Gpx.Question.LevelQ = "1" Or ViewModel.Gpx.Question.LevelQ = "2" Or ViewModel.Gpx.Question.LevelQ = "3" Or ViewModel.Gpx.Question.LevelQ = "4" Or ViewModel.Gpx.Question.LevelQ = "5" Or ViewModel.Gpx.Question.LevelQ = "6" Or ViewModel.Gpx.Question.LevelQ = "7" Or ViewModel.Gpx.Question.LevelQ = "8" Or ViewModel.Gpx.Question.LevelQ = "9" Or ViewModel.Gpx.Question.LevelQ = "10" Then
             'LightDown.URL = "C:\WWTBAM Removable Disc\UK 2007\33.Little Quitter.wav"
         End If
-        If LevelQ = "11" Or LevelQ = "12" Or LevelQ = "13" Or LevelQ = "14" Or LevelQ = "15" Or LevelQ = "16" Then
+        If ViewModel.Gpx.Question.LevelQ = "11" Or ViewModel.Gpx.Question.LevelQ = "12" Or ViewModel.Gpx.Question.LevelQ = "13" Or ViewModel.Gpx.Question.LevelQ = "14" Or ViewModel.Gpx.Question.LevelQ = "15" Or ViewModel.Gpx.Question.LevelQ = "16" Then
             'LightDown.URL = "C:\WWTBAM Removable Disc\UK 2007\34.Big Quitter.wav"
         End If
 
-        Dim TextBox As String = "QSum" + Val(LevelQ - 1).ToString + "_TextBox"
+        Dim TextBox As String = "QSum" + Val(ViewModel.Gpx.Question.LevelQ - 1).ToString + "_TextBox"
         For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
             If String.Compare(TextBox, tb.Name, True) = 0 Then
-                If LevelQ >= 2 And LevelQ <= 15 Then
-                    QuestionForSume = tb.Text
+                If ViewModel.Gpx.Question.LevelQ >= 2 And ViewModel.Gpx.Question.LevelQ <= 15 Then
+                    ViewModel.Gpx.QuestionForSume = tb.Text
                 End If
             End If
         Next
 
-        LevelQ = "666"
+        ViewModel.Gpx.Question.LevelQ = "666"
 
         If GraphicsProcessingUnit.casparQA.IsConnected Then
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Invoke(1, "QuestionAnswersFlyOUT")
@@ -1125,9 +760,9 @@ Public Class Quiz_Operator
         PlayLXsound()
         Timer_STOP.Start()
 
-        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(LevelQ)
+        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(ViewModel.Gpx.Question.LevelQ)
 
-        MomentStatus = "Walkaway_Fired"
+        ViewModel.Gpx.MomentStatus = "Walkaway_Fired"
 
     End Sub
 
@@ -1147,7 +782,7 @@ Public Class Quiz_Operator
 
         PAF_1_Label_Click(PAF_1_Label, Nothing)
 
-        MomentStatus = "PhoneFriend_Progress" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "PhoneFriend_Progress" ''IZMENA!!!
 
     End Sub
 
@@ -1165,7 +800,7 @@ Public Class Quiz_Operator
         GraphicsProcessingUnit.PhoneAFriend("ABORT")
         '*** CASPARCG
 
-        MomentStatus = "PhoneFriend_Interrupted" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "PhoneFriend_Interrupted" ''IZMENA!!!
         Me.TabControl2.SelectedTab = TabPage6
     End Sub
 
@@ -1181,12 +816,12 @@ Public Class Quiz_Operator
         Me.Lifeline2_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Lifeline1_PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
 
-        FinalAnswer = "T"
-        DoubleDipFirstAnswer = ""
+        ViewModel.Gpx.Question.FinalAnswer = -1
+        ViewModel.Gpx.DoubleDipFirstAnswer = ""
         VariableMilestone_TextBox.Text = ""
 
-        If LevelQ = "111" Or LevelQ = "666" Then
-            LevelQ = "1"
+        If ViewModel.Gpx.Question.LevelQ = "111" Or ViewModel.Gpx.Question.LevelQ = "666" Then
+            ViewModel.Gpx.Question.LevelQ = "1"
 
         End If
 
@@ -1194,7 +829,7 @@ Public Class Quiz_Operator
         DataLayer.DisposeAnsweredGameQuestionsDB(1)
         ''SQL
 
-        MomentStatus = "NewGame_Fired" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "NewGame_Fired" ''IZMENA!!!
         FiftyFifty_0_Label_Click(FiftyFifty_0_Label, Nothing)
         PAF_0_Label_Click(PAF_0_Label, Nothing)
         DDIP_0_Label_Click(DDIP_0_Label, Nothing)
@@ -1211,10 +846,10 @@ Public Class Quiz_Operator
             Next
         Next
 
-        Lifeline1Active = 1
-        Lifeline2Active = 1
-        Lifeline3Active = 1
-        Lifeline4Active = 1
+        ViewModel.Gpx.Lifelines.Lifeline1Active = 1
+        ViewModel.Gpx.Lifelines.Lifeline2Active = 1
+        ViewModel.Gpx.Lifelines.Lifeline3Active = 1
+        ViewModel.Gpx.Lifelines.Lifeline4Active = 1
 
         GraphicsProcessingUnit.CGMoneyTreeDataSet(QSum1_TextBox.Text, QSum2_TextBox.Text, QSum3_TextBox.Text, QSum4_TextBox.Text, QSum5_TextBox.Text, QSum6_TextBox.Text, QSum7_TextBox.Text, QSum8_TextBox.Text, QSum9_TextBox.Text, QSum10_TextBox.Text, QSum11_TextBox.Text, QSum12_TextBox.Text, QSum13_TextBox.Text, QSum14_TextBox.Text, QSum15_TextBox.Text)
         GraphicsProcessingUnit.removeSecondMilestone()
@@ -1230,17 +865,17 @@ Public Class Quiz_Operator
         CremoveFF_Label.BackColor = Color.Yellow
         DremoveFF_Label.BackColor = Color.Yellow
 
-        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 0)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.FiftyFiftyPosition, 0)
 
-        Select Case FiftyFiftyPosition
+        Select Case ViewModel.Gpx.Lifelines.FiftyFiftyPosition
             Case 1
-                Lifeline1Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 0
             Case 2
-                Lifeline2Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 0
             Case 3
-                Lifeline3Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 0
             Case 4
-                Lifeline4Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 0
         End Select
 
     End Sub
@@ -1289,268 +924,262 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub PAF_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_X_Label.Click
-        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 0)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.PhoneAFriendPosition, 0)
 
-        Select Case PhoneAFriendPosition
+        Select Case ViewModel.Gpx.Lifelines.PhoneAFriendPosition
             Case 1
-                Lifeline1Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 0
             Case 2
-                Lifeline2Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 0
             Case 3
-                Lifeline3Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 0
             Case 4
-                Lifeline4Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 0
         End Select
 
     End Sub
 
     Private Sub ATA_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_X_Label.Click
-        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 0)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.AskTheAudiencePosition, 0)
 
-        Select Case AskTheAudiencePosition
+        Select Case ViewModel.Gpx.Lifelines.AskTheAudiencePosition
             Case 1
-                Lifeline1Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 0
             Case 2
-                Lifeline2Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 0
             Case 3
-                Lifeline3Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 0
             Case 4
-                Lifeline4Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 0
         End Select
 
     End Sub
 
     Private Sub STQ_X_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_X_Label.Click
-        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 0)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition, 0)
 
-        Select Case SwitchTheQuestionPosition
+        Select Case ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition
             Case 1
-                Lifeline1Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 0
             Case 2
-                Lifeline2Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 0
             Case 3
-                Lifeline3Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 0
             Case 4
-                Lifeline4Active = 0
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 0
         End Select
 
 
     End Sub
 
     Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "1"
+        ViewModel.Gpx.Question.LevelQ = "1"
 
     End Sub
 
     Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "2"
+        ViewModel.Gpx.Question.LevelQ = "2"
     End Sub
 
     Private Sub Label21_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "14"
+        ViewModel.Gpx.Question.LevelQ = "14"
     End Sub
 
     Private Sub Label20_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "13"
+        ViewModel.Gpx.Question.LevelQ = "13"
     End Sub
 
     Private Sub Label19_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "12"
+        ViewModel.Gpx.Question.LevelQ = "12"
     End Sub
 
     Private Sub Label18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "11"
+        ViewModel.Gpx.Question.LevelQ = "11"
     End Sub
 
     Private Sub Label17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "10"
+        ViewModel.Gpx.Question.LevelQ = "10"
     End Sub
 
     Private Sub Label16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "9"
+        ViewModel.Gpx.Question.LevelQ = "9"
     End Sub
 
     Private Sub Label15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "8"
+        ViewModel.Gpx.Question.LevelQ = "8"
     End Sub
 
     Private Sub Label14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "7"
+        ViewModel.Gpx.Question.LevelQ = "7"
     End Sub
 
     Private Sub Label13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "6"
+        ViewModel.Gpx.Question.LevelQ = "6"
     End Sub
 
     Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "5"
+        ViewModel.Gpx.Question.LevelQ = "5"
     End Sub
 
     Private Sub Label11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "4"
+        ViewModel.Gpx.Question.LevelQ = "4"
     End Sub
 
     Private Sub Label10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "3"
+        ViewModel.Gpx.Question.LevelQ = "3"
     End Sub
 
     Private Sub Label22_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LevelQ = "15"
+        ViewModel.Gpx.Question.LevelQ = "15"
     End Sub
 
     Private Sub FiftyFifty_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FiftyFifty_0_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 1)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.FiftyFiftyPosition, 1)
 
-        Select Case FiftyFiftyPosition
+        Select Case ViewModel.Gpx.Lifelines.FiftyFiftyPosition
             Case 1
-                Lifeline1Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 1
             Case 2
-                Lifeline2Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 1
             Case 3
-                Lifeline3Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 1
             Case 4
-                Lifeline4Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 1
         End Select
 
     End Sub
 
     Private Sub PAF_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_0_Label.Click
-        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 1)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.PhoneAFriendPosition, 1)
 
-        Select Case PhoneAFriendPosition
+        Select Case ViewModel.Gpx.Lifelines.PhoneAFriendPosition
             Case 1
-                Lifeline1Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 1
             Case 2
-                Lifeline2Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 1
             Case 3
-                Lifeline3Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 1
             Case 4
-                Lifeline4Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 1
         End Select
 
     End Sub
 
     Private Sub ATA_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_0_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 1)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.AskTheAudiencePosition, 1)
 
-        Select Case AskTheAudiencePosition
+        Select Case ViewModel.Gpx.Lifelines.AskTheAudiencePosition
             Case 1
-                Lifeline1Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 1
             Case 2
-                Lifeline2Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 1
             Case 3
-                Lifeline3Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 1
             Case 4
-                Lifeline4Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 1
         End Select
 
     End Sub
 
     Private Sub STQ_0_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_0_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 1)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition, 1)
 
-        Select Case SwitchTheQuestionPosition
+        Select Case ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition
             Case 1
-                Lifeline1Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 1
             Case 2
-                Lifeline2Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 1
             Case 3
-                Lifeline3Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 1
             Case 4
-                Lifeline4Active = 1
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 1
         End Select
 
     End Sub
 
     Private Sub FiftyFifty_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FiftyFifty_1_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(FiftyFiftyPosition, 2)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.FiftyFiftyPosition, 2)
 
-        Select Case FiftyFiftyPosition
+        Select Case ViewModel.Gpx.Lifelines.FiftyFiftyPosition
             Case 1
-                Lifeline1Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 2
             Case 2
-                Lifeline2Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 2
             Case 3
-                Lifeline3Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 2
             Case 4
-                Lifeline4Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 2
         End Select
 
     End Sub
 
     Private Sub PAF_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PAF_1_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(PhoneAFriendPosition, 2)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.PhoneAFriendPosition, 2)
 
-        Select Case PhoneAFriendPosition
+        Select Case ViewModel.Gpx.Lifelines.PhoneAFriendPosition
             Case 1
-                Lifeline1Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 2
             Case 2
-                Lifeline2Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 2
             Case 3
-                Lifeline3Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 2
             Case 4
-                Lifeline4Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 2
         End Select
 
     End Sub
 
     Private Sub ATA_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ATA_1_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(AskTheAudiencePosition, 2)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.AskTheAudiencePosition, 2)
 
-        Select Case AskTheAudiencePosition
+        Select Case ViewModel.Gpx.Lifelines.AskTheAudiencePosition
             Case 1
-                Lifeline1Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 2
             Case 2
-                Lifeline2Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 2
             Case 3
-                Lifeline3Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 2
             Case 4
-                Lifeline4Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 2
         End Select
 
     End Sub
 
     Private Sub STQ_1_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles STQ_1_Label.Click
 
-        GuiContext.SomethingToDoWithLifeline(SwitchTheQuestionPosition, 2)
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition, 2)
 
-        Select Case SwitchTheQuestionPosition
+        Select Case ViewModel.Gpx.Lifelines.SwitchTheQuestionPosition
             Case 1
-                Lifeline1Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline1Active = 2
             Case 2
-                Lifeline2Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline2Active = 2
             Case 3
-                Lifeline3Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline3Active = 2
             Case 4
-                Lifeline4Active = 2
+                ViewModel.Gpx.Lifelines.Lifeline4Active = 2
         End Select
 
     End Sub
     Private Sub CorrectAnswerReveal_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CorrectAnswerReveal_Button.Click
 
         TimerQuestionRemove.Interval = Val(SecondsToDissolveAfterCorrectAnswer_TextBox.Text) * 1000
-
         Timer_STOP.Interval = 555
-
         Timer_SumeShow.Interval = 1140
 
-        If LevelQ = "5" Then
-            Timer_STOP.Start()
+        'If Instance.CurrentGamePlayLevels = "5" Then
+        '    Timer_STOP.Start()
 
-        End If
+        'End If
 
         If Empty_CheckBox.Checked = True Then
             TimerQuestionRemove.Start()
-        End If
-
-        If SumeShow_CheckBox.Checked = True Then
-            Timer_SumeShow.Start()
         End If
 
         AnswerAappear_Label.BackColor = Color.Yellow
@@ -1563,13 +1192,19 @@ Public Class Quiz_Operator
         CremoveFF_Label.BackColor = Color.Yellow
         DremoveFF_Label.BackColor = Color.Yellow
 
-        If CorrectAnswer = FinalAnswer Then
+        If ViewModel.Gpx.Question.IsGivenFinalAnswerCorrect = GivenAnswerStateEnum.Correct Then
             CorrectAnswerProcedure()
-        ElseIf CorrectAnswer <> FinalAnswer Then
+        ElseIf ViewModel.Gpx.Question.IsGivenFinalAnswerCorrect = GivenAnswerStateEnum.Incorrect Then
             IncorrectAnswerProcedure()
+        Else
+            Return
         End If
 
-        Select Case Helpers.ConvertABCDTo1234(CorrectAnswer)
+        If SumeShow_CheckBox.Checked = True Then
+            Timer_SumeShow.Start()
+        End If
+
+        Select Case ViewModel.Gpx.Question.CorrectAnswer
             Case 1
                 AnswerA_TextBox.BackColor = Color.Lime
             Case 2
@@ -1581,25 +1216,25 @@ Public Class Quiz_Operator
         End Select
 
         '' ******* CASPARCG ******* CASPARCG *******
-        GraphicsProcessingUnit.CorrectAnswer(CorrectAnswer)
+        GraphicsProcessingUnit.CorrectAnswer(ViewModel.Gpx.Question.CorrectAnswer)
         '' ******* CASPARCG ******* CASPARCG *******
 
-        MomentStatus = "CorrectAnswer_Fired"
+        ViewModel.Gpx.MomentStatus = "CorrectAnswer_Fired"
 
     End Sub
 
     Sub Leveling()
         '' ******* CASPARCG ******* CASPARCG *******
-        Dim MoneyTreeLevel As Int32 = Val(LevelQ) - 1
+        Dim MoneyTreeLevel As Int32 = ViewModel.Gpx.Question.LevelQ - 1
         GraphicsProcessingUnit.MoneyTreeLevel(MoneyTreeLevel)
 
         '' ******* CASPARCG ******* CASPARCG *******
 
         Dim qForSume, momentSume, incorrectSume As String
-        If LevelQ >= 1 And LevelQ <= 15 Then
+        If ViewModel.Gpx.Question.LevelQ >= 1 And ViewModel.Gpx.Question.LevelQ <= 15 Then
 
             qForSume = 0
-            Dim TextBoxQfor As String = "QSum" + LevelQ + "_TextBox"
+            Dim TextBoxQfor As String = "QSum" + ViewModel.Gpx.Question.LevelQ.ToString + "_TextBox"
             For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
                 If String.Compare(TextBoxQfor, tb.Name, True) = 0 Then
                     qForSume = tb.Text
@@ -1614,17 +1249,17 @@ Public Class Quiz_Operator
                 End If
             Next
 
-            Dim momentSumeInt As Integer = Integer.Parse(MoneyTree.ElementAt(Math.Max((MoneyTreeLevel - 1), 0)))
+            Dim momentSumeInt As Integer = Integer.Parse(DirectCast(ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel = MoneyTreeLevel).FirstOrDefault(), MainGameLevel).RealValueSume)
 
-            incorrectSume = CalculateIncorrectAnswer(LevelQ)
+            incorrectSume = CalculateIncorrectAnswer(ViewModel.Gpx.Question.LevelQ)
             incorrectSume = IIf(incorrectSume = 0, 0, incorrectSume)
 
-            Dim incorrectSumeInt As Integer = CalculateIncorrectAnswer(LevelQ, True) 'vo slucaj da ima bukvi brojki ili nesto vo stil '4 MILIONI' ja zema vistinskata vrednost-realvalue
+            Dim incorrectSumeInt As Integer = CalculateIncorrectAnswer(ViewModel.Gpx.Question.LevelQ, True) 'vo slucaj da ima bukvi brojki ili nesto vo stil '4 MILIONI' ja zema vistinskata vrednost-realvalue
 
-            CurentGameStatusData = $"{momentSume};{(incorrectSumeInt - momentSumeInt) * (-1)};{qForSume};{incorrectSume}"
+            ViewModel.Gpx.CurentGameStatusData = $"{momentSume};{(incorrectSumeInt - momentSumeInt) * (-1)};{qForSume};{incorrectSume}"
 
         Else
-            CurentGameStatusData = "0;0;0;0"
+            ViewModel.Gpx.CurentGameStatusData = "0;0;0;0"
 
         End If
     End Sub
@@ -1632,7 +1267,7 @@ Public Class Quiz_Operator
     Private Sub WalkAwayQoppinion_Label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WalkAwayQoppinion_Label.Click
 
         ''IZMENA! Dodadeno zatoa sto ne vrakjase prasanje na GraphicsQuestion.vb
-        MomentStatus = "Question_AnswerD_Fired"
+        ViewModel.Gpx.MomentStatus = "Question_AnswerD_Fired"
         GraphicsProcessingUnit.WalkAwayQoppinion()
 
     End Sub
@@ -1648,7 +1283,7 @@ Public Class Quiz_Operator
 
     Private Sub Timer_PAUSE_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_PAUSE.Tick
 
-        MainGameMusicLayerObj.PauseHeartbeatMusic(LevelQ)
+        MainGameMusicLayerObj.PauseHeartbeatMusic(ViewModel.Gpx.Question.LevelQ)
 
         Timer_PAUSE.Stop()
         Timer_PAUSE.InitializeLifetimeService()
@@ -1656,7 +1291,7 @@ Public Class Quiz_Operator
 
     Private Sub Timer_PLAY_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_PLAY.Tick
 
-        MainGameMusicLayerObj.PlayHeartbeatMusic(LevelQ)
+        MainGameMusicLayerObj.PlayHeartbeatMusic(ViewModel.Gpx.Question.LevelQ)
 
         Timer_PLAY.Interval = 300
 
@@ -1677,7 +1312,7 @@ Public Class Quiz_Operator
         C_pub.Text = "0"
         D_pub.Text = "0"
 
-        MomentStatus = "AskAudience_Questioning" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "AskAudience_Questioning" ''IZMENA!!!
         DataLayer.DisposeATAvoteData()
 
         GraphicsProcessingUnit.InteractiveWallScreenObj.AudienceAsking()
@@ -1696,7 +1331,7 @@ Public Class Quiz_Operator
 
         PAF_1_Label_Click(PAF_1_Label, Nothing)
 
-        MomentStatus = "PhoneFriend_Dialing" ''IZMENA!!!
+        ViewModel.Gpx.MomentStatus = "PhoneFriend_Dialing" ''IZMENA!!!
 
     End Sub
 
@@ -1704,7 +1339,7 @@ Public Class Quiz_Operator
 
         WonPrizeReveal_Button_Click(WonPrizeReveal_Button, Nothing)
 
-        MomentStatus = "WonPrize_Fired" ''IZMENA!!
+        ViewModel.Gpx.MomentStatus = "WonPrize_Fired" ''IZMENA!!
 
         Timer_SumeShow.Stop()
         Timer_SumeShow.InitializeLifetimeService()
@@ -1724,7 +1359,7 @@ Public Class Quiz_Operator
 
         GraphicsProcessingUnit.CGMoneyTreeDataSet(QSum1_TextBox.Text, QSum2_TextBox.Text, QSum3_TextBox.Text, QSum4_TextBox.Text, QSum5_TextBox.Text, QSum6_TextBox.Text, QSum7_TextBox.Text, QSum8_TextBox.Text, QSum9_TextBox.Text, QSum10_TextBox.Text, QSum11_TextBox.Text, QSum12_TextBox.Text, QSum13_TextBox.Text, QSum14_TextBox.Text, QSum15_TextBox.Text)
         GraphicsProcessingUnit.MoneyTreeSet()
-        GraphicsProcessingUnit.MarkCGlifelines(lifeline1Active1, Lifeline2Active, Lifeline3Active, Lifeline4Active)
+        GraphicsProcessingUnit.MarkCGlifelines(ViewModel.Gpx.Lifelines.Lifeline1Active, ViewModel.Gpx.Lifelines.Lifeline2Active, ViewModel.Gpx.Lifelines.Lifeline3Active, ViewModel.Gpx.Lifelines.Lifeline4Active)
 
         MoneyTreeSet_Label.ForeColor = Color.Blue
         '' ******* CASPARCG ******* 
@@ -1746,12 +1381,12 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub Qfor_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QFor_Button.Click
-        GraphicsProcessingUnit.QuestionForLozenge(QuestionForSume)
+        GraphicsProcessingUnit.QuestionForLozenge(ViewModel.Gpx.QuestionForSume)
 
     End Sub
 
     Private Sub AbcdHex_Show()
-        MomentStatus = "ABCDHex_Show"
+        ViewModel.Gpx.MomentStatus = "ABCDHex_Show"
         If GraphicsProcessingUnit.casparQA.IsConnected Then
             GraphicsProcessingUnit.casparQA.Channels(0).CG.Invoke(1, "QuestionAnswersFlyIN")
         End If
@@ -1759,90 +1394,90 @@ Public Class Quiz_Operator
 
     Private Sub NextThing_Button_Click(sender As Object, e As EventArgs) Handles NextThing_Button.Click
         ''IZMENA!!! Celosna Izmena; Nov Label - NextThing_Label
-        'MessageBox.Show(MomentStatus)
+        'MessageBox.Show(Instance.MomentStatus)
 
-        If MomentStatus = "QuestionAnswers_Load" Or MomentStatus = "VariableMilestone_Set" Then
+        If ViewModel.Gpx.MomentStatus = "QuestionAnswers_Load" Or ViewModel.Gpx.MomentStatus = "VariableMilestone_Set" Then
             QuestionAppear()
             Exit Sub
         End If
 
-        If MomentStatus = "Question_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "Question_Fired" Then
             AnswerAappear_Label_Click(AnswerAappear_Label, Nothing)
             'AbcdHex_Show()
             Exit Sub
         End If
 
-        If MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = False Then
+        If ViewModel.Gpx.MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = False Then
             AnswerAappear_Label_Click(AnswerAappear_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = True And Val(LevelQ) <= 10 Then
+        If ViewModel.Gpx.MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = True And Val(ViewModel.Gpx.Question.LevelQ) <= 10 Then
             AnswersABCDappear_Label_Click(AnswersABCDappear_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "Question_AnswerA_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "Question_AnswerA_Fired" Then
             AnswerBappear_Label_Click(AnswerBappear_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "Question_AnswerB_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "Question_AnswerB_Fired" Then
             AnswerCappear_Label_Click(AnswerCappear_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "Question_AnswerC_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "Question_AnswerC_Fired" Then
             AnswerDappear_Label_Click(AnswerDappear_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "AnswerA_Final_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "AnswerA_Final_Fired" Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "AnswerB_Final_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "AnswerB_Final_Fired" Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "AnswerC_Final_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "AnswerC_Final_Fired" Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "AnswerD_Final_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "AnswerD_Final_Fired" Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "DoubleDip_Final_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "DoubleDip_Final_Fired" Then
             DoubleDipRevealCorrect_Button_Click(DoubleDipRevealCorrect_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "CorrectAnswer_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "CorrectAnswer_Fired" Then
             WonPrizeReveal_Button_Click(WonPrizeReveal_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "WonPrize_Fired" Then
+        If ViewModel.Gpx.MomentStatus = "WonPrize_Fired" Then
             RemoveQuestion_Button_Click(RemoveQuestion_Button, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "PhoneFriend_Dialing" Then
+        If ViewModel.Gpx.MomentStatus = "PhoneFriend_Dialing" Then
             PAFstart_Label_Click(PAFstart_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "PhoneFriend_Progress" Then
+        If ViewModel.Gpx.MomentStatus = "PhoneFriend_Progress" Then
             PAFabort_Label_Click(PAFabort_Label, Nothing)
             Exit Sub
         End If
 
-        If MomentStatus = "AskAudience_Questioning" Then
+        If ViewModel.Gpx.MomentStatus = "AskAudience_Questioning" Then
             ATAstart_Label_Click(ATAstart_Label, Nothing)
             Exit Sub
         End If
@@ -1858,22 +1493,13 @@ Public Class Quiz_Operator
 
     Private Sub ATAendVote_Label_Click(sender As Object, e As EventArgs) Handles ATAendVote_Label.Click
         ataEndVote()
-        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(LevelQ)
+        GraphicsProcessingUnit.InteractiveWallScreenObj.MotionBackgroundDuringQuestion(ViewModel.Gpx.Question.LevelQ)
 
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs)
-        Explanation = ""
-        '(toGoToClient)Host.DirectorsChat_TextBox.Text = Explanation
-    End Sub
-
-    Private Sub AudienceFriendAnswer_Label_Click_1(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub CorrectAnswer_TextBox_TextChanged(sender As Object, e As EventArgs) Handles CorrectAnswer_TextBox.TextChanged
-        CorrectAnswer = Helpers.Convert1234ToABCD(CorrectAnswer)
-
+        ViewModel.Gpx.Question.Explanation = ""
+        '(toGoToClient)Host.DirectorsChat_TextBox.Text = Instance.Quesion.Explanation
     End Sub
 
     Private Sub LimitedGame_RadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles LimitedGame_RadioButton.CheckedChanged
@@ -1902,10 +1528,10 @@ Public Class Quiz_Operator
         TimerLimitedGameSecDropClock.Start()
 
 
-        If LevelQ <= 5 Then
+        If ViewModel.Gpx.Question.LevelQ <= 5 Then
             LimitedGameClock_TextBox.Text = "15"
         End If
-        If LevelQ > 5 Then
+        If ViewModel.Gpx.Question.LevelQ > 5 Then
             LimitedGameClock_TextBox.Text = "30"
         End If
 
@@ -1924,7 +1550,7 @@ Public Class Quiz_Operator
             MainGameMusicLayerObj.LimitedClockStop() 'Ctlcontrols.stop()
         End If
 
-        If LevelQ <= 5 Then
+        If ViewModel.Gpx.Question.LevelQ <= 5 Then
             '' ******* CASPARCG ******* CASPARCG *******
             Dim fullClock As Integer = 15
             Dim remainingClock As Integer = 0
@@ -1937,7 +1563,7 @@ Public Class Quiz_Operator
             '' ******* CASPARCG ******* CASPARCG *******
 
         End If
-        If LevelQ > 5 Then
+        If ViewModel.Gpx.Question.LevelQ > 5 Then
             '' ******* CASPARCG ******* CASPARCG *******
             Dim fullClock As Integer = 30
             Dim remainingClock As Integer = 0
@@ -1982,7 +1608,7 @@ Public Class Quiz_Operator
         End If
 
         ''''
-        GraphicsProcessingUnit.hideClockBarCG(LevelQ, LimitedGame_RadioButton.Checked)
+        GraphicsProcessingUnit.hideClockBarCG(ViewModel.Gpx.Question.LevelQ, LimitedGame_RadioButton.Checked)
         ''''
 
     End Sub
@@ -1995,19 +1621,19 @@ Public Class Quiz_Operator
         MainGameMusicLayerObj.LimitedClockPlay() 'Ctlcontrols.play()
 
         ''''
-        GraphicsProcessingUnit.showClockBarCG(LevelQ)
+        GraphicsProcessingUnit.showClockBarCG(ViewModel.Gpx.Question.LevelQ)
         ''''
 
     End Sub
 
     Private Sub SoundLX_Button_Click(sender As Object, e As EventArgs) Handles SoundLX_Button.Click
         PlayLXsound()
-        GraphicsProcessingUnit.InteractiveWallScreenObj.LightDownEffect(LevelQ)
+        GraphicsProcessingUnit.InteractiveWallScreenObj.LightDownEffect(ViewModel.Gpx.Question.LevelQ)
     End Sub
 
     Public Sub PlayLXsound()
         Timer_STOP.Stop()
-        MainGameMusicLayerObj.PlayLXSound(LevelQ, VariableMilestone_TextBox.Text)
+        MainGameMusicLayerObj.PlayLXSound(ViewModel.Gpx.Question.LevelQ, VariableMilestone_TextBox.Text)
 
     End Sub
 
@@ -2045,24 +1671,29 @@ Public Class Quiz_Operator
 
     End Sub
 
-    Private Sub ClearExplanation_Label_Click(sender As Object, e As EventArgs) Handles ClearExplanation_Label.Click
+    Private Sub ExplanationClear_Label_Click(sender As Object, e As EventArgs) Handles ClearExplanation_Label.Click
         HostContPresentationLayer.OneTimeMessageSet("EXPLANATION-NONE")
-        'HostContPresentationLayer.ExplanationDissolve()
-        'HostContPresentationLayer.PronunciationDissolve()
+        'HostContPresentationLayer.Instance.Quesion.ExplanationDissolve()
+        'HostContPresentationLayer.Instance.Quesion.PronunciationDissolve()
     End Sub
 
-    Private Sub SendExplanation_Label_Click(sender As Object, e As EventArgs) Handles SendExplanation_Label.Click
+    Private Sub Explanation_Label_Click(sender As Object, e As EventArgs) Handles SendExplanation_Label.Click
         HostContPresentationLayer.OneTimeMessageSet("EXPLANATION-FIRE")
-        'HostContPresentationLayer.ExplanationFire()
-        'HostContPresentationLayer.PronunciationFire()
+        'HostContPresentationLayer.Instance.Quesion.ExplanationFire()
+        'HostContPresentationLayer.Instance.Quesion.PronunciationFire()
     End Sub
 
     Private Sub VariableMilestoneSet_Button_Click(sender As Object, e As EventArgs) Handles VariableMilestoneSet_Button.Click
-        VariableMilestone_TextBox.Text = LevelQ
+        VariableMilestone_TextBox.Text = ViewModel.Gpx.Question.LevelQ
         My.Computer.Audio.Play("C:\WWTBAM Removable Disc\UK 2007\29.QMilestone - Change.wav")
 
+        Dim FirstMileStone As Short = 0
+        If ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel > 0).FirstOrDefault() IsNot Nothing Then
+            FirstMileStone = ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel > 0).FirstOrDefault().PositionLevel
+        End If
+
         Dim TextBox As String 'Izbeli gi prvo
-        For index As Integer = 6 To 15 - 1
+        For index As Integer = FirstMileStone To ViewModel.Gpx.CurrentGamePlayLevels.Count - 1
             TextBox = "QSum" + index.ToString + "_TextBox"
             For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
                 If String.Compare(TextBox, tb.Name, True) = 0 Then
@@ -2071,17 +1702,25 @@ Public Class Quiz_Operator
             Next
         Next
 
-        TextBox = "QSum" + LevelQ + "_TextBox"
-        For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
-            If String.Compare(TextBox, tb.Name, True) = 0 Then
-                tb.BackColor = Color.Bisque
-                '' ******* CASPARCG ******* CASPARCG *******
-                GraphicsProcessingUnit.setSecondMilestoneAtQ(LevelQ)
-
+        'obelezi vtora sigurna
+        For Each level As IMainGameLevel In ViewModel.Gpx.CurrentGamePlayLevels
+            If level.PositionLevel = ViewModel.Gpx.Question.LevelQ Then
+                level.SafeHeaven = True
+                Exit For
             End If
         Next
 
-        MomentStatus = "VariableMilestone_Set"
+        TextBox = "QSum" + ViewModel.Gpx.Question.LevelQ + "_TextBox"
+        For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
+            If String.Compare(TextBox, tb.Name, True) = 0 Then
+                tb.BackColor = Color.Bisque
+                GraphicsProcessingUnit.setSecondMilestoneAtQ(ViewModel.Gpx.Question.LevelQ)
+                '' ******* CASPARCG ******* CASPARCG *******
+                Exit For
+            End If
+        Next
+
+        ViewModel.Gpx.MomentStatus = "VariableMilestone_Set"
 
     End Sub
 
@@ -2168,7 +1807,7 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub LevelQset_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LevelQset_ComboBox.SelectedIndexChanged
-        LevelQ = LevelQset_ComboBox.SelectedItem
+        ViewModel.Gpx.Question.LevelQ = Short.Parse(LevelQset_ComboBox.SelectedItem.ToString)
     End Sub
 
     Private Sub TenthQMilestoneSet_Button_Click(sender As Object, e As EventArgs) Handles TenthQMilestoneSet_Button.Click
@@ -2194,12 +1833,12 @@ Public Class Quiz_Operator
             End If
         Next
 
-        MomentStatus = "VariableMilestone_Set"
+        ViewModel.Gpx.MomentStatus = "VariableMilestone_Set"
 
     End Sub
 
     Private Sub DoubleDipReady_Label_Click(sender As Object, e As EventArgs) Handles DoubleDipReady_Label.Click
-        DoubleDipState = "DoubleDipFirstFinal"
+        ViewModel.Gpx.DoubleDipState = "DoubleDipFirstFinal"
         MainGameMusicLayerObj.PlayDoubleDipBackground()
         DDIP_1_Label_Click(DDIP_1_Label, Nothing)
 
@@ -2207,7 +1846,7 @@ Public Class Quiz_Operator
     End Sub
 
     Private Sub DoubleDipCancel_Label_Click(sender As Object, e As EventArgs) Handles DoubleDipCancel_Label.Click
-        DoubleDipState = ""
+        ViewModel.Gpx.DoubleDipState = ""
         MainGameMusicLayerObj.StopDoubleDipBackground() 'Ctlcontrols.stop()
         DDIP_0_Label_Click(DDIP_0_Label, Nothing)
         'MainGameMusicLayerObj.PlayHeartbeatMusic()
@@ -2215,12 +1854,12 @@ Public Class Quiz_Operator
 
     Private Sub DoubleDipRevealCorrect_Button_Click(sender As Object, e As EventArgs) Handles DoubleDipRevealCorrect_Button.Click
 
-        MomentStatus = "DoubleDipIsFirstFinalAnswer_Correct_Fired"
+        ViewModel.Gpx.MomentStatus = "DoubleDipIsFirstInstance.Quesion.FinalAnswer_Correct_Fired"
 
         DDIP_X_Label_Click(DDIP_X_Label, Nothing)
 
-        If (CorrectAnswer <> FinalAnswer) And String.Equals(DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
-            Select Case Helpers.ConvertABCDTo1234(FinalAnswer)
+        If (ViewModel.Gpx.Question.CorrectAnswer <> ViewModel.Gpx.Question.FinalAnswer) And String.Equals(ViewModel.Gpx.DoubleDipState, "DoubleDipFirstFinal", StringComparison.OrdinalIgnoreCase) Then
+            Select Case ViewModel.Gpx.Question.FinalAnswer
                 Case 1
                     AnswerA_TextBox.BackColor = Color.Gray
                 Case 2
@@ -2233,17 +1872,17 @@ Public Class Quiz_Operator
 
             IncorrectAnswerProcedure()
             ''CASPARCG
-            GraphicsProcessingUnit.DobleDip(FinalAnswer)
+            GraphicsProcessingUnit.DobleDip(ViewModel.Gpx.Question.FinalAnswer)
             ''
-            DoubleDipState = "DoubleDipSecondFinal"
+            ViewModel.Gpx.DoubleDipState = "DoubleDipSecondFinal"
 
             SumeShow_CheckBox.Checked = True
             Empty_CheckBox.Checked = True
 
-        ElseIf (CorrectAnswer <> FinalAnswer) Then
+        ElseIf (ViewModel.Gpx.Question.CorrectAnswer <> ViewModel.Gpx.Question.FinalAnswer) Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
 
-        ElseIf String.Equals(CorrectAnswer, FinalAnswer, StringComparison.OrdinalIgnoreCase) Then
+        ElseIf String.Equals(ViewModel.Gpx.Question.CorrectAnswer, ViewModel.Gpx.Question.FinalAnswer, StringComparison.OrdinalIgnoreCase) Then
             CorrectAnswerReveal_Button_Click(CorrectAnswerReveal_Button, Nothing)
         End If
 
@@ -2253,266 +1892,100 @@ Public Class Quiz_Operator
 
     Private Sub DoubleDipFinalA_Button_Click(sender As Object, e As EventArgs) Handles DoubleDipFinalA_Button.Click
         FinalA_Button_Click(FinalA_Button, Nothing)
-        MomentStatus = "DoubleDipAnswer_Final_Fired"
-        DoubleDipFirstAnswer = "1"
+        ViewModel.Gpx.MomentStatus = "DoubleDipAnswer_Final_Fired"
+        ViewModel.Gpx.DoubleDipFirstAnswer = "1"
     End Sub
     Private Sub DoubleDipFinalB_Button_Click(sender As Object, e As EventArgs) Handles DoubleDipFinalB_Button.Click
         FinalB_Button_Click(FinalB_Button, Nothing)
-        MomentStatus = "DoubleDipAnswer_Final_Fired"
-        DoubleDipFirstAnswer = "2"
+        ViewModel.Gpx.MomentStatus = "DoubleDipAnswer_Final_Fired"
+        ViewModel.Gpx.DoubleDipFirstAnswer = "2"
     End Sub
     Private Sub DoubleDipFinalC_Button_Click(sender As Object, e As EventArgs) Handles DoubleDipFinalC_Button.Click
         FinalC_Button_Click(FinalC_Button, Nothing)
-        MomentStatus = "DoubleDipAnswer_Final_Fired"
-        DoubleDipFirstAnswer = "3"
+        ViewModel.Gpx.MomentStatus = "DoubleDipAnswer_Final_Fired"
+        ViewModel.Gpx.DoubleDipFirstAnswer = "3"
     End Sub
     Private Sub DoubleDipFinalD_Button_Click(sender As Object, e As EventArgs) Handles DoubleDipFinalD_Button.Click
         FinalD_Button_Click(FinalD_Button, Nothing)
-        MomentStatus = "DoubleDipAnswer_Final_Fired"
-        DoubleDipFirstAnswer = "4"
+        ViewModel.Gpx.MomentStatus = "DoubleDipAnswer_Final_Fired"
+        ViewModel.Gpx.DoubleDipFirstAnswer = "4"
     End Sub
 
     Private Sub DDIP_0_Label_Click(sender As Object, e As EventArgs) Handles DDIP_0_Label.Click
-        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 1)
-        Lifeline2Active = 1
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.DoubleDipPosition, 1)
+        ViewModel.Gpx.Lifelines.Lifeline2Active = 1
     End Sub
 
     Private Sub DDIP_1_Label_Click(sender As Object, e As EventArgs) Handles DDIP_1_Label.Click
-        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 2)
-        Lifeline2Active = 2
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.DoubleDipPosition, 2)
+        ViewModel.Gpx.Lifelines.Lifeline2Active = 2
     End Sub
 
     Private Sub DDIP_X_Label_Click(sender As Object, e As EventArgs) Handles DDIP_X_Label.Click
-        GuiContext.SomethingToDoWithLifeline(DoubleDipPosition, 0)
-        Lifeline2Active = 0
-    End Sub
-
-    Public Sub GUIOperatorStateSet(MomentStatus As String)
-        '"EmptyQuestion_Fired"
-        '"5050_Fire"
-        '"AskAudience_EndVote"
-        '"AskAudience_Voting"
-        '"SwitchTheQuestion_Progess"
-        '"PhoneFriend_Interrupted"
-        '"NewGame_Fired"
-        '"Question_AnswerD_Fired"
-        '"QuestionAnswers_Load"
-        '"Question_Fired"
-        '"ABCDHex_Show"
-        '"Question_AnswerA_Fired"
-        '"Question_AnswerB_Fired"
-        '"Question_AnswerC_Fired"
-        '"AnswerA_Final_Fired"
-        '"AnswerB_Final_Fired"
-        '"AnswerC_Final_Fired"
-        '"AnswerD_Final_Fired"
-        '"DoubleDip_Final_Fired"
-        '"CorrectAnswer_Fired"
-        '"WonPrize_Fired"
-        '"PhoneFriend_Dialing"
-        '"PhoneFriend_Progress"
-        '"AskAudience_Questioning"
-        '"VariableMilestone_Set"
-        '"DoubleDipIsFirstFinalAnswer_Correct_Fired"
-        '"DoubleDipAnswer_Final_Fired"
-
-        'FinalA_Button.Visible = True
-        'FinalB_Button.Visible = True
-        'FinalC_Button.Visible = True
-        'FinalD_Button.Visible = True
-        'QuestionAppear_Button.Visible = True
-        'WonPrizeReveal_Button.Visible = True
-
-
-        Select Case MomentStatus
-            Case "EmptyQuestion_Fired", "QuestionAnswers_Load"
-                FinalA_Button.Visible = False
-                FinalB_Button.Visible = False
-                FinalC_Button.Visible = False
-                FinalD_Button.Visible = False
-                CorrectAnswerReveal_Button.Visible = False
-                WonPrizeReveal_Button.Visible = False
-                SoundLX_Button.Visible = True
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = False
-                VariableMilestoneSet_Button.Visible = True
-                VariableMilestone_TextBox.Visible = True
-                WalkAwayStart_Button.Visible = False
-                WalkAwayQoppinion_Label.Visible = False
-                Lifeline1_PictureBox.Visible = False
-                Lifeline2_PictureBox.Visible = False
-                Lifeline3_PictureBox.Visible = False
-                Lifeline4_PictureBox.Visible = False
-
-            Case "Question_Fired"
-                FinalA_Button.Visible = False
-                FinalB_Button.Visible = False
-                FinalC_Button.Visible = False
-                FinalD_Button.Visible = False
-                CorrectAnswerReveal_Button.Visible = False
-                WonPrizeReveal_Button.Visible = False
-                SoundLX_Button.Visible = False
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = True
-                VariableMilestoneSet_Button.Visible = False
-                VariableMilestone_TextBox.Visible = False
-                WalkAwayStart_Button.Visible = False
-                WalkAwayQoppinion_Label.Visible = False
-                Lifeline1_PictureBox.Visible = False
-                Lifeline2_PictureBox.Visible = False
-                Lifeline3_PictureBox.Visible = False
-                Lifeline4_PictureBox.Visible = False
-
-            Case "AnswerA_Final_Fired",
-                 "AnswerB_Final_Fired",
-                 "AnswerC_Final_Fired",
-                 "AnswerD_Final_Fired"
-
-                FinalA_Button.Visible = False
-                FinalB_Button.Visible = False
-                FinalC_Button.Visible = False
-                FinalD_Button.Visible = False
-                WonPrizeReveal_Button.Visible = False
-                CorrectAnswerReveal_Button.Visible = True
-                SoundLX_Button.Visible = False
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = True
-                VariableMilestoneSet_Button.Visible = False
-                VariableMilestone_TextBox.Visible = False
-                WalkAwayStart_Button.Visible = False
-                Lifeline1_PictureBox.Visible = False
-                Lifeline2_PictureBox.Visible = False
-                Lifeline3_PictureBox.Visible = False
-                Lifeline4_PictureBox.Visible = False
-
-            Case "Question_AnswerD_Fired", "DoubleDipAnswer_Final_Fired" 'prikazi konecen
-                FinalA_Button.Visible = True
-                FinalB_Button.Visible = True
-                FinalC_Button.Visible = True
-                FinalD_Button.Visible = True
-                WonPrizeReveal_Button.Visible = False
-                SoundLX_Button.Visible = False
-                LifelineRemind_Button.Visible = True
-                QFor_Button.Visible = True
-                VariableMilestoneSet_Button.Visible = False
-                VariableMilestone_TextBox.Visible = False
-                WalkAwayStart_Button.Visible = True
-                WalkAwayQoppinion_Label.Visible = False
-                Lifeline1_PictureBox.Visible = True
-                Lifeline2_PictureBox.Visible = True
-                Lifeline3_PictureBox.Visible = True
-                Lifeline4_PictureBox.Visible = True
-
-            Case "WonPrize_Fired"
-                WonPrizeReveal_Button.Visible = False
-
-            Case "CorrectAnswer_Fired"
-                FinalA_Button.Visible = False
-                FinalB_Button.Visible = False
-                FinalC_Button.Visible = False
-                FinalD_Button.Visible = False
-                CorrectAnswerReveal_Button.Visible = False
-                WonPrizeReveal_Button.Visible = True
-                SoundLX_Button.Visible = True
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = False
-                VariableMilestoneSet_Button.Visible = True
-                VariableMilestone_TextBox.Visible = True
-                WalkAwayStart_Button.Visible = False
-                WalkAwayQoppinion_Label.Visible = False
-                Lifeline1_PictureBox.Visible = False
-                Lifeline2_PictureBox.Visible = False
-                Lifeline3_PictureBox.Visible = False
-                Lifeline4_PictureBox.Visible = False
-
-            Case "DoubleDipIsFirstFinalAnswer_Correct_Fired"
-                FinalA_Button.Visible = True
-                FinalB_Button.Visible = True
-                FinalC_Button.Visible = True
-                FinalD_Button.Visible = True
-                WonPrizeReveal_Button.Visible = False
-                CorrectAnswerReveal_Button.Visible = False
-                SoundLX_Button.Visible = False
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = True
-                VariableMilestoneSet_Button.Visible = False
-                VariableMilestone_TextBox.Visible = False
-                WalkAwayStart_Button.Visible = False
-                WalkAwayQoppinion_Label.Visible = False
-
-            Case "Walkaway_Fired", "JustOpinion_Fired"
-                WonPrizeReveal_Button.Visible = True
-                CorrectAnswerReveal_Button.Visible = False
-                LifelineRemind_Button.Visible = False
-                QFor_Button.Visible = True
-                WalkAwayStart_Button.Visible = False
-                WalkAwayQoppinion_Label.Visible = True
-
-        End Select
-
-        NextThing_Button.Text = "CUE NEXT..." + NextActivity
+        GuiContext.SomethingToDoWithLifeline(ViewModel.Gpx.Lifelines.DoubleDipPosition, 0)
+        ViewModel.Gpx.Lifelines.Lifeline2Active = 0
     End Sub
 
     Public ReadOnly Property NextActivity() As String
         Get
-            'Select Case MomentStatus
+            'Select Case Instance.MomentStatus
             '    Case ""
             '        Return ""
             '    Case Else
             '        Return ""
             'End Select
             'Return ""
-            If MomentStatus = "QuestionAnswers_Load" Or MomentStatus = "VariableMilestone_Set" Then
+            If ViewModel.Gpx.MomentStatus = "QuestionAnswers_Load" Or ViewModel.Gpx.MomentStatus = "VariableMilestone_Set" Then
                 Return "Question_Fired"
             End If
-            If MomentStatus = "Question_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "Question_Fired" Then
                 Return "Question_AnswerA_Fired"
             End If
-            If MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = False Then
+            If ViewModel.Gpx.MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = False Then
                 Return "Question_AnswerA_Fired"
             End If
-            If MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = True And Val(LevelQ) <= 10 Then
+            If ViewModel.Gpx.MomentStatus = "ABCDHex_Show" And LimitedGame_RadioButton.Checked = True And Val(ViewModel.Gpx.Question.LevelQ) <= 10 Then
                 'AnswersABCDappear_Label_Click(AnswersABCDappear_Label, Nothing)
                 Return "Question_AnswerA_Fired"
             End If
-            If MomentStatus = "Question_AnswerA_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "Question_AnswerA_Fired" Then
                 Return "Question_AnswerB_Fired"
             End If
-            If MomentStatus = "Question_AnswerB_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "Question_AnswerB_Fired" Then
                 Return "Question_AnswerC_Fired"
             End If
-            If MomentStatus = "Question_AnswerC_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "Question_AnswerC_Fired" Then
                 Return "Question_AnswerD_Fired"
             End If
-            If MomentStatus = "AnswerA_Final_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "AnswerA_Final_Fired" Then
                 Return "CorrectAnswer_Fired"
             End If
-            If MomentStatus = "AnswerB_Final_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "AnswerB_Final_Fired" Then
                 Return "CorrectAnswer_Fired"
             End If
-            If MomentStatus = "AnswerC_Final_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "AnswerC_Final_Fired" Then
                 Return "CorrectAnswer_Fired"
             End If
-            If MomentStatus = "AnswerD_Final_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "AnswerD_Final_Fired" Then
                 Return "CorrectAnswer_Fired"
             End If
-            If MomentStatus = "DoubleDip_Final_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "DoubleDip_Final_Fired" Then
                 'DoubleDipRevealCorrect_Button_Click(DoubleDipRevealCorrect_Button, Nothing)
             End If
-            If MomentStatus = "CorrectAnswer_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "CorrectAnswer_Fired" Then
                 'WonPrizeReveal_Button_Click(WonPrizeReveal_Button, Nothing)
                 Return "WonPrize_Fired"
             End If
-            If MomentStatus = "WonPrize_Fired" Then
+            If ViewModel.Gpx.MomentStatus = "WonPrize_Fired" Then
                 Return "QuestionAnswers_Load"
             End If
-            If MomentStatus = "PhoneFriend_Dialing" Then
+            If ViewModel.Gpx.MomentStatus = "PhoneFriend_Dialing" Then
                 'PAFstart_Label_Click(PAFstart_Label, Nothing)
             End If
-            If MomentStatus = "PhoneFriend_Progress" Then
+            If ViewModel.Gpx.MomentStatus = "PhoneFriend_Progress" Then
                 'PAFabort_Label_Click(PAFabort_Label, Nothing)
             End If
-            If MomentStatus = "AskAudience_Questioning" Then
+            If ViewModel.Gpx.MomentStatus = "AskAudience_Questioning" Then
                 'ATAstart_Label_Click(ATAstart_Label, Nothing)
             End If
             Return ""
@@ -2571,8 +2044,8 @@ Public Class Quiz_Operator
 
     End Sub
 
-    Private Sub UpdateQuestionText_Event(sender As Object, e As MouseEventArgs) Handles Question_TextBox.MouseDoubleClick
-        QuestionText = Question_TextBox.Text
+    Private Sub QuestionText_Event(sender As Object, e As MouseEventArgs) Handles Question_TextBox.MouseDoubleClick
+        ViewModel.Gpx.Question.QuestionText = Question_TextBox.Text
     End Sub
 
     Private Sub StarApacheServer_Button_Click(sender As Object, e As EventArgs) Handles StarApacheServer_Button.Click
@@ -2633,8 +2106,6 @@ Public Class Quiz_Operator
                 End Select
             End If
         End If
-
-
     End Sub
 
 End Class

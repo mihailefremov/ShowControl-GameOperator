@@ -12,6 +12,8 @@ Public Class FFFOperator
     Dim questionID As String = "0"
 
     Private Shared _MomentStatus As String
+    Private DataLayer As IDataLayer = New DataLayerMsSql
+
     Private Shared Property MomentStatus
         Get
             Return _MomentStatus

@@ -72,7 +72,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="gameQuestionsServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">IDEA-PC\SQLEXPRESS02</Value>
+      <Value Profile="(Default)">IDEA-PC\SQLEXPRESS01</Value>
     </Setting>
     <Setting Name="UseMySqlForAta" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

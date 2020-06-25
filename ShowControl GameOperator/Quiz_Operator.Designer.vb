@@ -111,7 +111,6 @@ Partial Class Quiz_Operator
         Me.AutoWhiteGleen_CheckBox = New System.Windows.Forms.CheckBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.GetContestantClicks_CheckBox = New System.Windows.Forms.CheckBox()
-        Me.StarApacheServer_Button = New System.Windows.Forms.Button()
         Me.ContestantPartner_Textbox = New System.Windows.Forms.TextBox()
         Me.ContestantCity_Textbox = New System.Windows.Forms.TextBox()
         Me.ContestantLastName_Textbox = New System.Windows.Forms.TextBox()
@@ -122,6 +121,7 @@ Partial Class Quiz_Operator
         Me.DirectorIMessage_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox = New System.Windows.Forms.TextBox()
+        Me.StarApacheServer_Button = New System.Windows.Forms.Button()
         Me.ReloadConfiguration_Button = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.UnlimitedGame_RadioButton = New System.Windows.Forms.RadioButton()
@@ -1236,15 +1236,6 @@ Partial Class Quiz_Operator
         Me.GetContestantClicks_CheckBox.Text = "Get Contestant Clicks"
         Me.GetContestantClicks_CheckBox.UseVisualStyleBackColor = True
         '
-        'StarApacheServer_Button
-        '
-        Me.StarApacheServer_Button.Location = New System.Drawing.Point(143, 21)
-        Me.StarApacheServer_Button.Name = "StarApacheServer_Button"
-        Me.StarApacheServer_Button.Size = New System.Drawing.Size(100, 41)
-        Me.StarApacheServer_Button.TabIndex = 1244
-        Me.StarApacheServer_Button.Text = "Start Apache Server"
-        Me.StarApacheServer_Button.UseVisualStyleBackColor = True
-        '
         'ContestantPartner_Textbox
         '
         Me.ContestantPartner_Textbox.Font = New System.Drawing.Font("Arial", 10.0!)
@@ -1351,6 +1342,15 @@ Partial Class Quiz_Operator
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TabIndex = 1262
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.Text = "4.0"
         Me.SecondsToDissolveAfterCorrectAnswer_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'StarApacheServer_Button
+        '
+        Me.StarApacheServer_Button.Location = New System.Drawing.Point(143, 21)
+        Me.StarApacheServer_Button.Name = "StarApacheServer_Button"
+        Me.StarApacheServer_Button.Size = New System.Drawing.Size(100, 41)
+        Me.StarApacheServer_Button.TabIndex = 1244
+        Me.StarApacheServer_Button.Text = "Start Apache Server"
+        Me.StarApacheServer_Button.UseVisualStyleBackColor = True
         '
         'ReloadConfiguration_Button
         '

@@ -3,22 +3,23 @@ Imports MySql.Data.MySqlClient
 
 
 Public Class DataLayerMySql
+    Implements IDataLayer
 
-    Public Shared audienceVotesConnection As String = "server=" + My.Settings.audienceVotesServer + ";" _
+    Public audienceVotesConnection As String = "server=" + My.Settings.audienceVotesServer + ";" _
                    & "uid=" + My.Settings.mySqlUser + ";" _
                    & "pwd=" + My.Settings.mySqlPassword + ";" _
                    & "database=" + My.Settings.audienceVotesDatabase + ";"
 
-    Private Shared ReadOnly ConnectionStringQuestionDB As String = audienceVotesConnection
+    Private ReadOnly ConnectionStringQuestionDB As String = audienceVotesConnection
 
-    Private Shared ReadOnly ConnectionStringQuestionDBMSSQL As String = $"server={My.Settings.gameQuestionsServer};database={My.Settings.audienceVotesDatabase};integrated security=true;"
+    Private ReadOnly ConnectionStringQuestionDBMSSQL As String = $"server={My.Settings.gameQuestionsServer};database={My.Settings.audienceVotesDatabase};integrated security=true;"
 
-    Public Shared percentA, percentB, percentC, percentD As Decimal
+    Public percentA, percentB, percentC, percentD As Decimal
 
-    Private Shared _QAMySqlConnVar As New MySqlConnection With {
+    Private _QAMySqlConnVar As New MySqlConnection With {
                 .ConnectionString = ConnectionStringQuestionDB
             }
-    'Public Shared ReadOnly Property QADbConnectionProperty As MySqlConnection
+    'Public  ReadOnly Property QADbConnectionProperty As MySqlConnection
     '    Get
     '        Try
     '            If IsNothing(_QAMySqlConnVar) Then
@@ -46,7 +47,7 @@ Public Class DataLayerMySql
 
 
 #Region "QUESTION DATA"
-    Friend Shared Function SelectSuitableQuestion(questionLevel As String, Optional typeQ As String = "1") As DataTable
+    Public Function SelectSuitableQuestion(questionLevel As String, Optional typeQ As String = "1", Optional isReplacement As Boolean = False) As DataTable Implements IDataLayer.SelectSuitableQuestion
         Dim MySqlConn As MySqlConnection
         MySqlConn = New MySqlConnection With {
                 .ConnectionString = ConnectionStringQuestionDB
@@ -76,7 +77,7 @@ Public Class DataLayerMySql
         Return dbDataSet
     End Function
 
-    'Friend Shared Function SelectSuitableQuestion(questionLevel As String, Optional typeQ As String = "1") As DataTable
+    'Public  Function SelectSuitableQuestion(questionLevel As String, Optional typeQ As String = "1") As DataTable
     '    Dim MySqlConn As MySqlConnection
     '    MySqlConn = QADbConnectionProperty
     '    Dim dbDataSet As New DataTable
@@ -102,7 +103,7 @@ Public Class DataLayerMySql
     '    Return dbDataSet
     'End Function
 
-    Friend Shared Sub MarkQuestionAnsweredDB(questionID As String, IsGameGoingLive As Boolean)
+    Public Sub MarkQuestionAnsweredDB(questionID As String, IsGameGoingLive As Boolean) Implements IDataLayer.MarkQuestionAnsweredDB
         If Not IsGameGoingLive Then Return
 
         Dim MySqlConn As MySqlConnection
@@ -143,7 +144,7 @@ Public Class DataLayerMySql
 
     End Sub
 
-    'Friend Shared Sub MarkQuestionAnsweredDB(questionID As String)
+    'Public  Sub MarkQuestionAnsweredDB(questionID As String)
     '    Dim MySqlConn As MySqlConnection = QADbConnectionProperty
     '    Dim READER As MySqlDataReader
     '    Try
@@ -166,7 +167,7 @@ Public Class DataLayerMySql
 
     'End Sub
 
-    Friend Shared Sub MarkQuestionFiredDB(questionID As String, IsGameGoingLive As Boolean, Optional qtype As String = "1")
+    Public Sub MarkQuestionFiredDB(questionID As String, IsGameGoingLive As Boolean, Optional qtype As String = "1") Implements IDataLayer.MarkQuestionFiredDB
         If Not IsGameGoingLive Then Return
 
         Dim MySqlConn As MySqlConnection
@@ -210,7 +211,7 @@ Public Class DataLayerMySql
 
     End Sub
 
-    'Friend Shared Sub MarkQuestionFiredDB(questionID As String, Optional qtype As String = "1")
+    'Public  Sub MarkQuestionFiredDB(questionID As String, Optional qtype As String = "1")
     '    Dim MySqlConn As MySqlConnection
     '    MySqlConn = QADbConnectionProperty
     '    Dim READER As MySqlDataReader
@@ -235,7 +236,7 @@ Public Class DataLayerMySql
 
     'End Sub
 
-    Shared Sub DisposeAnsweredGameQuestionsDB(QuestionType As String)
+    Sub DisposeAnsweredGameQuestionsDB(QuestionType As String) Implements IDataLayer.DisposeAnsweredGameQuestionsDB
         Dim conn As New MySql.Data.MySqlClient.MySqlConnection
         Dim myConnectionString As String = ConnectionStringQuestionDB
         Dim cmd As New MySqlCommand
@@ -271,7 +272,7 @@ Public Class DataLayerMySql
 
     End Sub
 
-    'Shared Sub DisposeAnsweredGameQuestionsDB(QuestionType As String)
+    ' Sub DisposeAnsweredGameQuestionsDB(QuestionType As String)
     '    Dim conn As MySql.Data.MySqlClient.MySqlConnection = QADbConnectionProperty
     '    Dim myConnectionString As String = ConnectionStringQuestionDB
     '    Dim cmd As New MySqlCommand
@@ -292,7 +293,7 @@ Public Class DataLayerMySql
 #End Region
 
 #Region "AUDIENCE DATA"
-    Friend Shared Function GetATAvoteData() As String()
+    Public Function GetATAvoteData() As String() Implements IDataLayer.GetATAvoteData
         Dim conn As New MySql.Data.MySqlClient.MySqlConnection
         Dim myConnectionString As String = audienceVotesConnection
         Dim cmda, cmdb, cmdc, cmdd As New MySqlCommand
@@ -350,7 +351,7 @@ Public Class DataLayerMySql
 
     End Function
 
-    Shared Sub DisposeATAvoteData()
+    Sub DisposeATAvoteData() Implements IDataLayer.DisposeATAvoteData
         Dim conn As New MySql.Data.MySqlClient.MySqlConnection
         Dim myConnectionString As String = audienceVotesConnection
         Dim cmd As New MySqlCommand
@@ -379,7 +380,7 @@ Public Class DataLayerMySql
         percentD = 0
     End Sub
 
-    Shared Function getContGuestVoteData() As String
+    Function getContGuestVoteData() As String Implements IDataLayer.getContGuestVoteData
         Dim conn As New MySql.Data.MySqlClient.MySqlConnection
         Dim myConnectionString As String = audienceVotesConnection
         Dim cmda As New MySqlCommand
@@ -414,7 +415,7 @@ Public Class DataLayerMySql
         Return ConvertToABCD(retrieve)
     End Function
 
-    Shared Function ConvertToABCD(ByVal P As String) As String
+    Function ConvertToABCD(ByVal P As String) As String
 
         If P = "1" Then
             Return "A"

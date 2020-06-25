@@ -7,59 +7,59 @@ Public Class HostContPresentationLayer
 #Region "MESSAGE-METHODS"
 
     Public Shared Sub GamePlayStateSet(Optional MomentStatus As String = "")
+        Return
+        ''HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionText={Quiz_Operator.QuestionText}&Answer1Text={Quiz_Operator.Answer1Text}&Answer2Text={Quiz_Operator.Answer2Text}&Answer3Text={Quiz_Operator.Answer3Text}&Answer4Text={Quiz_Operator.Answer4Text}&FinalAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.FinalAnswer)}&CorrectAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.CorrectAnswer)}&ExplanationText={Quiz_Operator.Explanation}&PronunciationText={Quiz_Operator.Pronunciation}&ContestantNameCity={String.Format("{0} {1}", Quiz_Operator.ContestantName_Textbox.Text, Quiz_Operator.ContestantLastName_Textbox.Text)}&PartnerName={String.Format("{0}", Quiz_Operator.ContestantPartner_Textbox.Text)}&BankDropIfCorrectIfWrong={Quiz_Operator.CurentGameStatusData}&QLevel={Math.Max(Quiz_Operator.LevelQ - 1, 0)}&LifelinesState={Quiz_Operator.LifelinesState}&FiftyFifty={Quiz_Operator.FiftyFifty}&AtaPercents={Quiz_Operator.AtaVotes}&SecondMilestoneAt={Quiz_Operator.VariableMilestone_TextBox.Text}&DoubleDipState={Quiz_Operator.DoubleDipState}&DoubleDipFirstAnswer={Quiz_Operator.DoubleDipFirstAnswer}&ActiveLifelines={Quiz_Operator.ActiveLifelines}")
+        'Dim p1 = HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionText={Uri.EscapeDataString(Instance.Question.QuestionText)}&Answer1Text={Uri.EscapeDataString(Instance.Question.Answer1Text)}&Answer2Text={Uri.EscapeDataString(Instance.Question.Answer2Text)}&Answer3Text={Uri.EscapeDataString(Instance.Question.Answer3Text)}&Answer4Text={Uri.EscapeDataString(Instance.Question.Answer4Text)}&FinalAnswer={Instance.Question.FinalAnswer}&CorrectAnswer={Instance.Question.CorrectAnswer}&ExplanationText={Uri.EscapeDataString(Instance.Question.Explanation)}&PronunciationText={Uri.EscapeDataString(Instance.Question.Pronunciation)}&ContestantNameCity={String.Format("{0} {1}", Uri.EscapeDataString(Quiz_Operator.ContestantName_Textbox.Text), Uri.EscapeDataString(Quiz_Operator.ContestantLastName_Textbox.Text))}&PartnerName={String.Format("{0}", Uri.EscapeDataString(Quiz_Operator.ContestantPartner_Textbox.Text))}&BankDropIfCorrectIfWrong={Instance.CurentGameStatusData}&QLevel={Math.Max(Instance.Question.LevelQ - 1, 0)}&LifelinesState={Instance.Lifelines.LifelinesState}&FiftyFifty={Instance.FiftyFifty}&AtaPercents={Instance.AtaVotes}&SecondMilestoneAt={Quiz_Operator.VariableMilestone_TextBox.Text}&DoubleDipState={Instance.DoubleDipState}&DoubleDipFirstAnswer={Instance.DoubleDipFirstAnswer}&ActiveLifelines={Instance.Lifelines.ActiveLifelines}")
+        'Log.LogWrite(p1)
+        'If MomentStatus.Trim = String.Empty Then Return
+        'Select Case MomentStatus.ToUpper
+        '    Case "QUESTIONANSWERS_LOAD" 'QuestionAnswersState=
 
-        'HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionText={Quiz_Operator.QuestionText}&Answer1Text={Quiz_Operator.Answer1Text}&Answer2Text={Quiz_Operator.Answer2Text}&Answer3Text={Quiz_Operator.Answer3Text}&Answer4Text={Quiz_Operator.Answer4Text}&FinalAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.FinalAnswer)}&CorrectAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.CorrectAnswer)}&ExplanationText={Quiz_Operator.Explanation}&PronunciationText={Quiz_Operator.Pronunciation}&ContestantNameCity={String.Format("{0} {1}", Quiz_Operator.ContestantName_Textbox.Text, Quiz_Operator.ContestantLastName_Textbox.Text)}&PartnerName={String.Format("{0}", Quiz_Operator.ContestantPartner_Textbox.Text)}&BankDropIfCorrectIfWrong={Quiz_Operator.CurentGameStatusData}&QLevel={Math.Max(Quiz_Operator.LevelQ - 1, 0)}&LifelinesState={Quiz_Operator.LifelinesState}&FiftyFifty={Quiz_Operator.FiftyFifty}&AtaPercents={Quiz_Operator.AtaVotes}&SecondMilestoneAt={Quiz_Operator.VariableMilestone_TextBox.Text}&DoubleDipState={Quiz_Operator.DoubleDipState}&DoubleDipFirstAnswer={Quiz_Operator.DoubleDipFirstAnswer}&ActiveLifelines={Quiz_Operator.ActiveLifelines}")
-        Dim p1 = HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionText={Uri.EscapeDataString(Quiz_Operator.QuestionText)}&Answer1Text={Uri.EscapeDataString(Quiz_Operator.Answer1Text)}&Answer2Text={Uri.EscapeDataString(Quiz_Operator.Answer2Text)}&Answer3Text={Uri.EscapeDataString(Quiz_Operator.Answer3Text)}&Answer4Text={Uri.EscapeDataString(Quiz_Operator.Answer4Text)}&FinalAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.FinalAnswer)}&CorrectAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.CorrectAnswer)}&ExplanationText={Uri.EscapeDataString(Quiz_Operator.Explanation)}&PronunciationText={Uri.EscapeDataString(Quiz_Operator.Pronunciation)}&ContestantNameCity={String.Format("{0} {1}", Uri.EscapeDataString(Quiz_Operator.ContestantName_Textbox.Text), Uri.EscapeDataString(Quiz_Operator.ContestantLastName_Textbox.Text))}&PartnerName={String.Format("{0}", Uri.EscapeDataString(Quiz_Operator.ContestantPartner_Textbox.Text))}&BankDropIfCorrectIfWrong={Quiz_Operator.CurentGameStatusData}&QLevel={Math.Max(Quiz_Operator.LevelQ - 1, 0)}&LifelinesState={Quiz_Operator.LifelinesState}&FiftyFifty={Quiz_Operator.FiftyFifty}&AtaPercents={Quiz_Operator.AtaVotes}&SecondMilestoneAt={Quiz_Operator.VariableMilestone_TextBox.Text}&DoubleDipState={Quiz_Operator.DoubleDipState}&DoubleDipFirstAnswer={Quiz_Operator.DoubleDipFirstAnswer}&ActiveLifelines={Quiz_Operator.ActiveLifelines}")
-        Log.LogWrite(p1)
-        If MomentStatus.Trim = String.Empty Then Return
-        Select Case MomentStatus.ToUpper
-            Case "QUESTIONANSWERS_LOAD" 'QuestionAnswersState=
+        '    Case "EMPTYQUESTION_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=None&AtaState=None&Paf=None")
+        '    Case "QUESTION_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ&AtaState=None&Paf=None")
+        '    Case "QUESTION_ANSWERA_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ1&AtaState=None&Paf=None")
+        '    Case "QUESTION_ANSWERB_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ12&AtaState=None&Paf=None")
+        '    Case "QUESTION_ANSWERC_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ123&AtaState=None&Paf=None")
+        '    Case "QUESTION_ANSWERD_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ1234&AtaState=None&Paf=None")
+        '    Case "ANSWERA_FINAL_FIRED", "ANSWERB_FINAL_FIRED", "ANSWERC_FINAL_FIRED", "ANSWERD_FINAL_FIRED", "DOUBLEDIPANSWER_FINAL_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=FinalAnswerGiven&FinalAnswer={Instance.Question.FinalAnswer}")
+        '    Case "CORRECTANSWER_FIRED", "DOUBLEDIPISFIRSTFINALANSWER_CORRECT_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=CorrectAnswerReveal")
+        '    Case "EMPTYQUESTION_FIRED"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=None")
+        '    'Case "LIFELINE_UPDATE"
+        '    '    HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?LifelinesState={Quiz_Operator.LifelinesState}")
+        '    Case "5050_FIRE"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?FiftyFifty={Instance.FiftyFifty}")
 
-            Case "EMPTYQUESTION_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=None&AtaState=None&Paf=None")
-            Case "QUESTION_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ&AtaState=None&Paf=None")
-            Case "QUESTION_ANSWERA_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ1&AtaState=None&Paf=None")
-            Case "QUESTION_ANSWERB_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ12&AtaState=None&Paf=None")
-            Case "QUESTION_ANSWERC_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ123&AtaState=None&Paf=None")
-            Case "QUESTION_ANSWERD_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=ReadQ1234&AtaState=None&Paf=None")
-            Case "ANSWERA_FINAL_FIRED", "ANSWERB_FINAL_FIRED", "ANSWERC_FINAL_FIRED", "ANSWERD_FINAL_FIRED", "DOUBLEDIPANSWER_FINAL_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=FinalAnswerGiven&FinalAnswer={Helpers.ConvertABCDTo1234(Quiz_Operator.FinalAnswer)}")
-            Case "CORRECTANSWER_FIRED", "DOUBLEDIPISFIRSTFINALANSWER_CORRECT_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=CorrectAnswerReveal")
-            Case "EMPTYQUESTION_FIRED"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=None")
-            'Case "LIFELINE_UPDATE"
-            '    HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?LifelinesState={Quiz_Operator.LifelinesState}")
-            Case "5050_FIRE"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?FiftyFifty={Quiz_Operator.FiftyFifty}")
+        '    Case "PHONEFRIEND_DIALING"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=None")
 
-            Case "PHONEFRIEND_DIALING"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=None")
+        '    Case "PHONEFRIEND_PROGRESS"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=Start")
 
-            Case "PHONEFRIEND_PROGRESS"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=Start")
+        '    Case "PHONEFRIEND_INTERRUPTED", "PHONEFRIEND_END"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=None")
 
-            Case "PHONEFRIEND_INTERRUPTED", "PHONEFRIEND_END"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?Paf=None")
+        '    Case "ASKAUDIENCE_QUESTIONING"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=NONE")
 
-            Case "ASKAUDIENCE_QUESTIONING"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=NONE")
+        '    Case "ASKAUDIENCE_VOTING"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=ClearDiagram")
 
-            Case "ASKAUDIENCE_VOTING"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=ClearDiagram")
+        '    Case "ASKAUDIENCE_ENDVOTE"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=DiagramWithPercentage")
 
-            Case "ASKAUDIENCE_ENDVOTE"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?AtaState=DiagramWithPercentage")
+        '    Case "TOTALPRIZEWON"
+        '        HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=TOTALPRIZEWON|{Instance.QuestionForSume.ToString}")
 
-            Case "TOTALPRIZEWON"
-                HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostMainGamePlayState.php?QuestionAnswersState=TOTALPRIZEWON|{Quiz_Operator.QuestionForSume.ToString}")
-
-        End Select
+        'End Select
     End Sub
 
     Public Shared Sub ConfigurationMoneyTreeSet()
