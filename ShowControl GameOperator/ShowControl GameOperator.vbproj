@@ -172,9 +172,8 @@
     </Compile>
     <Compile Include="GameLevelTree.vb" />
     <Compile Include="GamePlayContext.vb" />
-    <Compile Include="GuiContext.vb" />
+    <Compile Include="GuiContextObserver.vb" />
     <Compile Include="IDataLayer.vb" />
-    <Compile Include="IGameLevel.vb" />
     <Compile Include="ILevelTree.vb" />
     <Compile Include="InteractiveWallScreen.vb" />
     <Compile Include="ILevel.vb" />

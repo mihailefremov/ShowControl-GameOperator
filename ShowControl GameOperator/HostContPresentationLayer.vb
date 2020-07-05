@@ -90,26 +90,6 @@ Public Class HostContPresentationLayer
 
     End Sub
 
-    Friend Shared Sub ExplanationFire()
-        Return
-        Message.Clear()
-        Message.Append("<HOSTCONT-MESSAGE>")
-        Message.Append("<MESSAGE-TYPE>EXPLANATIONFIRE</MESSAGE-TYPE>")
-        Message.Append("</HOSTCONT-MESSAGE>")
-
-        'SendMessage(Message.ToString)
-    End Sub
-
-    Friend Shared Sub ExplanationDissolve()
-        Return
-        Message.Clear()
-        Message.Append("<HOSTCONT-MESSAGE>")
-        Message.Append("<MESSAGE-TYPE>EXPLANATIONDISSOLVE</MESSAGE-TYPE>")
-        Message.Append("</HOSTCONT-MESSAGE>")
-
-        'SendMessage(Message.ToString)
-    End Sub
-
     Friend Shared Sub GetDirectorChat(imessage As String, blink As String)
         Dim ChatState As String = "NONE"
         Dim intBlink As Integer
@@ -121,15 +101,6 @@ Public Class HostContPresentationLayer
         End If
         HttpApiRequests.GetPostRequests.Get($"https://{My.Settings.StateServerIPAddress}/wwtbam-state/PostProducerChatState.php?ProducerChatState={ChatState}&ProducerChatText={Uri.EscapeDataString(imessage)}")
 
-        Return
-        'Message.Clear()
-        'Message.Append("<HOSTCONT-MESSAGE>")
-        'Message.Append("<MESSAGE-TYPE>GETDIRECTORCHAT</MESSAGE-TYPE>")
-        'Message.Append(String.Format("<IMESSAGE>{0}</IMESSAGE>", imessage))
-        'Message.Append(String.Format("<BLINK>{0}</BLINK>", blink))
-        'Message.Append("</HOSTCONT-MESSAGE>")
-
-        'SendMessage(Message.ToString)
     End Sub
 
     Friend Shared Sub DirectorChatReset()

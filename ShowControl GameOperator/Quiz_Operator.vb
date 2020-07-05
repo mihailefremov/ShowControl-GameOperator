@@ -107,7 +107,9 @@ Public Class Quiz_Operator
                 With selectedQuestionTable
                     If selectedQuestionTable.Rows.Count > 0 Then
                         ViewModel.Gpx.Question.ID = .Rows(0)("QuestionID").ToString()
+                        Dim TempLevel As Short = ViewModel.Gpx.Question.LevelQ
                         ViewModel.Gpx.Question = New Question(selectedQuestionTable)
+                        ViewModel.Gpx.Question.LevelQ = TempLevel
                     End If
                 End With
             End Using
@@ -1173,11 +1175,6 @@ Public Class Quiz_Operator
         Timer_STOP.Interval = 555
         Timer_SumeShow.Interval = 1140
 
-        'If Instance.CurrentGamePlayLevels = "5" Then
-        '    Timer_STOP.Start()
-
-        'End If
-
         If Empty_CheckBox.Checked = True Then
             TimerQuestionRemove.Start()
         End If
@@ -1225,7 +1222,7 @@ Public Class Quiz_Operator
 
     Sub Leveling()
         '' ******* CASPARCG ******* CASPARCG *******
-        Dim MoneyTreeLevel As Int32 = ViewModel.Gpx.Question.LevelQ - 1
+        Dim MoneyTreeLevel As Short = ViewModel.Gpx.Question.LevelQ - 1
         GraphicsProcessingUnit.MoneyTreeLevel(MoneyTreeLevel)
 
         '' ******* CASPARCG ******* CASPARCG *******
@@ -1249,7 +1246,10 @@ Public Class Quiz_Operator
                 End If
             Next
 
-            Dim momentSumeInt As Integer = Integer.Parse(DirectCast(ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel = MoneyTreeLevel).FirstOrDefault(), MainGameLevel).RealValueSume)
+            Dim momentSumeInt As Integer = 0
+            If ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel = MoneyTreeLevel).FirstOrDefault() IsNot Nothing Then
+                momentSumeInt = ViewModel.Gpx.CurrentGamePlayLevels.Where(Function(x) x.PositionLevel = MoneyTreeLevel).FirstOrDefault().RealValueSume
+            End If
 
             incorrectSume = CalculateIncorrectAnswer(ViewModel.Gpx.Question.LevelQ)
             incorrectSume = IIf(incorrectSume = 0, 0, incorrectSume)
@@ -1703,7 +1703,7 @@ Public Class Quiz_Operator
         Next
 
         'obelezi vtora sigurna
-        For Each level As IMainGameLevel In ViewModel.Gpx.CurrentGamePlayLevels
+        For Each level As ILevel In ViewModel.Gpx.CurrentGamePlayLevels
             If level.PositionLevel = ViewModel.Gpx.Question.LevelQ Then
                 level.SafeHeaven = True
                 Exit For

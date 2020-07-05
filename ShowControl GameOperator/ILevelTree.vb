@@ -3,5 +3,5 @@
     Property CurrentLevel As Short
     Sub GoToNextLevel()
     Function GetLevel() As ILevel
-    Function GetMainGameLevel() As IMainGameLevel
+    Function GetMainGameLevel() As ILevel
 End Interface

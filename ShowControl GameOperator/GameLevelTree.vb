@@ -64,10 +64,10 @@
         Return Nothing
     End Function
 
-    Public Function GetMainGameLevel() As IMainGameLevel Implements ILevelTree.GetMainGameLevel
+    Public Function GetMainGameLevel() As ILevel Implements ILevelTree.GetMainGameLevel
         If Levels.Count > 0 Then Return Nothing
-        If TypeOf Levels.ElementAt(CurrentLevel) Is IMainGameLevel Then
-            Dim CurrentMainGameLevel As IMainGameLevel = Levels.ElementAt(CurrentLevel)
+        If TypeOf Levels.ElementAt(CurrentLevel) Is ILevel Then
+            Dim CurrentMainGameLevel As ILevel = Levels.ElementAt(CurrentLevel)
             Return CurrentMainGameLevel
         End If
         Return Nothing

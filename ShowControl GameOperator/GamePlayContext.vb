@@ -126,7 +126,6 @@
         End Set
     End Property
 
-
 #End Region
 
 #Region "OBSEERVER"
@@ -154,8 +153,7 @@
     Public Sub Run()
 
         s.Attach(New ConcreteObserver(s, "X"))
-        s.Attach(New ConcreteObserver(s, "Y"))
-        s.Attach(New ConcreteObserver(s, "Z"))
+        s.Attach(New GuiContextObserver(s, "OperatorObserver"))
 
         ''Update Subject
         s.SubjectState = Gpx
@@ -163,71 +161,70 @@
 
     End Sub
 
-    MustInherit Class Subject
-        Private _observers As List(Of Observer) = New List(Of Observer)()
-
-        Public Sub Attach(ByVal observer As Observer)
-            _observers.Add(observer)
-        End Sub
-
-        Public Sub Detach(ByVal observer As Observer)
-            _observers.Remove(observer)
-        End Sub
-
-        Public Sub Notify()
-            For Each o As Observer In _observers
-                o.Update()
-            Next
-        End Sub
-    End Class
-
-    Class GamePlayContextSubject
-        Inherits Subject
-
-        Private _subjectState As GamePlayContext
-
-        Public Property SubjectState As GamePlayContext
-            Get
-                Return _subjectState
-            End Get
-            Set(ByVal value As GamePlayContext)
-                _subjectState = value
-            End Set
-        End Property
-    End Class
-
-    MustInherit Class Observer
-        Public MustOverride Sub Update()
-    End Class
-
-    Class ConcreteObserver
-        Inherits Observer
-
-        Private _name As String
-        Private _observerState As GamePlayContext
-        Private _subject As GamePlayContextSubject
-
-        Public Sub New(ByVal subject As GamePlayContextSubject, ByVal name As String)
-            Me._subject = subject
-            Me._name = name
-        End Sub
-
-        Public Overrides Sub Update()
-            _observerState = _subject.SubjectState
-            MessageBox.Show(_observerState.MomentStatus + " " + _name)
-        End Sub
-
-        Public Property Subject As GamePlayContextSubject
-            Get
-                Return _subject
-            End Get
-            Set(ByVal value As GamePlayContextSubject)
-                _subject = value
-            End Set
-        End Property
-    End Class
-
-
 #End Region
 
+End Class
+
+Public MustInherit Class Subject
+    Private _observers As List(Of Observer) = New List(Of Observer)()
+
+    Public Sub Attach(ByVal observer As Observer)
+        _observers.Add(observer)
+    End Sub
+
+    Public Sub Detach(ByVal observer As Observer)
+        _observers.Remove(observer)
+    End Sub
+
+    Public Sub Notify()
+        For Each o As Observer In _observers
+            o.Update()
+        Next
+    End Sub
+End Class
+
+Class GamePlayContextSubject
+    Inherits Subject
+
+    Private _subjectState As GamePlayContext
+
+    Public Property SubjectState As GamePlayContext
+        Get
+            Return _subjectState
+        End Get
+        Set(ByVal value As GamePlayContext)
+            _subjectState = value
+        End Set
+    End Property
+End Class
+
+Public MustInherit Class Observer
+    Public MustOverride Sub Update()
+End Class
+
+Class ConcreteObserver
+    Inherits Observer
+
+    Private _name As String
+    Private _observerState As GamePlayContext
+    Private _subject As GamePlayContextSubject
+
+    Public Sub New(ByVal subject As GamePlayContextSubject, ByVal name As String)
+        Me._subject = subject
+        Me._name = name
+    End Sub
+
+    Public Overrides Sub Update()
+        _observerState = _subject.SubjectState
+        'MessageBox.Show(_observerState.MomentStatus + " " + _name)
+    End Sub
+
+    Public Property Subject As GamePlayContextSubject
+        Get
+            Return _subject
+        End Get
+        Set(ByVal value As GamePlayContextSubject)
+            _subject = value
+        End Set
+    End Property
 End Class
